@@ -6,6 +6,7 @@ import com.techelevator.authentication.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,7 +19,7 @@ public class SiteController {
     private AuthProvider auth;
 
     @RequestMapping(path = "/private", method = RequestMethod.GET)
-    public String privatePage() throws UnauthorizedException {
+    public String privatePage(ModelMap model) throws UnauthorizedException {
         if (auth.userHasRole(new String[] { "admin", "user" })) {
             return "private";
         } else {

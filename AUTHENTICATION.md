@@ -25,6 +25,10 @@ structure, make sure to update the `User` model and the associated data access c
 
 ### Usage
 
+There is an HttpSession variable named `user` that you can use to determine login status or get access to any of the properites on the User model.
+
+#### Direct access to the authentication system
+
 You can access the `AuthProvider` by allowing it to be injected into your controllers:
 
 ```java

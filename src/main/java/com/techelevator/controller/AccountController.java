@@ -37,7 +37,7 @@ public class AccountController {
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes flash) {
         if (auth.signIn(username, password)) {
-            return "redirect:/";
+            return "redirect:/private";
         } else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";

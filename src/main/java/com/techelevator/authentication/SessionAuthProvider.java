@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SessionAuthProvider implements AuthProvider {
 
-    public static final String USER_KEY = "appCurrentUser";
+    public static final String USER_KEY = "user";
 
     private HttpSession session;
     private UserDao dao;

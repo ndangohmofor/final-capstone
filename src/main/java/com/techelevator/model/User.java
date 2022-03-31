@@ -3,6 +3,7 @@ package com.techelevator.model;
 import javax.validation.constraints.AssertTrue;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
 /**
  * User
@@ -42,6 +43,9 @@ public class User {
      */
     public String getUsername() {
         return username;
+    }
+    public String getCapitalizedUsername() {
+        return StringUtils.capitalize(username);
     }
 
     /**
