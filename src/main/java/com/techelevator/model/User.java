@@ -8,6 +8,8 @@ import org.springframework.util.StringUtils;
 /**
  * User
  */
+
+// User Model
 public class User {
     @NotBlank(message = "Username is required")
     private String username;
