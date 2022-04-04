@@ -53,7 +53,7 @@ CREATE TABLE workout_class (
     instructor varchar(100)
 );
 
---INSERT INTO app_user(user_name, password, role, salt) values ('admin', 'admin1', 'admin');
+
 
 INSERT INTO machine(machine_name, machine_type) values ('treadmill','cardio');
 INSERT INTO machine(machine_name, machine_type) values ('stationary bike','cardio');
@@ -67,9 +67,9 @@ INSERT INTO machine(machine_name, machine_type) values ('leg curl','weights');
 INSERT INTO machine(machine_name, machine_type) values ('bench press','weights');
 
 
-/*ALTER TABLE user_profile ADD CONSTRAINT FK_userprofile_user_id foreign key (user_id) references app_user (id);
+ALTER TABLE user_profile ADD CONSTRAINT FK_userprofile_user_id foreign key (user_id) references app_user (id);
 ALTER TABLE equipment_log ADD CONSTRAINT FK_equipment_log_user_id foreign key (user_id) references app_user (id);
 ALTER TABLE equipment_log ADD CONSTRAINT FK_equipment_log_machine_id foreign key (machine_id) references machine (id);
 ALTER TABLE gym_checkin ADD CONSTRAINT FK_gym_checkin_user_id foreign key (user_id) references app_user (id);
-*/
+
 COMMIT;
