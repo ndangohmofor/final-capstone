@@ -20,16 +20,19 @@ public class EditProfileController {
     EditProfileDao editProfileDao;
 
     @RequestMapping (path = "/updateProfile", method = RequestMethod.GET)
-    public String displayUpdateForm() {
+    public String displayUpdateForm(HttpSession session, ModelMap modelMap) {
+        User user = (User) session.getAttribute("user");
+        UserProfile userProfile = editProfileDao.displayProfileByUserId(user.getId());
+        modelMap.put("profile", userProfile);
+
         return "updateProfile";
     }
 
     @RequestMapping (path = "/updateProfile", method = RequestMethod.POST)
     public String submitUpdateProfile(@RequestParam String firstName, @RequestParam String lastName,
-                                      @RequestParam String goal, HttpSession session) {
+                                      @RequestParam String goal, HttpSession session, ModelMap modelMap) {
         User user = (User) session.getAttribute("user");
         editProfileDao.updateProfile(firstName,lastName,goal, user.getId());
-
         return "redirect:/updateConfirmation";
         //need to add workout profile
     }
