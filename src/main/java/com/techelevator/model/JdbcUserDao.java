@@ -122,4 +122,14 @@ public class JdbcUserDao implements UserDao {
         return user;
     }
 
+    public long getUserID(String username){
+        long userID = 0;
+        String searchForID = "SELECT id from app_user where user_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(searchForID, username);
+        if(result.next()){
+            userID = result.getLong("id");
+        }
+        return userID;
+    }
+
 }
