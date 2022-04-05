@@ -1,11 +1,13 @@
 package com.techelevator.model;
 
 
+import java.time.LocalDate;
+
 public class GymCheckin {
 
   private long id;
-  private java.sql.Timestamp checkIn;
-  private java.sql.Timestamp checkOut;
+  private LocalDate checkIn;
+  private LocalDate checkOut;
   private long userId;
 
 
@@ -18,20 +20,20 @@ public class GymCheckin {
   }
 
 
-  public java.sql.Timestamp getCheckIn() {
+  public LocalDate getCheckIn() {
     return checkIn;
   }
 
-  public void setCheckIn(java.sql.Timestamp checkIn) {
+  public void setCheckIn(LocalDate checkIn) {
     this.checkIn = checkIn;
   }
 
 
-  public java.sql.Timestamp getCheckOut() {
+  public LocalDate getCheckOut() {
     return checkOut;
   }
 
-  public void setCheckOut(java.sql.Timestamp checkOut) {
+  public void setCheckOut(LocalDate checkOut) {
     this.checkOut = checkOut;
   }
 

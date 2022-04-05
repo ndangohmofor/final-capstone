@@ -42,7 +42,8 @@ CREATE TABLE equipment_log (
 CREATE TABLE gym_checkin (
     id SERIAL PRIMARY KEY ,
     check_in timestamp not null,
-    check_out timestamp not null,
+    check_out timestamp,
+    is_checked_in boolean not null,
     user_id int
 );
 
