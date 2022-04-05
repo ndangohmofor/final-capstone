@@ -34,18 +34,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 <c:url var="homeUrl" value="/"/>
+                <a href="${homeUrl}" class="navbar-brand">Home</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="${homeUrl}">Home</a></li>
-                    <c:url var="aboutUrl" value="/about"/>
-                    <li><a href="${aboutUrl}">About</a></li>
-                    <c:url var="privateUrl" value="/private"/>
-                    <li><a href="${privateUrl}">Private</a></li>
-                    <c:url var="createAccountUrl" value="/createAccount"/>
-                    <li><a href="${createAccountUrl}">Create Account</a></li>
-                    <c:url var="userCheckinOutUrl" value="/checkin"/>
-                    <li><a href="${userCheckinOutUrl}">Check In/Out</a></li>
+                    <c:url var="checkinoutUrl" value="/adminCheckinout"/>
+                    <li><a href="${checkinoutUrl}">Check In/Out User</a></li>
+                    <c:url var="workoutLogUrl" value="/workoutAdmin"/>
+                    <li><a href="${workoutLogUrl}">View Workout Log</a></li>
+                    <c:url var="visitMetricUrl" value="/visitMetricAdmin"/>
+                    <li><a href="${visitMetricUrl}">User Visit Metric</a></li>
+                    <c:url var="scheduleClassUrl" value="/scheduleClassAdmin"/>
+                    <li><a href="${scheduleClassUrl}">Schedule Class</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${empty user}">
@@ -57,6 +57,8 @@
                     <c:if test="${not empty user}">
                         <li><a href="${homeUrl}"><c:out value="${user.capitalizedUsername}"/></a></li>
                         <c:url var="logoffUrl" value="/logoff"/>
+                        <c:url var="registerUrl" value="/register"/>
+                        <li><a href="${registerUrl}">Register User</a></li>
                         <li>
                             <form action="${logoffUrl}" method="POST" class="navbar-form">
                                 <button type="submit" class="btn btn-primary">Log Off</button>

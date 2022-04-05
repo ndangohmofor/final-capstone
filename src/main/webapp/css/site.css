@@ -1,1 +1,12 @@
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+}
+
+.logoImg {
+    height: 40px;
+    border-radius: 15px;
+}
+
+div.container {
+   float: right;
+}
