@@ -9,7 +9,24 @@ public class GymCheckin {
   private LocalDate checkIn;
   private LocalDate checkOut;
   private long userId;
+  private boolean isCheckedIn;
 
+  public GymCheckin(LocalDate checkIn,long userId, boolean isCheckedIn) {
+    this.checkIn = checkIn;
+    this.userId = userId;
+    this.isCheckedIn = isCheckedIn;
+  }
+
+  public GymCheckin(){
+  }
+
+  public boolean isCheckedIn() {
+    return isCheckedIn;
+  }
+
+  public void setCheckedIn(boolean checkedIn) {
+    isCheckedIn = checkedIn;
+  }
 
   public long getId() {
     return id;

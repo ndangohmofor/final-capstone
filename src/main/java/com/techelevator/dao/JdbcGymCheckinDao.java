@@ -3,24 +3,27 @@ package com.techelevator.dao;
 import com.techelevator.model.GymCheckin;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class JdbcGymCheckinDao implements GymCheckinDao {
+
     private JdbcTemplate jdbcTemplate;
 
-    public void checkIn(GymCheckin checkIn) {
-        String sqlInsertCheckin = "INSERT INTO gym_checkin(check_in, check_out, user_id) VALUES (?, ?, ?)";
-        jdbcTemplate.queryForObject(sqlInsertCheckin, Long.class, LocalDate.now(), "", checkIn.getUserId());
+    public Long checkIn(GymCheckin checkIn) {
 
-        //help with the id? do I need to return the ID???
+        String sqlInsertCheckin = "INSERT INTO gym_checkin(check_in, is_checked_in, user_id) VALUES (?, ? , ?) returning id";
+        Long id = jdbcTemplate.queryForObject(sqlInsertCheckin, Long.class, checkIn.getCheckIn(), checkIn.isCheckedIn() , checkIn.getUserId());
+
+        return id;
     }
 
     public void checkOut(GymCheckin checkIn) {
-        String sqlUpdateCheckOut = "UPDATE gym_checkin set check_out = ? where id = ?;";
-        jdbcTemplate.update(sqlUpdateCheckOut, LocalDate.now(), checkIn.getId());
+        String sqlUpdateCheckOut = "UPDATE gym_checkin set check_out = ?, is_checked_in = ? where id = ?;";
+        jdbcTemplate.update(sqlUpdateCheckOut, LocalDate.now(), false, checkIn.getId());
     }
 
 
@@ -51,6 +54,7 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         checkInLog.setUserId(result.getLong("user_id"));
         checkInLog.setCheckIn(result.getDate("check_in").toLocalDate());
         checkInLog.setCheckIn(result.getDate("check_out").toLocalDate());
+        checkInLog.setCheckedIn(result.getBoolean("is_checked_in"));
         return checkInLog;
     }
 
