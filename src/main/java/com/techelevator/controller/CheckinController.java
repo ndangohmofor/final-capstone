@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.time.LocalDate;
 
 @Controller
@@ -32,13 +34,15 @@ public class CheckinController {
     }
 
     @RequestMapping(path="/checkin", method= RequestMethod.POST)
-    public String createCheckin(ModelMap checkinModel, @ModelAttribute("user") User user, ModelMap userModel, RedirectAttributes flash){
+    public String createCheckin(ModelMap checkinModel, HttpSession session){
 
-        flash.addFlashAttribute("user", user);
+
+        User user = (User) session.getAttribute("user");
+        //flash.addFlashAttribute("user", user);
         //userModel.put("user", auth.getCurrentUser());
         GymCheckin gymCheckin = new GymCheckin(LocalDate.now(), user.getId() , true); //how to get user id?
         jdbcGymCheckinDao.checkIn(gymCheckin);
-        //gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
+        gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
 
         checkinModel.put("checkin", gymCheckin);
 

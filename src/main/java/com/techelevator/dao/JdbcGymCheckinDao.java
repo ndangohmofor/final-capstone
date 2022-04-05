@@ -1,17 +1,25 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.GymCheckin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Component
 public class JdbcGymCheckinDao implements GymCheckinDao {
 
+
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public JdbcGymCheckinDao(DataSource dataSource){
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     public Long checkIn(GymCheckin checkIn) {
 

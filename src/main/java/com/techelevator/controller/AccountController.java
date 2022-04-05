@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
@@ -39,10 +40,14 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes flash) {
+    public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes flash, HttpSession session) {
         if (auth.signIn(username, password) && auth.userHasRole(admin)) {
+            //creating session and adding user
+            session.setAttribute("user",auth.getCurrentUser());
             return "redirect:/privateAdmin";
         } if (auth.signIn(username, password) && auth.userHasRole(user)) {
+            //creating session and adding user
+            session.setAttribute("user",auth.getCurrentUser());
             return "redirect:/private";
         }else {
             flash.addFlashAttribute("message", "Login Invalid");
@@ -56,7 +61,9 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/logoff", method = RequestMethod.POST)
-    public String logOff() {
+    public String logOff(HttpSession session) {
+        //closing the session and removing user
+        session.removeAttribute("user");
         auth.logOff();
         return "redirect:/";
     }
