@@ -3,8 +3,11 @@
 <c:url value="/checkinOutAdmin" var="adminCheckInOut"/>
 <form action="${adminCheckInOut}" method="POST">
     <input type="text" id="username" name="username">
-    <input type="datetime-local" id="checkin" name="checkin">
-    <input type="datetime-local" id="checkout" name="checkout">
+    <select id="checktype" name="checktype">
+        <option value="">--Please choose an option--</option>
+        <option value="checkin">Check In</option>
+        <option value="checkout">Check Out</option>
+    </select>
     <input type="submit" value="Submit">
 </form>
 

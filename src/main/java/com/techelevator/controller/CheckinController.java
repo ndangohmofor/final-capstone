@@ -1,8 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
+import com.techelevator.dao.JdbcAccountDao;
 import com.techelevator.dao.JdbcGymCheckinDao;
 import com.techelevator.model.GymCheckin;
+import com.techelevator.model.JdbcUserDao;
 import com.techelevator.model.User;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class CheckinController {
 
     @Autowired
     private JdbcGymCheckinDao jdbcGymCheckinDao;
+    @Autowired
+    private JdbcUserDao jdbcUserDao;
     @Autowired
     private AuthProvider auth;
 
@@ -66,7 +70,15 @@ public class CheckinController {
         return "checkinOutAdmin";
     }
     @RequestMapping(value = "/checkinOutAdmin",method = RequestMethod.POST)
-    public String checkinOutAdmin(@RequestParam String username){
+    public String checkinOutAdmin(@RequestParam String username, @RequestParam String checktype, @RequestParam LocalDateTime checkin, @RequestParam LocalDateTime checkout, ModelMap modelMap){
+
+        GymCheckin gymCheckin = new GymCheckin();
+        if(checktype.equals("checkin")){
+            gymCheckin = new GymCheckin(LocalDateTime.now(), jdbcUserDao.getUserID(username), true);
+            gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
+        } else if (checktype.equals("checkout")){
+            jdbcGymCheckinDao.checkOut(gymCheckin.getId());
+        }
 
         return "checkinOutAdmin";
     }
