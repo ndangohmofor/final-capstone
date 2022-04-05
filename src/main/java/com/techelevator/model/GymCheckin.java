@@ -2,16 +2,17 @@ package com.techelevator.model;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class GymCheckin {
 
   private long id;
-  private LocalDate checkIn;
+  private LocalDateTime checkIn;
   private LocalDate checkOut;
   private long userId;
   private boolean isCheckedIn;
 
-  public GymCheckin(LocalDate checkIn,long userId, boolean isCheckedIn) {
+  public GymCheckin(LocalDateTime checkIn,long userId, boolean isCheckedIn) {
     this.checkIn = checkIn;
     this.userId = userId;
     this.isCheckedIn = isCheckedIn;
@@ -37,11 +38,11 @@ public class GymCheckin {
   }
 
 
-  public LocalDate getCheckIn() {
+  public LocalDateTime getCheckIn() {
     return checkIn;
   }
 
-  public void setCheckIn(LocalDate checkIn) {
+  public void setCheckIn(LocalDateTime checkIn) {
     this.checkIn = checkIn;
   }
 
