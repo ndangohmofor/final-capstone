@@ -12,25 +12,23 @@
     <%--        <label for="userId">Member ID</label>--%>
     <%--        <input type="text" name="userId" id="userId">--%>
     <%--    </div>--%>
-    <div>
+    <div class="mb-3">
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName" value="${profile.firstName}">
+        <input type="text" class="form-control" name="firstName" id="firstName" value="${profile.firstName}">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName" value="${profile.lastName}">
+        <input type="text" class="form-control" name="lastName" id="lastName" value="${profile.lastName}">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="${profile.email}">
+        <input type="email" class="form-control" name="email" id="email" value="${profile.email}">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="goal">Update Goals</label>
-        <textarea cols="50" rows="5" type="text" name="goal" id="goal">
-            ${profile.goal}
-        </textarea>
+        <textarea class="form-control" rows="10" name="goal" id="goal">${profile.goal}</textarea>
     </div>
-    <div>
+    <div class="mb-3">
         <input type="submit" value="Save Changes">
     </div>
 </form>
