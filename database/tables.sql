@@ -55,7 +55,6 @@ CREATE TABLE workout_class (
 );
 
 
-
 INSERT INTO machine(machine_name, machine_type) values ('treadmill','cardio');
 INSERT INTO machine(machine_name, machine_type) values ('stationary bike','cardio');
 INSERT INTO machine(machine_name, machine_type) values ('row machine','cardio');

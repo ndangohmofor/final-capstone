@@ -20,6 +20,10 @@ import javax.validation.Valid;
  */
 @Controller
 public class AccountController {
+    private String[] admin = new String[]{"admin", "employee"};
+    private String[] user = new String[]{"user"};
+
+
     @Autowired
     private AuthProvider auth;
 
@@ -36,12 +40,19 @@ public class AccountController {
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes flash) {
-        if (auth.signIn(username, password)) {
+        if (auth.signIn(username, password) && auth.userHasRole(admin)) {
+            return "redirect:/privateAdmin";
+        } if (auth.signIn(username, password) && auth.userHasRole(user)) {
             return "redirect:/private";
-        } else {
+        }else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";
         }
+    }
+
+    @RequestMapping(path = "/privateAdmin")
+    public String displayAdminHome(ModelMap modelHolder){
+        return "privateAdmin";
     }
 
     @RequestMapping(path = "/logoff", method = RequestMethod.POST)
