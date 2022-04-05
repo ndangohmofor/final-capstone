@@ -20,6 +20,9 @@ import javax.validation.Valid;
  */
 @Controller
 public class AccountController {
+    private String[] admin = new String[]{"admin", "employee"};
+
+
     @Autowired
     private AuthProvider auth;
 
@@ -36,8 +39,8 @@ public class AccountController {
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes flash) {
-        if (auth.signIn(username, password)) {
-            return "redirect:/private";
+        if (auth.signIn(username, password) && auth.userHasRole(admin)) {
+            return "redirect:/privateAdmin";
         } else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";
