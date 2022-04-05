@@ -2,7 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.model.Account;
-import com.techelevator.model.AccountDao;
+import com.techelevator.dao.AccountDao;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
