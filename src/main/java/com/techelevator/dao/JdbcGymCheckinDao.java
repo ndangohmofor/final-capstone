@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -22,16 +24,23 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
     }
 
     public Long checkIn(GymCheckin checkIn) {
-
         String sqlInsertCheckin = "INSERT INTO gym_checkin(check_in, is_checked_in, user_id) VALUES (?, ? , ?) returning id";
         Long id = jdbcTemplate.queryForObject(sqlInsertCheckin, Long.class, checkIn.getCheckIn(), checkIn.isCheckedIn() , checkIn.getUserId());
 
         return id;
     }
 
-    public void checkOut(GymCheckin checkIn) {
+    //ADMIN CHECK IN
+/*    public Long adminCheckIn(GymCheckin checkIn, long userId){
+        String sqlInsertCheckin = "INSERT INTO gym_checkin(check_in, check_out ,is_checked_in, user_id) VALUES (?, ?, ? ,?) returning id";
+        Long id = jdbcTemplate.queryForObject(sqlInsertCheckin, Long.class, checkIn.getCheckIn(), checkIn.isCheckedIn() , checkIn.getUserId());
+
+        return 0;
+    }*/
+
+    public void checkOut(long checkinID) {
         String sqlUpdateCheckOut = "UPDATE gym_checkin set check_out = ?, is_checked_in = ? where id = ?;";
-        jdbcTemplate.update(sqlUpdateCheckOut, LocalDate.now(), false, checkIn.getId());
+        jdbcTemplate.update(sqlUpdateCheckOut, LocalDateTime.now(), false, checkinID);
     }
 
 
@@ -60,10 +69,24 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         GymCheckin checkInLog = new GymCheckin();
         checkInLog.setId(result.getLong("id"));
         checkInLog.setUserId(result.getLong("user_id"));
-        checkInLog.setCheckIn(result.getDate("check_in").toLocalDate());
-        checkInLog.setCheckIn(result.getDate("check_out").toLocalDate());
+        checkInLog.setCheckIn(result.getDate("check_in").toLocalDate().atTime(LocalTime.now()));
+        checkInLog.setCheckIn(result.getDate("check_out").toLocalDate().atTime(LocalTime.now()));
         checkInLog.setCheckedIn(result.getBoolean("is_checked_in"));
         return checkInLog;
     }
+
+
+
+
+/*    public boolean isAlreadyCheckedIn(int userId){
+        boolean isAlreadyCheckingIn;
+        String sqlQuery= "SELECT is_checked_in from gym_checkin where user_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlQuery, userId);
+        if(result.next()){
+         result = boolean result;
+        }
+        return result;
+
+    }*/
 
 }
