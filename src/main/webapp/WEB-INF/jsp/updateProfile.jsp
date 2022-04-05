@@ -8,10 +8,10 @@
 <form action="${updateProfile}" method="POST">
     <h2>Update profile</h2>
     <p>Please fill out all sections</p>
-    <div>
-        <label for="userId">Member ID</label>
-        <input type="text" name="userId" id="userId">
-    </div>
+<%--    <div>--%>
+<%--        <label for="userId">Member ID</label>--%>
+<%--        <input type="text" name="userId" id="userId">--%>
+<%--    </div>--%>
     <div>
         <label for="firstName">First Name</label>
         <input type="text" name="firstName" id="firstName">
