@@ -21,6 +21,8 @@ CREATE TABLE user_profile (
                           user_id int
 );
 
+alter table user_profile alter column photo type bytea using photo::bytea;
+
 
 CREATE TABLE machine (
     id SERIAL PRIMARY KEY,

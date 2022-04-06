@@ -12,10 +12,10 @@ public class Account
     private String lastName;
     @NotBlank(message = "Email is required")
     private String email;
-    private String photo;
+    private byte[] photo;
     private String goal;
 
-    public Account(long userId, String firstName, String lastName, String email, String photo, String goal) {
+    public Account(long userId, String firstName, String lastName, String email, byte[] photo, String goal) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -60,11 +60,11 @@ public class Account
         this.email = email;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

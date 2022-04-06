@@ -4,6 +4,6 @@
 
 <html>
 <body>
-
+<h2>Display Profile</h2>
 </body>
 </html>
