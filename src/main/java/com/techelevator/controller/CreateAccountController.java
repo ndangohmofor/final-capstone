@@ -35,7 +35,9 @@ public class CreateAccountController {
     @RequestMapping(path="/createAccount", method= RequestMethod.GET)
     public String createAccount(ModelMap modelHolder) throws UnauthorizedException {
         if (auth.userHasRole(new String[] { "admin", "user" })) {
-            modelHolder.put("account", new Account());
+            if (!modelHolder.containsAttribute("account")) {
+                modelHolder.put("account", new Account());
+            }
             return "createAccount";
         } else {
             throw new UnauthorizedException();
@@ -71,4 +73,4 @@ public class CreateAccountController {
 
     }
 }
-//alter table user_profile alter column photo type bytea using photo::bytea;
+
