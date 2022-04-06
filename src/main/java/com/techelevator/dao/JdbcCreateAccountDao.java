@@ -1,11 +1,11 @@
 package com.techelevator.dao;
 
-        import com.techelevator.model.Account;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.jdbc.core.JdbcTemplate;
-        import org.springframework.stereotype.Component;
+import com.techelevator.model.Account;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
-        import javax.sql.DataSource;
+import javax.sql.DataSource;
 
 @Component
 public class JdbcCreateAccountDao implements CreateAccountDao {
@@ -21,7 +21,7 @@ public class JdbcCreateAccountDao implements CreateAccountDao {
 
     @Override
     public long createAccount(Account account) {
-        System.out.println("account object in dao is "+account);
+        System.out.println("account object in dao is " + account);
 
         long newId = jdbcTemplate.queryForObject(
                 "INSERT INTO user_profile(first_name,last_name,email,photo,goal,user_id) VALUES (?, ?, ?, ?,?,?) RETURNING id", Long.class,
@@ -29,6 +29,12 @@ public class JdbcCreateAccountDao implements CreateAccountDao {
                 account.getPhoto(), account.getGoal(), account.getUserId());
 
         return newId;
+    }
+
+    public long checkAccountExists(long userId) {
+        String sql = "SELECT user_id FROM user_profile WHERE user_id = ?;";
+        long id = jdbcTemplate.queryForObject(sql, Long.class, userId);
+        return id;
     }
 }
 

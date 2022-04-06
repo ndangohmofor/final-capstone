@@ -66,7 +66,7 @@ public class CreateAccountController {
         }
         long newId = createAccountDao.createAccount(account);
         if(newId > 0){
-            return "displayProfile";
+            return "redirect:/";
         }else{
             return "redirect:/createAccount";
         }
