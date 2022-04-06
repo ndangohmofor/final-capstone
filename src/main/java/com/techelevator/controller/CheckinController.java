@@ -1,7 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
-import com.techelevator.dao.JdbcAccountDao;
+//import com.techelevator.dao.JdbcAccountDao;
 import com.techelevator.dao.JdbcGymCheckinDao;
 import com.techelevator.model.GymCheckin;
 import com.techelevator.model.JdbcUserDao;
