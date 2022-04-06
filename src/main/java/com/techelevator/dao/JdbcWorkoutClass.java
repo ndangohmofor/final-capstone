@@ -9,10 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +25,8 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
 
     @Override
     public List<WorkoutClass> getAllWorkoutClasses() {
-        List<WorkoutClass> workoutClasses = new ArrayList<>();
-        String sql = "SELECT * FROM workout_class ORDER BY date ASC;";
-        workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper());
+        String sql = "SELECT * FROM workout_class ORDER BY date ASC LIMIT 5;";
+        List<WorkoutClass> workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper());
         return workoutClasses;
     }
 
