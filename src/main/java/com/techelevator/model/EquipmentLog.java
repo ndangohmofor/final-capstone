@@ -1,11 +1,14 @@
 package com.techelevator.model;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class EquipmentLog {
 
   private long id;
   private long duration;
-  private java.sql.Timestamp date;
+  private LocalDateTime date;
   private long reps;
   private long weight;
   private long userId;
@@ -30,11 +33,11 @@ public class EquipmentLog {
   }
 
 
-  public java.sql.Timestamp getDate() {
+  public LocalDateTime getDate() {
     return date;
   }
 
-  public void setDate(java.sql.Timestamp date) {
+  public void setDate(LocalDateTime date) {
     this.date = date;
   }
 

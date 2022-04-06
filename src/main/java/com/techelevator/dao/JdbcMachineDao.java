@@ -38,7 +38,7 @@ public class JdbcMachineDao implements MachineDao {
 
     @Override
     public List<Machine> getMachineUsage(){
-        return template.query("select machine_name, count(date) as usage from equipment_log join machine  on equipment_log.machine_id = machine.id where machine_name ilike ? order by usage desc",new MachineRowMapper());
+        return template.query("select machine_name, count(date) as usage from equipment_log join machine  on equipment_log.machine_id = machine.id where machine_name ilike ?",new MachineRowMapper());
     }
 
 
