@@ -1,5 +1,7 @@
 <%@ include file = "common/header.jspf" %>
 
+<h2>Member Checkin/Checkout (for employee use only)</h2>
+<br/>
 <c:url value="/checkinOutAdmin" var="adminCheckInOut"/>
 <form action="${adminCheckInOut}" method="POST">
     <label for="username">Type the EXACT username</label>
