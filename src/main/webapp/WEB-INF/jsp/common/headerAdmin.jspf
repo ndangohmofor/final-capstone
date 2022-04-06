@@ -46,6 +46,8 @@
                     <li><a href="${visitMetricUrl}">User Visit Metric</a></li>
                     <c:url var="scheduleClassUrl" value="/scheduleClassAdmin"/>
                     <li><a href="${scheduleClassUrl}">Schedule Class</a></li>
+                    <c:url var="viewMachineUrl" value="/viewMachines"/>
+                    <li><a href="${viewMachineUrl}">Machine Metrics</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${empty user}">
