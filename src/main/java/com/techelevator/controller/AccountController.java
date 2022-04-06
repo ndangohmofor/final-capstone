@@ -2,7 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.model.Account;
-import com.techelevator.dao.AccountDao;
+import com.techelevator.dao.CreateAccountDao;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +29,6 @@ public class AccountController {
 
     @Autowired
     private AuthProvider auth;
-    @Autowired
-    private AccountDao accountDao;
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", "/index"})
     public String index(ModelMap modelHolder) {
@@ -92,30 +90,5 @@ public class AccountController {
         return "redirect:/";
     }
 
-    //GET type of web service to load createAccount.jsp file in browser
-    @RequestMapping(path="/createAccount", method=RequestMethod.GET)
-    public String createAccount(ModelMap modelHolder) {
-        modelHolder.put("account", new Account());
-        return "createAccount";
-    }
-    //POST type of web service to receive data from createAccount.jsp file in browser
-    @RequestMapping(path="/createAccount", method=RequestMethod.POST)
-    public String submitAccount(@Valid @ModelAttribute("account") Account account, BindingResult result, RedirectAttributes flash) {
-        if (result.hasErrors()) {
-            flash.addFlashAttribute("account", account);
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "account", result);
-            flash.addFlashAttribute("message", "Please fix the following errors:");
-            return "redirect:/createAccount";
-        }
-        long userId = auth.getCurrentUser().getId();
-        account.setUserId(userId);
-        long newId = accountDao.createAccount(account);
-        if(newId > 0){
-             return "success";
-        }else{
-            return "redirect:/createAccount";
-        }
-
-    }
 
 }

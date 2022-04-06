@@ -8,12 +8,19 @@ public class GymCheckin {
 
   private long id;
   private LocalDateTime checkIn;
-  private LocalDate checkOut;
+  private LocalDateTime checkOut;
   private long userId;
   private boolean isCheckedIn;
 
   public GymCheckin(LocalDateTime checkIn,long userId, boolean isCheckedIn) {
     this.checkIn = checkIn;
+    this.userId = userId;
+    this.isCheckedIn = isCheckedIn;
+  }
+
+  public GymCheckin(LocalDateTime checkIn, LocalDateTime checkOut, long userId, boolean isCheckedIn) {
+    this.checkIn = checkIn;
+    this.checkOut = checkOut;
     this.userId = userId;
     this.isCheckedIn = isCheckedIn;
   }
@@ -47,11 +54,11 @@ public class GymCheckin {
   }
 
 
-  public LocalDate getCheckOut() {
+  public LocalDateTime getCheckOut() {
     return checkOut;
   }
 
-  public void setCheckOut(LocalDate checkOut) {
+  public void setCheckOut(LocalDateTime checkOut) {
     this.checkOut = checkOut;
   }
 

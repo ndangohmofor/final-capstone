@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-        import com.techelevator.authentication.PasswordHasher;
         import com.techelevator.model.Account;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,13 +8,13 @@ package com.techelevator.dao;
         import javax.sql.DataSource;
 
 @Component
-public class JdbcAccountDao implements AccountDao {
+public class JdbcCreateAccountDao implements CreateAccountDao {
 
 
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public JdbcAccountDao(DataSource dataSource) {
+    public JdbcCreateAccountDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
 
     }

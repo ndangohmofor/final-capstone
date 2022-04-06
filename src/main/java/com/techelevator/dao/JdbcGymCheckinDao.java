@@ -30,13 +30,6 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         return id;
     }
 
-    //ADMIN CHECK IN
-/*    public Long adminCheckIn(GymCheckin checkIn, long userId){
-        String sqlInsertCheckin = "INSERT INTO gym_checkin(check_in, check_out ,is_checked_in, user_id) VALUES (?, ?, ? ,?) returning id";
-        Long id = jdbcTemplate.queryForObject(sqlInsertCheckin, Long.class, checkIn.getCheckIn(), checkIn.isCheckedIn() , checkIn.getUserId());
-
-        return 0;
-    }*/
 
     public void checkOut(long checkinID) {
         String sqlUpdateCheckOut = "UPDATE gym_checkin set check_out = ?, is_checked_in = ? where id = ?;";
@@ -65,6 +58,13 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         return allCheckins;
     }
 
+    public long getCheckinId (long userID){
+
+        String sqlSelectActiveCheckin = "SELECT id from gym_checkin where is_checked_in = true and user_id = ? limit 1";
+        long checkinId = jdbcTemplate.queryForObject(sqlSelectActiveCheckin, Long.class, userID);
+        return  checkinId;
+    }
+
     private GymCheckin mapRowToGymCheckin(SqlRowSet result){
         GymCheckin checkInLog = new GymCheckin();
         checkInLog.setId(result.getLong("id"));
@@ -75,18 +75,14 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         return checkInLog;
     }
 
+    public int getNumberOfCheckins(long userId){
+        int numOfCheckins = 0;
 
-
-
-/*    public boolean isAlreadyCheckedIn(int userId){
-        boolean isAlreadyCheckingIn;
-        String sqlQuery= "SELECT is_checked_in from gym_checkin where user_id = ?";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlQuery, userId);
+        String sqlCountCheckins = "SELECT count(id) as id_count from gym_checkin where user_id = ? and is_checked_in = true";
+        SqlRowSet result= jdbcTemplate.queryForRowSet(sqlCountCheckins, userId);
         if(result.next()){
-         result = boolean result;
+            numOfCheckins = result.getInt("id_count");
         }
-        return result;
-
-    }*/
-
+        return numOfCheckins;
+    }
 }
