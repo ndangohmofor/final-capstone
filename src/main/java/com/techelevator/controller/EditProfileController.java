@@ -33,14 +33,14 @@ public class EditProfileController {
                                       @RequestParam String goal, HttpSession session, ModelMap modelMap) {
         User user = (User) session.getAttribute("user");
         editProfileDao.updateProfile(firstName,lastName,goal, user.getId());
-        return "redirect:/updateConfirmation";
+        return "redirect:/profile";
         //need to add workout profile
     }
 
-    @RequestMapping ("/updateConfirmation")
+/*    @RequestMapping ("/updateConfirmation")
     public String displayUpdateConfirmation () {
         return "updateConfirmation";
-    }
+    }*/
 
     @RequestMapping (path = "/profile", method = RequestMethod.GET)
     public String viewProfile (ModelMap modelMap, HttpSession session) {

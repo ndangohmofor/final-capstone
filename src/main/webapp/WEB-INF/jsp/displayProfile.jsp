@@ -11,24 +11,24 @@
     <div>
         <div>
             <span></span>:
-            <c:url var="photoUrl" value="/img/${profile.photo}"/>
-            <img src="<c:url value="/img/mbj.png"/>"/>
+            <c:url var="photoUrl" value="img/${profile.photo}"/>
+            <img src="<c:url value="${photoUrl}"/>"/>
         </div>
         <div>
             <span>First Name</span>:
-            <c:out value="${profile.firstName}" />
+            <c:out value="${profile.firstName}"/>
         </div>
         <div>
             <span>Last Name</span>:
-            <c:out value="${profile.lastName}" />
+            <c:out value="${profile.lastName}"/>
         </div>
         <div>
             <span>Email</span>:
-            <c:out value="${profile.email}" />
+            <c:out value="${profile.email}"/>
         </div>
         <div>
             <span>Goal</span>:
-            <c:out value="${profile.goal}" />
+            <c:out value="${profile.goal}"/>
         </div>
     </div>
 
