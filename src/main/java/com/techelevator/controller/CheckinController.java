@@ -1,8 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
+import com.techelevator.dao.JdbcAccountDao;
 import com.techelevator.dao.JdbcGymCheckinDao;
 import com.techelevator.model.GymCheckin;
+import com.techelevator.model.JdbcUserDao;
 import com.techelevator.model.User;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class CheckinController {
 
     @Autowired
     private JdbcGymCheckinDao jdbcGymCheckinDao;
+    @Autowired
+    private JdbcUserDao jdbcUserDao;
     @Autowired
     private AuthProvider auth;
 
@@ -66,8 +70,28 @@ public class CheckinController {
         return "checkinOutAdmin";
     }
     @RequestMapping(value = "/checkinOutAdmin",method = RequestMethod.POST)
-    public String checkinOutAdmin(@RequestParam String username){
+    public String checkinOutAdmin(@RequestParam String username, @RequestParam String checktype, RedirectAttributes flash){
 
-        return "checkinOutAdmin";
+        //redirect not working unless only used once.
+        GymCheckin gymCheckin;
+        if(checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
+            gymCheckin = new GymCheckin(LocalDateTime.now(), jdbcUserDao.getUserID(username), true);
+            gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
+            flash.addFlashAttribute("checkinSuccessMessage", "User has been checked in.");
+            return "redirect:/checkinOutAdmin";
+        } else if(checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) >= 1)){
+            flash.addFlashAttribute("checkinErrorMessage", "User has an existing checkin. Please checkout before checking in again.");
+            return "redirect:/checkinOutAdmin";
+        } else if(checktype.equals("checkout") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
+            flash.addFlashAttribute("checkoutErrorMessage", "User does not have an open checkin.");
+            return "redirect:/checkinOutAdmin";
+        } else if (checktype.equals("checkout") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) == 1) ){
+            long checkinId = jdbcGymCheckinDao.getCheckinId(jdbcUserDao.getUserID(username));
+            jdbcGymCheckinDao.checkOut(checkinId);
+            flash.addFlashAttribute("checkinSuccessMessage", "User has been checked in.");
+            return "redirect:/checkinOutAdmin";
+        } else {
+            return "redirect:/checkinOutAdmin";
+        }
     }
 }
