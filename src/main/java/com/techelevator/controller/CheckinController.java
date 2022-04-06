@@ -61,7 +61,10 @@ public class CheckinController {
             checkin.put("checkin", gymCheckin);
         }
 
+        flash.addFlashAttribute("message","Checkin was successful!");
         return "checkout";
+        //get help because redirect is not allowing the checkout to occur...
+        // server cannot or will not process the request due to something that is perceived to be a client error
     }
 
     @RequestMapping(value = "/checkout",method = RequestMethod.GET)
@@ -77,6 +80,7 @@ public class CheckinController {
             flash.addFlashAttribute("message", "You do not have an open checkin.");
         } else {
             jdbcGymCheckinDao.checkOut(checkinID);
+            flash.addFlashAttribute("message", "Checkout was successful!");
         }
 
         return "redirect:/checkin";
@@ -94,6 +98,7 @@ public class CheckinController {
         if(checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
             gymCheckin = new GymCheckin(LocalDateTime.now(), jdbcUserDao.getUserID(username), true);
             gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
+            flash.addFlashAttribute("message","Checkin was successful!");
         } else if (checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) >= 1)){
             flash.addFlashAttribute("message", "User already has an open checkin. Please checkout before checking the user in again.");
         } else if (checktype.equals("checkout") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) == 1) ){
