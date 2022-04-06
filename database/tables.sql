@@ -53,20 +53,22 @@ CREATE TABLE workout_class (
     id SERIAL PRIMARY KEY,
     class_name varchar(100) not null,
     date timestamp not null,
-    instructor varchar(100)
+    instructor varchar(100),
+    description text,
+    duration_in_minutes int
 );
 
 
-INSERT INTO machine(machine_name, machine_type) values ('treadmill','cardio');
-INSERT INTO machine(machine_name, machine_type) values ('stationary bike','cardio');
-INSERT INTO machine(machine_name, machine_type) values ('row machine','cardio');
-INSERT INTO machine(machine_name, machine_type) values ('elliptical','cardio');
-INSERT INTO machine(machine_name, machine_type) values ('stairmaster','cardio');
-INSERT INTO machine(machine_name, machine_type) values ('leg press','weights');
-INSERT INTO machine(machine_name, machine_type) values ('chest press','weights');
-INSERT INTO machine(machine_name, machine_type) values ('smith','weights');
-INSERT INTO machine(machine_name, machine_type) values ('leg curl','weights');
-INSERT INTO machine(machine_name, machine_type) values ('bench press','weights');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('treadmill','cardio', 'treadmill.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('stationary bike','cardio', 'stationarybike.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('row machine','cardio', 'rowingmachine.png' );
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('elliptical','cardio', 'eliptical.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('stairmaster','cardio', 'stairmaster.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('leg press','weights', 'legpress.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('chest press','weights', 'benchpress.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('smith','weights', 'smith.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('leg curl','weights', 'legcurl.png');
+INSERT INTO machine(machine_name, machine_type, machine_reference) values ('bench press','weights', 'benchpress.png');
 
 INSERT INTO workout_class (id, class_name, date, instructor, description, duration_in_minutes) VALUES (2, 'Pilates', '2022-04-16 13:45:00.000000', 'Ivo M.', 'Pilates is commonly compared for it’s similarities to Yoga. While Yoga focuses on strength and flexibility through long held, swift-moving postures and “grounding” positions to help you feel centered and balanced, Pilates brings a ....', 120);
 INSERT INTO workout_class (id, class_name, date, instructor, description, duration_in_minutes) VALUES (5, 'Cycling', '2022-04-18 12:15:00.000000', 'Nirali P.', 'A Cycling class is great cardio workout that relies on a fitness center cycling machine, usually in a room designated for this type of fitness class. Often times, the class includes fast-paced upbeat tracks to help build the ...', 45);
