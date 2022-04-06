@@ -15,10 +15,11 @@
     <c:url var="benchPressUrl" value="https://www.youtube.com/watch?v=rxD321l2svE&t=125s"/>
 
     <h2>Machine Guide</h2>
-
+<%--First Row--%>
     <div class="row">
         <div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 31rem;">
+                <span class="border border-secondary"></span>
                 <img src="${pageContext.request.contextPath}/img/stationarybike.png" class="card-img-top" alt="stationary bike">
                 <div class="card-body">
                     <h5 class="card-title">Stationary Bike</h5>
@@ -29,7 +30,8 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 31rem;">
+
                 <img src="${pageContext.request.contextPath}/img/treadmill.png" class="card-img-top" alt="treadmill">
                 <div class="card-body">
                     <h5 class="card-title">Treadmill</h5>
@@ -40,10 +42,10 @@
             </div>
         </div>
     </div>
-
+<%--Second Row--%>
     <div class="row">
         <div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 31rem;">
                 <img src="${pageContext.request.contextPath}/img/rowingmachine.png" class="card-img-top" alt="rowing machine">
                 <div class="card-body">
                     <h5 class="card-title">Rowing Machine</h5>
@@ -55,7 +57,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 31rem;">
                 <img src="${pageContext.request.contextPath}/img/eliptical.png" class="card-img-top" alt="elliptical">
                 <div class="card-body">
                     <h5 class="card-title">Elliptical</h5>
@@ -67,5 +69,85 @@
             </div>
         </div>
     </div>
+<%--Third Row--%>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card" style="width: 31rem;">
+                    <img src="${pageContext.request.contextPath}/img/rowingmachine.png" class="card-img-top" alt="rowing machine">
+                    <div class="card-body">
+                        <h5 class="card-title">Rowing Machine</h5>
+                        <p class="card-text">The rowing machine can improve stamina and overall fitness and strength,
+                            including strengthening the heart. It can also boost the immune system. Click the button below
+                            to learn more.</p>
+                        <a href="${rowMachineUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="width: 31rem;">
+                    <img src="${pageContext.request.contextPath}/img/eliptical.png" class="card-img-top" alt="elliptical">
+                    <div class="card-body">
+                        <h5 class="card-title">Elliptical</h5>
+                        <p class="card-text">A elliptical can help burn a lot of calories, puts less stress on your joints,
+                            burns body fat, targets specific leg muscles and improves balance. Click the button below to
+                            learn more</p>
+                        <a href="${treadmillUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<%--Fourth Row--%>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card" style="width: 31rem;">
+                    <img src="${pageContext.request.contextPath}/img/rowingmachine.png" class="card-img-top" alt="rowing machine">
+                    <div class="card-body">
+                        <h5 class="card-title">Rowing Machine</h5>
+                        <p class="card-text">The rowing machine can improve stamina and overall fitness and strength,
+                            including strengthening the heart. It can also boost the immune system. Click the button below
+                            to learn more.</p>
+                        <a href="${rowMachineUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="width: 31rem;">
+                    <img src="${pageContext.request.contextPath}/img/eliptical.png" class="card-img-top" alt="elliptical">
+                    <div class="card-body">
+                        <h5 class="card-title">Elliptical</h5>
+                        <p class="card-text">A elliptical can help burn a lot of calories, puts less stress on your joints,
+                            burns body fat, targets specific leg muscles and improves balance. Click the button below to
+                            learn more</p>
+                        <a href="${treadmillUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card" style="width: 31rem;">
+                    <img src="${pageContext.request.contextPath}/img/rowingmachine.png" class="card-img-top" alt="rowing machine">
+                    <div class="card-body">
+                        <h5 class="card-title">Rowing Machine</h5>
+                        <p class="card-text">The rowing machine can improve stamina and overall fitness and strength,
+                            including strengthening the heart. It can also boost the immune system. Click the button below
+                            to learn more.</p>
+                        <a href="${rowMachineUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="width: 31rem;">
+                    <img src="${pageContext.request.contextPath}/img/eliptical.png" class="card-img-top" alt="elliptical">
+                    <div class="card-body">
+                        <h5 class="card-title">Elliptical</h5>
+                        <p class="card-text">A elliptical can help burn a lot of calories, puts less stress on your joints,
+                            burns body fat, targets specific leg muscles and improves balance. Click the button below to
+                            learn more</p>
+                        <a href="${treadmillUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 <%@ include file="common/footer.jspf" %>

@@ -1,12 +1,33 @@
 package com.techelevator.model;
 
 
+import java.time.LocalDateTime;
+
 public class WorkoutClass {
 
   private long id;
   private String className;
-  private java.sql.Timestamp date;
+  private LocalDateTime date;
   private String instructor;
+  private String description;
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public int getDuration_minutes() {
+    return duration_minutes;
+  }
+
+  public void setDuration_minutes(int duration_minutes) {
+    this.duration_minutes = duration_minutes;
+  }
+
+  private int duration_minutes;
 
 
   public long getId() {
@@ -27,11 +48,11 @@ public class WorkoutClass {
   }
 
 
-  public java.sql.Timestamp getDate() {
+  public LocalDateTime getDate() {
     return date;
   }
 
-  public void setDate(java.sql.Timestamp date) {
+  public void setDate(LocalDateTime date) {
     this.date = date;
   }
 

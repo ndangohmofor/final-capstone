@@ -50,7 +50,8 @@ public class AccountController {
         } if (auth.signIn(username, password) && auth.userHasRole(user)) {
             //creating session and adding user
             session.setAttribute("user",auth.getCurrentUser());
-            return "redirect:/private";
+           // if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
+            return "redirect:/createAccount";
         }else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";
