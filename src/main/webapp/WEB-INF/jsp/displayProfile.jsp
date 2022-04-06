@@ -38,5 +38,6 @@
     </div>
 
 </div>
+<h2>Display Profile</h2>
 </body>
 </html>
