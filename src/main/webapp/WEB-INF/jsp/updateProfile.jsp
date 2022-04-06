@@ -8,23 +8,29 @@
 <form action="${updateProfile}" method="POST">
     <h2>Update profile</h2>
     <p>Please fill out all sections</p>
-<%--    <div>--%>
-<%--        <label for="userId">Member ID</label>--%>
-<%--        <input type="text" name="userId" id="userId">--%>
-<%--    </div>--%>
-    <div>
+    <%--    <div>--%>
+    <%--        <label for="userId">Member ID</label>--%>
+    <%--        <input type="text" name="userId" id="userId">--%>
+    <%--    </div>--%>
+    <div class="mb-3">
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName">
+        <input type="text" class="form-control" name="firstName" id="firstName" value="${profile.firstName}">
     </div>
-    <div>
+    <div class="mb-3">
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" id="lastName">
+        <input type="text" class="form-control" name="lastName" id="lastName" value="${profile.lastName}">
     </div>
-    <div>
+    <div class="mb-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" value="${profile.email}">
+    </div>
+    <div class="mb-3">
         <label for="goal">Update Goals</label>
-        <input type="text" name="goal" id="goal">
+        <textarea class="form-control" rows="10" name="goal" id="goal">${profile.goal}</textarea>
     </div>
-    <input type="submit" value="Save Changes">
+    <div class="mb-3">
+        <input type="submit" value="Save Changes">
+    </div>
 </form>
 
 </body>

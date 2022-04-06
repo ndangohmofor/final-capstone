@@ -2,11 +2,33 @@ body {
     padding-top: 70px;
 }
 
+body > div.container {
+    padding: 50px;
+}
+
+body > div.container h2 {
+    text-align: center;
+}
+
 .logoImg {
     height: 40px;
     border-radius: 15px;
 }
 
-div.container {
-   float: right;
+.nav-div {
+    float: right;
+}
+
+div.right-aside {
+    float: left;
+}
+
+
+.welcomeImg {
+    height: auto;
+    width: auto;
+}
+
+footer {
+    margin-bottom: -20px;
 }
