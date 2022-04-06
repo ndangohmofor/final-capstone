@@ -70,16 +70,28 @@ public class CheckinController {
         return "checkinOutAdmin";
     }
     @RequestMapping(value = "/checkinOutAdmin",method = RequestMethod.POST)
-    public String checkinOutAdmin(@RequestParam String username, @RequestParam String checktype, @RequestParam LocalDateTime checkin, @RequestParam LocalDateTime checkout, ModelMap modelMap){
+    public String checkinOutAdmin(@RequestParam String username, @RequestParam String checktype, RedirectAttributes flash){
 
-        GymCheckin gymCheckin = new GymCheckin();
-        if(checktype.equals("checkin")){
+        //redirect not working unless only used once.
+        GymCheckin gymCheckin;
+        if(checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
             gymCheckin = new GymCheckin(LocalDateTime.now(), jdbcUserDao.getUserID(username), true);
             gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
-        } else if (checktype.equals("checkout")){
-            jdbcGymCheckinDao.checkOut(gymCheckin.getId());
+            flash.addFlashAttribute("checkinSuccessMessage", "User has been checked in.");
+            return "redirect:/checkinOutAdmin";
+        } else if(checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) >= 1)){
+            flash.addFlashAttribute("checkinErrorMessage", "User has an existing checkin. Please checkout before checking in again.");
+            return "redirect:/checkinOutAdmin";
+        } else if(checktype.equals("checkout") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
+            flash.addFlashAttribute("checkoutErrorMessage", "User does not have an open checkin.");
+            return "redirect:/checkinOutAdmin";
+        } else if (checktype.equals("checkout") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) == 1) ){
+            long checkinId = jdbcGymCheckinDao.getCheckinId(jdbcUserDao.getUserID(username));
+            jdbcGymCheckinDao.checkOut(checkinId);
+            flash.addFlashAttribute("checkinSuccessMessage", "User has been checked in.");
+            return "redirect:/checkinOutAdmin";
+        } else {
+            return "redirect:/checkinOutAdmin";
         }
-
-        return "checkinOutAdmin";
     }
 }
