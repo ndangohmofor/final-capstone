@@ -2,7 +2,7 @@
 <%@ include file="common/header.jspf" %>
 
 <c:url var="createAccountUrl" value="/createAccount"/>
-<form:form action="${createAccountUrl}" method="POST" modelAttribute="account">
+<form:form action="${createAccountUrl}" method="POST" modelAttribute="account"  enctype="multipart/form-data">
     <div class="form-group">
         <label for="firstName">FirstName</label>
         <form:input class="form-control" path="firstName" placeholder="firstName"/>
@@ -19,8 +19,8 @@
         <form:errors path="email" cssClass="bg-danger"/>
     </div>
     <div class="form-group">
-        <label for="photo">Photo</label>
-        <form:input class="form-control" path="photo" placeholder="photo"/>
+        <label for="photoContainer">Photo</label>
+        <input type="file" class="form-control" id="photoContainer" name="photoContainer" />
     </div>
     <div class="form-group">
         <label for="goal">Goal</label>
