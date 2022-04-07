@@ -29,12 +29,32 @@ div.right-aside {
     width: auto;
 }
 /*MachineInfo.JSP*/
+
+.h5, h5{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: industry sans-serif;
+}
+.card{
+    display: flex;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    flex-direction: column;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-right: 3px solid #dee2e6!important;
+}
+
 .col-sm-6 {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
     padding-top: 53px;
-    padding-left: 178px;
+    padding-left: 100px;
 
 }
 .card-img-top {
