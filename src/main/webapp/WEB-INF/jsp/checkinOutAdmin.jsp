@@ -1,4 +1,4 @@
-<%@ include file = "common/header.jspf" %>
+<%@ include file = "common/headerAdmin.jspf" %>
 
 <h2>Member Checkin/Checkout (for employee use only)</h2>
 <br/>
@@ -26,7 +26,6 @@
     <tr>
         <th>Username</th>
         <th>Checkin</th>
-        <th>Checkout</th>
     </tr>
     </thead>
     <tbody>
@@ -35,18 +34,22 @@
             <td>${user.username}</td>
             <c:url value="/checkinOutAdmin" var="adminCheckInOut"/>
             <td>
-                <form action="${adminCheckInOut}" method="POST">
-                    <input type="submit" id="checkin" name="checkin" value="checkin">
-                    <input type="hidden" name="username" value="${user.username}">
-                    <input type="hidden" name="checktype" value="checkin">
-                </form>
-            </td>
-            <td>
-                <form action="${adminCheckInOut}" method="POST">
-                    <input type="submit" id="checkout" name="checkout" value="checkout">
-                    <input type="hidden" name="username" value="${user.username}">
-                    <input type="hidden" name="checktype" value="checkout">
-                </form>
+                <c:choose>
+                    <c:when test="${checkins.contains(user.id)}">
+                        <form action="${adminCheckInOut}" method="POST">
+                            <input type="submit" id="checkout" name="checkout" value="checkout">
+                            <input type="hidden" name="username" value="${user.username}">
+                            <input type="hidden" name="checktype" value="checkout">
+                        </form>
+                    </c:when>
+                    <c:when test="${!checkins.contains(user.id)}">
+                        <form action="${adminCheckInOut}" method="POST">
+                            <input type="submit" id="checkin" name="checkin" value="checkin">
+                            <input type="hidden" name="username" value="${user.username}">
+                            <input type="hidden" name="checktype" value="checkin">
+                        </form>
+                    </c:when>
+                </c:choose>
             </td>
         </tr>
     </c:forEach>
