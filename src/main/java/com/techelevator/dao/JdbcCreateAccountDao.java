@@ -12,16 +12,20 @@ public class JdbcCreateAccountDao implements CreateAccountDao {
 
 
     private JdbcTemplate jdbcTemplate;
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Autowired
     public JdbcCreateAccountDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+    public JdbcCreateAccountDao(){
 
     }
 
     @Override
     public long createAccount(Account account) {
-        System.out.println("account object in dao is " + account);
 
         long newId = jdbcTemplate.queryForObject(
                 "INSERT INTO user_profile(first_name,last_name,email,photo,goal,user_id) VALUES (?, ?, ?, ?,?,?) RETURNING id", Long.class,
