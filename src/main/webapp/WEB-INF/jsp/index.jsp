@@ -64,11 +64,11 @@
 
 <%--Beginning of classes--%>
 
-    <div class="col-lg-5">
+    <div class="col-lg-12">
         <aside class="workoutSchedules">
             <section>
                 <h4 class="workout-header">Upcoming Workout Classes</h4>
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -98,9 +98,9 @@
         <div class="thumbnail">
             <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/bikess.png" alt="...">
             <div class="caption">
-                <h3>Thumbnail label</h3>
+                <h3>Cardio</h3>
                 <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
     </div>
@@ -109,9 +109,9 @@
             <c:url var="runner" value="/img/runner.png"/>
             <img class="thumbnail-pic2" src="https://static.onecms.io/wp-content/uploads/sites/35/2021/09/27/squat-GettyImages-1004449544-2000.jpg" alt="...">
             <div class="caption">
-                <h3>Thumbnail label</h3>
+                <h3>Aerobics</h3>
                 <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
     </div>
@@ -119,9 +119,9 @@
         <div class="thumbnail">
             <img class="thumbnail-pic" src="https://www.mensjournal.com/wp-content/uploads/2015/07/DBfrontsquat.jpg?w=900&quality=86&strip=all" alt="...">
             <div class="caption">
-                <h3>Thumbnail label</h3>
+                <h3>Weights</h3>
                 <p>...</p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
     </div>
