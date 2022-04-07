@@ -23,8 +23,11 @@ public class JdbcEquipmentLogDao implements EquipmentLogDao {
     @Override
     public List<EquipmentLog> getEquipmentLogByUser(long userId) {
         List<EquipmentLog> log = new ArrayList<>();
-        String logsql = "SELECT date, duration, reps, weight FROM equipment_log WHERE user_id =?;";
-        SqlRowSet results = template.queryForRowSet(logsql, userId);
+        String logSql = "SELECT *\n" +
+                "FROM equipment_log\n" +
+                "JOIN machine on equipment_log.machine_id = machine.id\n" +
+                "WHERE user_id = ?;";
+        SqlRowSet results = template.queryForRowSet(logSql, userId);
         while (results.next()) {
             log.add(mapToRowEquipmentLog(results));
         }
@@ -45,7 +48,7 @@ public class JdbcEquipmentLogDao implements EquipmentLogDao {
         el.setWeight(results.getLong("weight"));
         el.setUserId(results.getLong("user_id"));
         el.setMachineId(results.getLong("machine_id"));
-//        el.setMachineName(results.getString("machine_name"));
+        el.setMachineName(results.getString("machine_name"));
         return el;
     }
 

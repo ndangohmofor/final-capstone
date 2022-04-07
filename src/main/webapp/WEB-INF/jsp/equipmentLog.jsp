@@ -18,13 +18,13 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="displayLog" items="log">
+        <c:forEach var="displayLog" items="${log}">
             <tr>
-                <td>${log.machineName}</td>
-                <td>${log.date}</td>
-                <td>${log.duration}</td>
-                <td>${log.weight}</td>
-                <td>${log.rep}</td>
+                <td><c:out value="${displayLog.machineName}"/></td>
+                <td><c:out value="${displayLog.date}"/></td>
+                <td><c:out value="${displayLog.duration}"/></td>
+                <td><c:out value="${displayLog.weight}"/></td>
+                <td><c:out value="${displayLog.reps}"/></td>
             </tr>
         </c:forEach>
         </tbody>

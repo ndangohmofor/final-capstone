@@ -28,5 +28,10 @@ public class EquipmentLogController {
         return "equipmentLog";
     }
 
+    @RequestMapping (path = "/exerciseInput", method = RequestMethod.GET)
+    public String displayExerciseInputForm (HttpSession session){
+        return "exerciseInputForm";
+    }
+
 
 }

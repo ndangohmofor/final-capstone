@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
+import com.techelevator.dao.CreateAccountDao;
 import com.techelevator.dao.WorkoutClassDao;
 import com.techelevator.model.User;
 import com.techelevator.model.WorkoutClass;
