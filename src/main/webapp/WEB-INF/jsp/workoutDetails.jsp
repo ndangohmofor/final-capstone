@@ -23,7 +23,7 @@
                         <td><c:out value="${workout.date}"/></td>
                         <td><c:out value="${workout.instructor}"/></td>
                         <td><c:out value="${workout.duration_minutes} mins"/></td>
-                        <td><a href="/workoutSignUp">Sign Me Up</a></td>
+                        <td><a href="workoutSignUp?workoutId=${workout.id}">Sign Me Up</a></td>
                     </tr>
                     <tr>
                         <th>Description:</th>
@@ -31,6 +31,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <a href="index" name="cancel" class="btn btn-primary">Return</a>
             </section>
         </aside>
     </div>
