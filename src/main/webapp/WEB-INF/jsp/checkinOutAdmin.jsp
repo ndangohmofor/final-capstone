@@ -38,14 +38,14 @@
                 <c:choose>
                     <c:when test="${checkins.contains(user.id)}">
                         <form action="${adminCheckInOut}" method="POST">
-                            <input type="submit" id="checkout" name="checkout" value="checkout">
+                            <input type="submit" id="checkout" name="checkout" value="checkout" class="btn btn-secondary">
                             <input type="hidden" name="username" value="${user.username}">
                             <input type="hidden" name="checktype" value="checkout">
                         </form>
                     </c:when>
                     <c:when test="${!checkins.contains(user.id)}">
                         <form action="${adminCheckInOut}" method="POST">
-                            <input type="submit" id="checkin" name="checkin" value="checkin">
+                            <input type="submit" id="checkin" name="checkin" value="checkin" class="btn btn-outline-secondary">
                             <input type="hidden" name="username" value="${user.username}">
                             <input type="hidden" name="checktype" value="checkin">
                         </form>

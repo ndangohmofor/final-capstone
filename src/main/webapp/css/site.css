@@ -65,7 +65,15 @@ div.right-aside {
     height: 15vw;
     object-fit: cover;
 }
+/*Homepage*/
+.carousel,.item,.active {
+    height: 100%;
+    margin-bottom: 60px;
+}
 
+.carousel-inner{
+    height: 100%;
+}
 
 /*Footer.JSP*/
 footer {
