@@ -1,6 +1,9 @@
 body {
-    padding-top: 70px;
+/*padding-top: 70px;*/
+    height: 100%;
+    width: 100%;
 }
+
 
 body > div.container {
     padding: 50px;
@@ -14,7 +17,34 @@ body > div.container h2 {
     height: 60px;
     border-radius: 15px;
 }
+/*Test Layout*/
+.logoImg {
+    height: 60px;
+    border-radius: 15px;
+    margin-right: 20px;
+}
 
+.navbar-inverse {
+    /* background-color: #222; */
+    border-color: #080808;
+    background-color: #251552;
+}
+
+.h2, h2 {
+    font-size: 30px;
+    color: whitesmoke;
+    font-family: "JetBrains Mono Medium", sans-serif;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+}
+/*Test Layout*/
 .nav-div {
     float: right;
 }
@@ -66,6 +96,15 @@ div.right-aside {
     object-fit: cover;
 }
 /*Homepage*/
+.carousel-item{
+    height:32rem;
+    background: #777;
+    color: white;
+    position: relative;
+}
+
+.c
+/*
 .carousel,.item,.active {
     height: 100%;
     margin-bottom: 60px;
@@ -74,6 +113,7 @@ div.right-aside {
 .carousel-inner{
     height: 100%;
 }
+*/
 
 /*Footer.JSP*/
 footer {

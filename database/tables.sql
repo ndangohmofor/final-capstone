@@ -1,7 +1,7 @@
 BEGIN;
 
 -- CREATE statements go here
-DROP TABLE IF EXISTS user_profile, machine, equipment_log, gym_checkin, workout_class,app_user;
+DROP TABLE IF EXISTS user_profile, machine, equipment_log, gym_checkin, workout_class,app_user,workout_user;
 
 CREATE TABLE app_user (
                           id SERIAL PRIMARY KEY,
@@ -56,6 +56,18 @@ CREATE TABLE workout_class (
     instructor varchar(100),
     description text,
     duration_in_minutes int
+);
+
+create table workout_user
+(
+    workout_id integer not null
+        constraint workout_user_workout_class__fk
+            references workout_class,
+    user_id integer not null
+        constraint workout_user_app_user__fk
+            references app_user,
+    constraint workout_user_pk
+        primary key (workout_id, user_id)
 );
 
 
