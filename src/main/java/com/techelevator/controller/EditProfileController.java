@@ -39,7 +39,7 @@ public class EditProfileController {
     }
 
     @RequestMapping (path = "/updateProfile", method = RequestMethod.POST, consumes = {MULTIPART_FORM_DATA_VALUE})
-    public String submitUpdateProfile(@Valid @ModelAttribute("profile") UserProfile userProfile, @RequestParam String firstName, @RequestParam String lastName,
+    public String submitUpdateProfile(@Valid @ModelAttribute("profile") UserProfile userProfile, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
                                       @RequestParam String goal, HttpSession session, BindingResult result, RedirectAttributes flash) {
         if (result.hasErrors()) {
             flash.addFlashAttribute("profile", userProfile);
@@ -48,7 +48,7 @@ public class EditProfileController {
             return "redirect:/updateProfile";
         }
         User user = (User) session.getAttribute("user");
-        editProfileDao.updateProfile(firstName,lastName,goal, user.getId());
+        editProfileDao.updateProfile(firstName,lastName,goal, email,user.getId());
         return "redirect:/profile";
         //need to add workout profile
     }

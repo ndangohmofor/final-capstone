@@ -19,9 +19,9 @@ public class JdbcEditProfileDao implements EditProfileDao {
     public JdbcEditProfileDao(DataSource dataSource) {this.template = new JdbcTemplate(dataSource);}
 
     @Override
-    public void updateProfile (String firstName, String lastName, String goal, long id) {
-    String sqlUserUpdate = "UPDATE user_profile SET first_name = ?, last_name= ?, goal = ? WHERE user_id = ?";
-    template.update(sqlUserUpdate, firstName, lastName, goal, id);
+    public void updateProfile (String firstName, String lastName, String goal, String email,long id) {
+    String sqlUserUpdate = "UPDATE user_profile SET first_name = ?, last_name= ?, goal = ?, email= ? WHERE user_id = ?";
+    template.update(sqlUserUpdate, firstName, lastName, goal, email, id);
     }
 
     @Override
