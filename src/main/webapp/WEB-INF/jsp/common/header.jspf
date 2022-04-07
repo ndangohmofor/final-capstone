@@ -43,9 +43,9 @@
                     <li><a href="${aboutUrl}">About</a></li>
                     <c:url var="privateUrl" value="/private"/>
                     <li><a href="${privateUrl}">Private</a></li>
-                    <c:url var="createAccountUrl" value="/createAccount"/>
-                    <%--<li><a href="${createAccountUrl}">Create Account</a></li>
-                    <c:url var="userCheckinOutUrl" value="/checkin"/>--%>
+                    <%--<c:url var="createAccountUrl" value="/createAccount"/>
+                    <li><a href="${createAccountUrl}">Create Account</a></li>--%>
+                    <c:url var="userCheckinOutUrl" value="/checkin"/>
                     <li><a href="${userCheckinOutUrl}">Check In/Out</a></li>
                     <c:url var="machineWorkoutGuideUrl" value="/viewMachineInfo"/>
                     <li><a href="${machineWorkoutGuideUrl}">Machine Guides</a></li>
