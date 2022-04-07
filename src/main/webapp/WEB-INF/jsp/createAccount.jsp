@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
         <label for="goal">Goal</label>
-        <form:input class="form-control" path="goal" placeholder="goal"/>
+        <form:textarea class="form-control" rows="10" path="goal" placeholder="goal"></form:textarea>
     </div>
 
 
