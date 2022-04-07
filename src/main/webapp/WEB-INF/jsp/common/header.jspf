@@ -50,6 +50,8 @@
                     <li><a href="${userCheckinOutUrl}">Check In/Out</a></li>
                     <c:url var="machineWorkoutGuideUrl" value="/viewMachineInfo"/>
                     <li><a href="${machineWorkoutGuideUrl}">Machine Guides</a></li>
+                    <c:url var="equipmentLogUrl" value="/exerciseLog"/>
+                    <li><a href="${equipmentLogUrl}">Exercise Log</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${empty user}">
@@ -79,3 +81,4 @@
             <c:out value="${message}"/>
         </div>
     </c:if>
+    </div>

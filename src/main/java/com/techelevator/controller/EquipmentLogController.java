@@ -6,6 +6,7 @@ import com.techelevator.model.User;
 import org.bouncycastle.math.raw.Mod;
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -41,7 +44,7 @@ public class EquipmentLogController {
 
     @RequestMapping (path = "/exerciseInput", method = RequestMethod.POST)
     public String submitExerciseInputForm (@Valid @ModelAttribute("log") EquipmentLog log, HttpSession session,
-                                           @RequestParam String machineName, @RequestParam long duration, @RequestParam long weight, @RequestParam long reps,
+                                           @RequestParam  long duration, @RequestParam long weight, @RequestParam long reps, @RequestParam long machineId,
                                            BindingResult result, RedirectAttributes flash){
         if (result.hasErrors()) {
             flash.addFlashAttribute("log", log);
@@ -49,8 +52,9 @@ public class EquipmentLogController {
             flash.addFlashAttribute("message", "Please fix the following errors:");
             return "redirect:/exerciseInputForm";
         }
+        LocalDateTime dateTime = LocalDateTime.now();
         User user = (User) session.getAttribute("user");
-
+        equipmentLogDao.addExerciseToLog(duration,dateTime,reps,weight,user.getId(),machineId);
         return "redirect:/exerciseLog";
     }
 

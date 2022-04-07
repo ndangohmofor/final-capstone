@@ -103,7 +103,44 @@ div.right-aside {
     position: relative;
 }
 
-.c
+.thumbnail-pic{
+    border-radius: 50% ;
+    width: 200px;
+    height: 200px!important;
+}
+
+.thumbnail-pic2{
+    border-radius: 50% ;
+    width: 200px;
+    height: 200px!important;
+}
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #ede7f6;
+    border: 1px solid #734eb5;
+    border-right-width: thick;
+    border-radius: 4px;}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #e64a19;
+    border-color: #ffb74d;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ffb74d;
+    border-color: #f57c00;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+    color: #333;
+    text-align: center;
+}
 /*
 .carousel,.item,.active {
     height: 100%;

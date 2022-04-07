@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +35,11 @@ public class JdbcEquipmentLogDao implements EquipmentLogDao {
         return log;
     }
 
-//    @Override
-//    public EquipmentLog addToLog (EquipmentLog log) {
-//
-//    }
+    @Override
+    public void addExerciseToLog (long duration, LocalDateTime date, long reps, long weight ,long userId, long machineId) {
+        String sql = "insert into equipment_log(duration, date, reps, weight, user_id, machine_id) values (?,?,?,?,?,?);";
+        template.update(sql, duration, date, reps, weight, userId, machineId);
+    }
 
     private EquipmentLog mapToRowEquipmentLog (SqlRowSet results) {
         EquipmentLog el = new EquipmentLog();
