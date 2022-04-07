@@ -2,7 +2,7 @@
 
 <h2>Member Checkin/Checkout (for employee use only)</h2>
 <br/>
-<c:url value="/checkinOutAdmin" var="adminCheckInOut"/>
+<%--<c:url value="/checkinOutAdmin" var="adminCheckInOut"/>
 <form action="${adminCheckInOut}" method="POST">
     <label for="username">Member Username</label>
     <select id="username" name="username">
@@ -19,9 +19,9 @@
         <option value="checkout">Check Out</option>
     </select>
     <input type="submit" value="Submit">
-</form>
+</form>--%>
 
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>Username</th>
