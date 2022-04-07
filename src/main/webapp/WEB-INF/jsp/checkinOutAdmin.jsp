@@ -25,11 +25,12 @@
     <thead>
     <tr>
         <th>Username</th>
-        <th>Checkin</th>
+        <th>Checkin/Checkout</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${users}" var="user">
+        <c:if test="${user.role.equals('user')}">
         <tr>
             <td>${user.username}</td>
             <c:url value="/checkinOutAdmin" var="adminCheckInOut"/>
@@ -52,6 +53,7 @@
                 </c:choose>
             </td>
         </tr>
+        </c:if>
     </c:forEach>
     </tbody>
 </table>
