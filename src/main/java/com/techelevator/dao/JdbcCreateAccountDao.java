@@ -33,7 +33,12 @@ public class JdbcCreateAccountDao implements CreateAccountDao {
 
     public long checkAccountExists(long userId) {
         String sql = "SELECT user_id FROM user_profile WHERE user_id = ?;";
-        long id = jdbcTemplate.queryForObject(sql, Long.class, userId);
+        long id = 0;
+        try{
+            id = jdbcTemplate.queryForObject(sql, Long.class, userId);
+        }catch(Exception e){
+            id = 0;
+        }
         return id;
     }
 }

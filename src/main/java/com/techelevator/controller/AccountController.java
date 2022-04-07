@@ -29,6 +29,8 @@ public class AccountController {
 
     @Autowired
     private AuthProvider auth;
+    @Autowired
+    private CreateAccountDao createAccountDao;
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", "/index"})
     public String index(ModelMap modelHolder) {
@@ -50,8 +52,9 @@ public class AccountController {
         } if (auth.signIn(username, password) && auth.userHasRole(user)) {
             //creating session and adding user
             session.setAttribute("user",auth.getCurrentUser());
-           // if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
-            return "redirect:/createAccount";
+          //if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
+                return "redirect:/createAccount";
+
         }else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";

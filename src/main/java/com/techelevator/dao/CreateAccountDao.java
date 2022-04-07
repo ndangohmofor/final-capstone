@@ -6,7 +6,7 @@ public interface CreateAccountDao {
 
     long createAccount(Account account);
 
-
+    long checkAccountExists(long userId);
 
 
 }
