@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import com.techelevator.model.WorkoutClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -42,6 +43,13 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
         String sql = "SELECT * FROM workout_class WHERE date >= ?;";
         List<WorkoutClass> workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper(), workoutClassDate);
         return workoutClasses;
+    }
+
+    @Override
+    public WorkoutClass getWorkoutClassById(int workoutId) {
+        String sql = "SELECT * FROM workout_class WHERE id = ?;";
+        WorkoutClass workout = jdbcTemplate.queryForObject(sql, new WorkoutRowMapper(), workoutId);
+        return workout;
     }
 
     @Override

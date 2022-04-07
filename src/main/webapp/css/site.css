@@ -52,4 +52,5 @@ footer {
 .workout-header {
     font-weight: bold;
     text-align: center;
+    text-decoration: underline;
 }

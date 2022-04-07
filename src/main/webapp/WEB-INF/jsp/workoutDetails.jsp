@@ -3,11 +3,7 @@
 
 <div class="container">
     <h2>Welcome to the Workout Planner!</h2>
-    <div class="col-lg-8">
-        <img class="welcomeImg img-fluid" src="${pageContext.request.contextPath}/img/welcome.jpg"
-             alt="Workout Planner Logo">
-    </div>
-    <div class="col-lg-4">
+    <div class="col-lg-12">
         <aside class="workoutSchedules">
             <section>
                 <h4 class="workout-header">Class Details</h4>
@@ -22,13 +18,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row"><c:out value="${workout.className}" /></th>
-                            <td><c:out value="${workout.date}" /></td>
-                            <td><c:out value="${workout.instructor}" /></td>
-                            <td><c:out value="${workout.duration_minutes}" /></td>
-                            <td><a href="/workoutDetails">Further Details</a></td>
-                        </tr>
+                    <tr>
+                        <th scope="row"><c:out value="${workout.className}"/></th>
+                        <td><c:out value="${workout.date}"/></td>
+                        <td><c:out value="${workout.instructor}"/></td>
+                        <td><c:out value="${workout.duration_minutes} mins"/></td>
+                        <td><a href="/workoutSignUp">Sign Me Up</a></td>
+                    </tr>
+                    <tr>
+                        <th>Description:</th>
+                        <td colspan="4"><c:out value="${workout.description}" /></td>
+                    </tr>
                     </tbody>
                 </table>
             </section>

@@ -14,7 +14,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Class Name</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Date / Time</th>
                         <th scope="col">Duration</th>
                         <th scope="col">Details</th>
@@ -25,8 +25,8 @@
                         <tr>
                             <th scope="row"><c:out value="${workout.className}" /></th>
                             <td><c:out value="${workout.date}" /></td>
-                            <td><c:out value="${workout.duration_minutes}" /></td>
-                            <td><a href="/workoutDetails">Further Details</a></td>
+                            <td><c:out value="${workout.duration_minutes} mins" /></td>
+                            <td><a href="workoutDetails?workoutId=${workout.id}">Further Details</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
