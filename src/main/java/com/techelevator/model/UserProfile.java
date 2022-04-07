@@ -1,13 +1,18 @@
 package com.techelevator.model;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class UserProfile {
 
   private long id;
+  @NotBlank(message = "FirstName is required")
   private String firstName;
+  @NotBlank(message = "LastName is required")
   private String lastName;
+  @NotBlank(message = "Email is required")
   private String email;
-  private String photo;
+  private byte[] photo;
   private String goal;
   private long userId;
 
@@ -48,11 +53,11 @@ public class UserProfile {
   }
 
 
-  public String getPhoto() {
+  public byte[] getPhoto() {
     return photo;
   }
 
-  public void setPhoto(String photo) {
+  public void setPhoto(byte[] photo) {
     this.photo = photo;
   }
 

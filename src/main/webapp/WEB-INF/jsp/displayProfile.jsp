@@ -10,20 +10,19 @@
 
     <div>
         <div>
-            <span></span>:
-            <c:url var="photoUrl" value="img/${profile.photo}"/>
-            <img src="<c:url value="${photoUrl}"/>"/>
+            <c:url var="photoUrl" value="/profile/image?id=${profile.id}"/>
+            <img src="${photoUrl}"/>
         </div>
         <div>
-            <span>First Name</span>:
+            <span>First Name</span>
             <c:out value="${profile.firstName}"/>
         </div>
         <div>
-            <span>Last Name</span>:
+            <span>Last Name</span>
             <c:out value="${profile.lastName}"/>
         </div>
         <div>
-            <span>Email</span>:
+            <span>Email</span>
             <c:out value="${profile.email}"/>
         </div>
         <div>
@@ -38,6 +37,5 @@
     </div>
 
 </div>
-<h2>Display Profile</h2>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.User;
 import com.techelevator.model.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -18,9 +19,9 @@ public class JdbcEditProfileDao implements EditProfileDao {
     public JdbcEditProfileDao(DataSource dataSource) {this.template = new JdbcTemplate(dataSource);}
 
     @Override
-    public void updateProfile (String firstName, String lastName, String goal, long id) {
-    String sqlUserUpdate = "UPDATE user_profile SET first_name = ?, last_name= ?, goal = ? WHERE user_id = ?";
-    template.update(sqlUserUpdate, firstName, lastName, goal, id);
+    public void updateProfile (String firstName, String lastName, String goal, String email,long id) {
+    String sqlUserUpdate = "UPDATE user_profile SET first_name = ?, last_name= ?, goal = ?, email= ? WHERE user_id = ?";
+    template.update(sqlUserUpdate, firstName, lastName, goal, email, id);
     }
 
     @Override
@@ -32,7 +33,18 @@ public class JdbcEditProfileDao implements EditProfileDao {
             userProfile = mapToRowUserProfile(results);
         }
         return userProfile;
-        //need to find out where userId is coming from
+    }
+
+    @Override
+    public byte[] getProfileImage (long userId) {
+        byte[] photo = new byte[1];
+        String sqlProfile =
+                "SELECT photo FROM user_profile WHERE id = ?;";
+        SqlRowSet results = template.queryForRowSet(sqlProfile, userId);
+        if(results.next()){
+            photo = (byte[]) results.getObject("photo");
+        }
+        return photo;
     }
 
     private UserProfile mapToRowUserProfile (SqlRowSet results) {
@@ -41,7 +53,7 @@ public class JdbcEditProfileDao implements EditProfileDao {
         userProfile.setFirstName(results.getString("first_name"));
         userProfile.setLastName(results.getString("last_name"));
         userProfile.setEmail(results.getString("email"));
-        userProfile.setPhoto(results.getString("photo"));
+        userProfile.setPhoto((byte[]) results.getObject("photo"));
         userProfile.setGoal(results.getString("goal"));
         userProfile.setUserId(results.getLong("user_id"));
         return userProfile;
