@@ -3,11 +3,11 @@
 
 <div class="container">
     <h2>Welcome to the Workout Planner!</h2>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         <img class="welcomeImg img-fluid" src="${pageContext.request.contextPath}/img/welcome.jpg"
              alt="Workout Planner Logo">
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
         <aside class="workoutSchedules">
             <section>
                 <h4 class="workout-header">Upcoming Workout Classes</h4>
