@@ -65,13 +65,13 @@ public class EditProfileController {
         modelMap.put("profile", userProfile);
         return "displayProfile";
     }
-    @RequestMapping(path = "/thing/image", method = RequestMethod.GET)
+    @RequestMapping(path = "/profile/image", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getProfileImage(@RequestParam("id") Long id) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         BufferedImage img;
         headers.setContentType(MediaType.IMAGE_PNG);
         headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-        byte[] media = editProfileDao.getImageByUserId(id);
+        byte[] media = editProfileDao.getProfileImage(id);
         if (media == null) {
             media = FileUtils.readFileToByteArray(ResourceUtils.getFile("classpath:../../img/150.png"));
         }

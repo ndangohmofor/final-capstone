@@ -8,5 +8,5 @@ public interface EditProfileDao {
 
     public UserProfile displayProfileByUserId (long userId);
 
-    public byte[] getImageByUserId (long userId);
+    public byte[] getProfileImage (long userId) ;
 }
