@@ -36,15 +36,13 @@ public class JdbcEditProfileDao implements EditProfileDao {
     }
 
     @Override
-    public byte[] getImageByUserId (long userId) {
+    public byte[] getProfileImage (long userId) {
         byte[] photo = new byte[1];
-        UserProfile profile;
         String sqlProfile =
-                "SELECT photo FROM user_profile WHERE user_id = ?;";
+                "SELECT photo FROM user_profile WHERE id = ?;";
         SqlRowSet results = template.queryForRowSet(sqlProfile, userId);
         if(results.next()){
-            profile = (mapToRowUserProfile(results));
-            photo = profile.getPhoto();
+            photo = (byte[]) results.getObject("photo");
         }
         return photo;
     }
