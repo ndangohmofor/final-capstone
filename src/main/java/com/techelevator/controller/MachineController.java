@@ -51,19 +51,19 @@ public class MachineController {
     }
 
     @RequestMapping(value = "/addMachine", method = RequestMethod.GET)
-    public String showAddMachineForm(@RequestParam String machineType,ModelMap model){
+    public String showAddMachineForm(@RequestParam String machineType, ModelMap model) {
         model.put("types", jdbcMachineDao.getMachinesByType(machineType));
         return "machineInput";
     }
 
     @RequestMapping(name = "/addMachine", method = RequestMethod.POST)
-    public String addMachineForm(@RequestParam String machineName,@RequestParam String machineType,@RequestParam String machineReference){
+    public String addMachineForm(@RequestParam String machineName, @RequestParam String machineType, @RequestParam String machineReference) {
         jdbcMachineDao.addMachine(machineName, machineType, machineReference);
         return "redirect:/viewMachines";
     }
 
     @RequestMapping(value = "/viewMachineInfo")
-    public String viewMachineInfo(ModelMap model, HttpSession session){
+    public String viewMachineInfo(ModelMap model, HttpSession session) {
         List<Machine> machines = jdbcMachineDao.getMachines();
         User user = (User) session.getAttribute("user");
         Machine machine = new Machine();
