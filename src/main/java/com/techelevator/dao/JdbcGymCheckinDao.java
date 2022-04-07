@@ -76,6 +76,16 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         return gymCheckin;
     }
 
+    public List<Long> getCheckedInUsers(){
+        List<Long> checkedinUsers = new ArrayList<>();
+        String sqlSelectAllCheckins = "SELECT user_id FROM gym_checkin where is_checked_in = true";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectAllCheckins);
+        while (result.next()){
+            checkedinUsers.add(result.getLong("user_id"));
+        }
+        return checkedinUsers;
+    }
+
     private GymCheckin mapRowToGymCheckin(SqlRowSet result){
         GymCheckin checkInLog = new GymCheckin();
         checkInLog.setId(result.getLong("id"));
