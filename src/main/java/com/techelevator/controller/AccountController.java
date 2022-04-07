@@ -49,7 +49,7 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String login(ModelMap modelHolder) {
+    public String login(ModelMap modelMap) {
         return "login";
     }
 
@@ -58,12 +58,13 @@ public class AccountController {
         if (auth.signIn(username, password) && auth.userHasRole(admin)) {
             //creating session and adding user
             session.setAttribute("user", auth.getCurrentUser());
+            /*String previousRoute = (session.getAttribute("previousRoute") == null) ? "privateAdmin" : session.getAttribute("previousRoute").toString();
+            session.removeAttribute("previousRoute");*/
             return "redirect:/privateAdmin";
         }
         if (auth.signIn(username, password) && auth.userHasRole(user)) {
             //creating session and adding user
             session.setAttribute("user", auth.getCurrentUser());
-            //if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
             return "redirect:/createAccount";
 
         } else {

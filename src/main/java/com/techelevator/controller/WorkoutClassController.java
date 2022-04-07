@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.dao.WorkoutClassDao;
+import com.techelevator.dao.WorkoutSignUpDao;
 import com.techelevator.model.WorkoutClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class WorkoutClassController {
 
     @Autowired
     private WorkoutClassDao workoutClassDao;
+
+    @Autowired
+    private WorkoutSignUpDao workoutSignUpDao;
 
     @Autowired
     private AuthProvider auth;
@@ -40,12 +46,13 @@ public class WorkoutClassController {
     }
 
     @RequestMapping(path = "/workoutSignUpProcess")
-    public String workoutSignUpProcess(@RequestParam int workoutId, ModelMap modelHolder, RedirectAttributes flash){
+    public String workoutSignUpProcess(@RequestParam int workoutId, HttpSession session, RedirectAttributes flash){
         if(auth.getCurrentUser() == null){
-            flash.addFlashAttribute("message", "Please login to continue");
+            flash.addFlashAttribute("message", "Please login to sign up for workout sessions");
+            session.setAttribute("previousRoute", "workoutSignUpProcess?workoutId="+workoutId);
             return "redirect:/login";
         } else {
-
+            workoutSignUpDao.signUpForWorkout(auth.getCurrentUser().getId(), workoutId);
         }
         return "redirect:/signUpConfirmation";
     }
