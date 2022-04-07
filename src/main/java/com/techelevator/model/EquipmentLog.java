@@ -13,7 +13,7 @@ public class EquipmentLog {
   private long weight;
   private long userId;
   private long machineId;
-  private String machineName;
+//  private String machineName;
 
 
   public long getId() {
@@ -78,12 +78,12 @@ public class EquipmentLog {
     this.machineId = machineId;
   }
 
-  public String getMachineName() {
-    return machineName;
-  }
-
-  public void setMachineName(String machineName) {
-    this.machineName = machineName;
-  }
+//  public String getMachineName() {
+//    return machineName;
+//  }
+//
+//  public void setMachineName(String machineName) {
+//    this.machineName = machineName;
+//  }
 
 }

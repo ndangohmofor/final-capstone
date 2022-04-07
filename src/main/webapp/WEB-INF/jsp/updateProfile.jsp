@@ -4,25 +4,21 @@
 
 <html>
 <body>
-<c:url var="updateProfile" value="/updateProfile"/>
-<form action="${updateProfile}" method="POST">
+<c:url var="updateProfileUrl" value="/updateProfile"/>
+<form:form action="${updateProfileUrl}" method="POST"  modelAttribute="profile" enctype="multipart/form-data">
     <h2>Update profile</h2>
     <p>Please fill out all sections</p>
-    <%--    <div>--%>
-    <%--        <label for="userId">Member ID</label>--%>
-    <%--        <input type="text" name="userId" id="userId">--%>
-    <%--    </div>--%>
     <div class="mb-3">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" name="firstName" id="firstName" value="${profile.firstName}">
+        <form:input type="text" class="form-control" path="firstName" id="firstName" value="${profile.firstName}"/>
     </div>
     <div class="mb-3">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" name="lastName" id="lastName" value="${profile.lastName}">
+        <form:input type="text" class="form-control" path="lastName" id="lastName" value="${profile.lastName}"/>
     </div>
     <div class="mb-3">
         <label for="email">Email</label>
-        <input type="email" class="form-control" name="email" id="email" value="${profile.email}">
+        <form:input type="email" class="form-control" path="email" id="email" value="${profile.email}"/>
     </div>
     <div class="mb-3">
         <label for="goal">Update Goals</label>
@@ -31,7 +27,7 @@
     <div class="mb-3">
         <input type="submit" value="Save Changes">
     </div>
-</form>
+</form:form>
 
 </body>
 </html>
