@@ -11,8 +11,8 @@
     <div>
         <div>
             <span></span>:
-            <c:url var="photoUrl" value="img/${profile.photo}"/>
-            <img src="<c:url value="${photoUrl}"/>"/>
+            <c:url var="photoUrl" value="/thing/image"/>
+            <img src="${photoUrl}"/>
         </div>
         <div>
             <span>First Name</span>:
@@ -38,6 +38,5 @@
     </div>
 
 </div>
-<h2>Display Profile</h2>
 </body>
 </html>

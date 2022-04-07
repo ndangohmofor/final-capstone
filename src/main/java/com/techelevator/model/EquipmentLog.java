@@ -85,5 +85,4 @@ public class EquipmentLog {
   public void setMachineName(String machineName) {
     this.machineName = machineName;
   }
-
 }

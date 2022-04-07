@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.User;
 import com.techelevator.model.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,20 @@ public class JdbcEditProfileDao implements EditProfileDao {
             userProfile = mapToRowUserProfile(results);
         }
         return userProfile;
-        //need to find out where userId is coming from
+    }
+
+    @Override
+    public byte[] getImageByUserId (long userId) {
+        byte[] photo = new byte[1];
+        UserProfile profile;
+        String sqlProfile =
+                "SELECT photo FROM user_profile WHERE user_id = ?;";
+        SqlRowSet results = template.queryForRowSet(sqlProfile, userId);
+        if(results.next()){
+            profile = (mapToRowUserProfile(results));
+            photo = profile.getPhoto();
+        }
+        return photo;
     }
 
     private UserProfile mapToRowUserProfile (SqlRowSet results) {
@@ -41,7 +55,7 @@ public class JdbcEditProfileDao implements EditProfileDao {
         userProfile.setFirstName(results.getString("first_name"));
         userProfile.setLastName(results.getString("last_name"));
         userProfile.setEmail(results.getString("email"));
-        userProfile.setPhoto(results.getString("photo"));
+        userProfile.setPhoto((byte[]) results.getObject("photo"));
         userProfile.setGoal(results.getString("goal"));
         userProfile.setUserId(results.getLong("user_id"));
         return userProfile;
