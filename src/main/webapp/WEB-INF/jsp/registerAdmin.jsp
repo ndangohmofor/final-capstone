@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file = "common/header.jspf" %>
+<%@ include file = "common/headerAdmin.jspf" %>
 
-<c:url var="registerUrl" value="/register"/>
+<c:url var="registerUrl" value="/registerAdmin"/>
 <form:form action="${registerUrl}" method="POST" modelAttribute="user">
     <div class="form-group">
         <label for="username">Username</label>
@@ -18,13 +18,25 @@
         <form:password class="form-control" path="confirmPassword"/>
         <form:errors path="passwordMatching" cssClass="bg-danger"/>
     </div>
-    <fieldset  style="display: none">
+    <fieldset>
         <legend>Role</legend>
         <form:errors path="role" cssClass="bg-danger"/>
         <div class="radio">
             <label>
-                <form:radiobutton path="role" value="user" checked="checked" />
-                User
+                <form:radiobutton path="role" value="user"/>
+                Gym User
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <form:radiobutton path="role" value="admin"/>
+                Gym Admin
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <form:radiobutton path="role" value="employee" checked="checked" />
+                Gym Employee
             </label>
         </div>
     </fieldset>

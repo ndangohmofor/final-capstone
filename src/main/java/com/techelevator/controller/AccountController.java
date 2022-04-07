@@ -29,7 +29,6 @@ public class AccountController {
     private String[] user = new String[]{"user"};
 
 
-
     @Autowired
     private AuthProvider auth;
     @Autowired
@@ -38,11 +37,14 @@ public class AccountController {
     @Autowired
     private WorkoutClassDao workoutClassDao;
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/", "/index"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/", "/index", "/indexAdmin"})
     public String index(ModelMap modelHolder) {
         modelHolder.put("user", auth.getCurrentUser());
         List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
         modelHolder.addAttribute("workouts", workouts);
+        if (auth.userHasRole(admin)) {
+            return "indexAdmin";
+        }
         return "index";
     }
 
@@ -55,22 +57,23 @@ public class AccountController {
     public String login(@RequestParam String username, @RequestParam String password, RedirectAttributes flash, HttpSession session) {
         if (auth.signIn(username, password) && auth.userHasRole(admin)) {
             //creating session and adding user
-            session.setAttribute("user",auth.getCurrentUser());
+            session.setAttribute("user", auth.getCurrentUser());
             return "redirect:/privateAdmin";
-        } if (auth.signIn(username, password) && auth.userHasRole(user)) {
+        }
+        if (auth.signIn(username, password) && auth.userHasRole(user)) {
             //creating session and adding user
-            session.setAttribute("user",auth.getCurrentUser());
-          //if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
-                return "redirect:/createAccount";
+            session.setAttribute("user", auth.getCurrentUser());
+            //if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
+            return "redirect:/createAccount";
 
-        }else {
+        } else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";
         }
     }
 
     @RequestMapping(path = "/privateAdmin", method = RequestMethod.GET)
-    public String displayAdminHome(ModelMap modelHolder){
+    public String displayAdminHome(ModelMap modelHolder) {
         List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
         modelHolder.addAttribute("workouts", workouts);
         return "privateAdmin";
@@ -84,10 +87,13 @@ public class AccountController {
         return "redirect:/";
     }
 
-    @RequestMapping(path = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = {"/register", "/registerAdmin"}, method = RequestMethod.GET)
     public String register(ModelMap modelHolder) {
         if (!modelHolder.containsAttribute("user")) {
             modelHolder.put("user", new User());
+        }
+        if (auth.userHasRole(admin)) {
+            return "registerAdmin";
         }
         return "register";
     }
@@ -102,6 +108,19 @@ public class AccountController {
         }
         auth.register(user.getUsername(), user.getPassword(), user.getRole());
         return "redirect:/";
+    }
+
+    @RequestMapping(path = "/registerAdmin", method = RequestMethod.POST)
+    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, RedirectAttributes flash) {
+        if (result.hasErrors()) {
+            flash.addFlashAttribute("user", user);
+            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
+            flash.addFlashAttribute("message", "Please fix the following errors:");
+            return "redirect:/registerAdmin";
+        }
+        auth.register(user.getUsername(), user.getPassword(), user.getRole());
+        flash.addFlashAttribute("message", user.getRole() + " created successfully");
+        return "redirect:/registerAdmin";
     }
 
 

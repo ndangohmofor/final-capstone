@@ -50,16 +50,16 @@
                     <li><a href="${viewMachineUrl}">Machine Metrics</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <c:if test="${empty user}">
+                   <%-- <c:if test="${empty user}">
                         <c:url var="loginUrl" value="/login"/>
                         <li><a href="${loginUrl}">Login</a></li>
-                        <c:url var="registerUrl" value="/register"/>
+                        <c:url var="registerUrl" value="registerAdmin"/>
                         <li><a href="${registerUrl}">Register</a></li>
-                    </c:if>
+                    </c:if>--%>
                     <c:if test="${not empty user}">
                         <li><a href="${homeUrl}"><c:out value="${user.capitalizedUsername}"/></a></li>
                         <c:url var="logoffUrl" value="/logoff"/>
-                        <c:url var="registerUrl" value="/register"/>
+                        <c:url var="registerUrl" value="registerAdmin"/>
                         <li><a href="${registerUrl}">Register User</a></li>
                         <li>
                             <form action="${logoffUrl}" method="POST" class="navbar-form">
