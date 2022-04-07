@@ -33,12 +33,20 @@ public class CreateAccountController {
 
     //GET type of web service to load createAccount.jsp file in browser
     @RequestMapping(path="/createAccount", method= RequestMethod.GET)
-    public String createAccount(ModelMap modelHolder) throws UnauthorizedException {
+    public String createAccount(ModelMap modelHolder, HttpSession session) throws UnauthorizedException {
         if (auth.userHasRole(new String[] { "admin", "user" })) {
             if (!modelHolder.containsAttribute("account")) {
                 modelHolder.put("account", new Account());
             }
-            return "createAccount";
+            User user = (User) session.getAttribute("user");
+            long userId = user.getId();
+
+           long id = createAccountDao.checkAccountExists(userId);
+            if(id == 0) {
+                return "createAccount";
+            }else {
+                return "redirect:/";
+            }
         } else {
             throw new UnauthorizedException();
         }

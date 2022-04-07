@@ -61,7 +61,10 @@ public class CheckinController {
             checkin.put("checkin", gymCheckin);
         }
 
+        flash.addAttribute("message","Checkin was successful! Don't forget to checkout once you are finished with your workout.");
         return "checkout";
+        //get help because redirect is not allowing the checkout to occur...
+        // server cannot or will not process the request due to something that is perceived to be a client error
     }
 
     @RequestMapping(value = "/checkout",method = RequestMethod.GET)
@@ -70,35 +73,40 @@ public class CheckinController {
     }
 
     @RequestMapping(value = "/checkout", method = RequestMethod.POST)
-    public String checkOut(ModelMap checkoutModel, HttpSession session, @RequestParam long checkinID, RedirectAttributes flash){
+    public String checkOut(ModelMap checkoutModel, HttpSession session, @RequestParam long checkinID,RedirectAttributes flash){
         User user = (User) session.getAttribute("user");
 
         if((jdbcGymCheckinDao.getNumberOfCheckins(user.getId()) < 1)){
             flash.addFlashAttribute("message", "You do not have an open checkin.");
         } else {
             jdbcGymCheckinDao.checkOut(checkinID);
+            flash.addFlashAttribute("message", "Checkout was successful!");
         }
 
         return "redirect:/checkin";
     }
 
     @RequestMapping(value = "/checkinOutAdmin",method = RequestMethod.GET)
-    public String displayCheckinAdmin(){
+    public String displayCheckinAdmin(ModelMap modelMap, ModelMap checkinMapper){
+        modelMap.put("users",jdbcUserDao.getAllUsers());
+        checkinMapper.put("checkins",jdbcGymCheckinDao.getCheckedInUsers());
         return "checkinOutAdmin";
     }
     @RequestMapping(value = "/checkinOutAdmin",method = RequestMethod.POST)
-    public String checkinOutAdmin(@RequestParam String username, @RequestParam String checktype, RedirectAttributes flash){
+    public String checkinOutAdmin(@RequestParam String username, @RequestParam String checktype,RedirectAttributes flash){
 
 
         GymCheckin gymCheckin;
-        if(checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
+        if((checktype.equals("checkin")) && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) < 1)){
             gymCheckin = new GymCheckin(LocalDateTime.now(), jdbcUserDao.getUserID(username), true);
             gymCheckin.setId(jdbcGymCheckinDao.checkIn(gymCheckin));
-        } else if (checktype.equals("checkin") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) >= 1)){
+            flash.addFlashAttribute("message","Checkin was successful!");
+        } else if ((checktype.equals("checkin")) && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) >= 1)){
             flash.addFlashAttribute("message", "User already has an open checkin. Please checkout before checking the user in again.");
-        } else if (checktype.equals("checkout") && (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) == 1) ){
+        } else if ((checktype.equals("checkout"))&& (jdbcGymCheckinDao.getNumberOfCheckins(jdbcUserDao.getUserID(username)) == 1) ){
             long checkinId = jdbcGymCheckinDao.getCheckinId(jdbcUserDao.getUserID(username));
             jdbcGymCheckinDao.checkOut(checkinId);
+            flash.addFlashAttribute("message","Checkout was successful!");
         } else {
             flash.addFlashAttribute("message", "User does not have an open checkin.");
         }

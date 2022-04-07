@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import com.techelevator.model.WorkoutClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,10 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +26,8 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
 
     @Override
     public List<WorkoutClass> getAllWorkoutClasses() {
-        List<WorkoutClass> workoutClasses = new ArrayList<>();
-        String sql = "SELECT * FROM workout_class ORDER BY date ASC;";
-        workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper());
+        String sql = "SELECT * FROM workout_class ORDER BY date ASC LIMIT 5;";
+        List<WorkoutClass> workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper());
         return workoutClasses;
     }
 
@@ -46,6 +43,13 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
         String sql = "SELECT * FROM workout_class WHERE date >= ?;";
         List<WorkoutClass> workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper(), workoutClassDate);
         return workoutClasses;
+    }
+
+    @Override
+    public WorkoutClass getWorkoutClassById(int workoutId) {
+        String sql = "SELECT * FROM workout_class WHERE id = ?;";
+        WorkoutClass workout = jdbcTemplate.queryForObject(sql, new WorkoutRowMapper(), workoutId);
+        return workout;
     }
 
     @Override

@@ -48,3 +48,9 @@ div.right-aside {
 footer {
     margin-bottom: -20px;
 }
+
+.workout-header {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}

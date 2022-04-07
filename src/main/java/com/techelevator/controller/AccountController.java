@@ -1,9 +1,9 @@
 package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
-import com.techelevator.model.Account;
-import com.techelevator.dao.CreateAccountDao;
+import com.techelevator.dao.WorkoutClassDao;
 import com.techelevator.model.User;
+import com.techelevator.model.WorkoutClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 
 /**
@@ -27,12 +28,20 @@ public class AccountController {
     private String[] user = new String[]{"user"};
 
 
+
     @Autowired
     private AuthProvider auth;
+    @Autowired
+    private CreateAccountDao createAccountDao;
+
+    @Autowired
+    private WorkoutClassDao workoutClassDao;
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", "/index"})
     public String index(ModelMap modelHolder) {
         modelHolder.put("user", auth.getCurrentUser());
+        List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
+        modelHolder.addAttribute("workouts", workouts);
         return "index";
     }
 
@@ -50,16 +59,19 @@ public class AccountController {
         } if (auth.signIn(username, password) && auth.userHasRole(user)) {
             //creating session and adding user
             session.setAttribute("user",auth.getCurrentUser());
-           // if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
-            return "redirect:/createAccount";
+          //if (!userProfileTable.containsUserId) return createAccount.jsp else return  return "redirect:/private"; then call DAO to check user profile table.
+                return "redirect:/createAccount";
+
         }else {
             flash.addFlashAttribute("message", "Login Invalid");
             return "redirect:/login";
         }
     }
 
-    @RequestMapping(path = "/privateAdmin")
+    @RequestMapping(path = "/privateAdmin", method = RequestMethod.GET)
     public String displayAdminHome(ModelMap modelHolder){
+        List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
+        modelHolder.addAttribute("workouts", workouts);
         return "privateAdmin";
     }
 
