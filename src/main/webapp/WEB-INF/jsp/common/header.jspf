@@ -52,6 +52,8 @@
                     <li><a href="${machineWorkoutGuideUrl}">Machine Guides</a></li>
                     <c:url var="equipmentLogUrl" value="/exerciseLog"/>
                     <li><a href="${equipmentLogUrl}">Exercise Log</a></li>
+                    <c:url var="workoutMetricsUrl" value="/workOutMetrics"/>
+                    <li><a href="${workoutMetricsUrl}">Workout Metrics</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${empty user}">

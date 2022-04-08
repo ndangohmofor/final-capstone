@@ -7,7 +7,7 @@
         <aside class="workoutSchedules">
             <section>
                 <h4 class="workout-header">Class Details</h4>
-                <table class="table confirmationTable">
+                <table class="table confirmationTable table-striped">
                     <thead>
                     <tr>
                         <th scope="rowgroup">Class Name:</th>
