@@ -53,7 +53,7 @@ public class JdbcEditProfileDao implements EditProfileDao {
         userProfile.setFirstName(results.getString("first_name"));
         userProfile.setLastName(results.getString("last_name"));
         userProfile.setEmail(results.getString("email"));
-        userProfile.setPhoto((byte[]) results.getObject("photo"));
+//        userProfile.setPhoto((byte[]) results.getObject("photo"));
         userProfile.setGoal(results.getString("goal"));
         userProfile.setUserId(results.getLong("user_id"));
         return userProfile;

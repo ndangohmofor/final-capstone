@@ -49,8 +49,8 @@ public class JdbcEquipmentLogDao implements EquipmentLogDao {
         String logSql = "Select * from equipment_log " +
                 "join machine on equipment_log.machine_id = machine.id " +
                 "join user_profile on equipment_log.user_id = user_profile.user_id " +
-                "Where last_name ilike ?";
-        SqlRowSet results = template.queryForRowSet(logSql, "%"+input+"%");
+                "Where last_name = ?";
+        SqlRowSet results = template.queryForRowSet(logSql,input);
         while (results.next()) {
             log.add(mapToRowEquipmentLog(results));
         }
