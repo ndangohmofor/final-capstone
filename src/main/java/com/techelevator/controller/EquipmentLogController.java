@@ -58,5 +58,24 @@ public class EquipmentLogController {
         return "redirect:/exerciseLog";
     }
 
+    @RequestMapping (value = "/workoutAdmin", method = RequestMethod.GET)
+    public String searchExerciseLogAdmin (HttpSession session){
+        User user = (User) session.getAttribute("user");
+        return "equipmentLogAdmin";
+    }
+
+
+    @RequestMapping (value = "/workoutAdminSearch", method = RequestMethod.GET)
+    public String displayExerciseLogAdmin (HttpSession session, ModelMap modelMap, @RequestParam String input){
+        User user = (User) session.getAttribute("user");
+        List<EquipmentLog> el = equipmentLogDao.getUserLogsByName(input);
+        modelMap.put("log", el);
+
+        return "equipmentLogAdmin";
+    }
+
+
+
+
 
 }

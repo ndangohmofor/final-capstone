@@ -57,15 +57,15 @@
     </div>
     <div class="mb-3">
         <label for="duration">Duration</label>
-        <input type="text" name="duration" id="duration" placeholder="if applicable" class="form-control">
+        <input type="text" name="duration" id="duration" value="0" class="form-control">
     </div>
     <div class="mb-3">
         <label for="weight">Weight</label>
-        <input type="text" name="weight" id="weight" placeholder="if applicable" class="form-control">
+        <input type="text" name="weight" id="weight" value="0" class="form-control">
     </div>
     <div class="mb-3">
         <label for="reps">Reps</label>
-        <input type="text" name="reps" id="reps" placeholder="if applicable" class="form-control">
+        <input type="text" name="reps" id="reps" value="0" class="form-control">
     </div>
     <%--<div id="weightType" style="visibility: hidden">
         <div>

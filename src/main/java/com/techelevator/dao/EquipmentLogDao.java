@@ -9,5 +9,7 @@ public interface EquipmentLogDao {
 
     public List<EquipmentLog> getEquipmentLogByUser(long userId);
 
-    public void addExerciseToLog (long duration, LocalDateTime date, long reps, long weight,long userId, long machineId);
+    public void addExerciseToLog(long duration, LocalDateTime date, long reps, long weight, long userId, long machineId);
+
+    public List<EquipmentLog> getUserLogsByName(String input);
 }
