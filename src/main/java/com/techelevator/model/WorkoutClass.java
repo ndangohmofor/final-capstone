@@ -1,14 +1,25 @@
 package com.techelevator.model;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 
 public class WorkoutClass {
 
-  private long id;
+  private Long id;
+
+  @NotBlank(message = "Please provide a work class Name")
   private String className;
+
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private LocalDateTime date;
+
+  @NotBlank(message = "Please provide the name of the instructor")
   private String instructor;
+
+  @NotBlank(message = "Please provide a description for the class")
   private String description;
 
   public String getDescription() {
@@ -19,22 +30,22 @@ public class WorkoutClass {
     this.description = description;
   }
 
-  public int getDuration_minutes() {
-    return duration_minutes;
+  public Integer getDurationMinutes() {
+    return durationMinutes;
   }
 
-  public void setDuration_minutes(int duration_minutes) {
-    this.duration_minutes = duration_minutes;
+  public void setDurationMinutes(Integer durationMinutes) {
+    this.durationMinutes = durationMinutes;
   }
 
-  private int duration_minutes;
+  private Integer durationMinutes;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
