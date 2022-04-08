@@ -15,7 +15,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img class="first-slide" src="${pageContext.request.contextPath}/img/legpress.png" alt="First slide">
+                    <img class="first-slide" src="${pageContext.request.contextPath}/img/carousel.png" alt="First slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Example headline.</h1>
@@ -111,6 +111,7 @@
             <div class="caption">
                 <h3>Aerobics</h3>
                 <p>...</p>
+
                 <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
