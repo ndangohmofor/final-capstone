@@ -94,7 +94,7 @@
 </div>
 
 <div class="row container">
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-3 col-md-3">
         <div class="thumbnail">
             <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/bikess.png" alt="...">
             <div class="caption">
@@ -104,10 +104,10 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-3 col-md-3">
         <div class="thumbnail">
             <c:url var="runner" value="/img/runner.png"/>
-            <img class="thumbnail-pic2" src="https://static.onecms.io/wp-content/uploads/sites/35/2021/09/27/squat-GettyImages-1004449544-2000.jpg" alt="...">
+            <img class="thumbnail-pic2" src="${runner}" alt="...">
             <div class="caption">
                 <h3>Aerobics</h3>
                 <p>...</p>
@@ -116,9 +116,20 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-3 col-md-3">
         <div class="thumbnail">
-            <img class="thumbnail-pic" src="https://www.mensjournal.com/wp-content/uploads/2015/07/DBfrontsquat.jpg?w=900&quality=86&strip=all" alt="...">
+            <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/lifting.png" alt="...">
+            <div class="caption">
+                <h3>Weights</h3>
+                <p>...</p>
+                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <div class="thumbnail">
+            <c:url var="yoga" value="/img/yoga.jpg"/>
+            <img class="thumbnail-pic2" src="${yoga}" alt="...">
             <div class="caption">
                 <h3>Weights</h3>
                 <p>...</p>

@@ -20,12 +20,13 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
     </script>
 <%--===================================================================--%>
-
 </head>
+
+<main>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <img class="logoImg" src="${pageContext.request.contextPath}/img/Logo.png" alt="Workout Planner Logo">
-        <h2>Workout Planner</h2>
+        <h2 class="appTitle">Workout Planner</h2>
         <div class="container nav-div">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
