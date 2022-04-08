@@ -5,17 +5,15 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class WorkoutClass {
 
-  private long id;
+  private Long id;
 
   @NotBlank(message = "Please provide a work class Name")
   private String className;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:MM")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private LocalDateTime date;
 
   @NotBlank(message = "Please provide the name of the instructor")
@@ -43,11 +41,11 @@ public class WorkoutClass {
   private Integer durationMinutes;
 
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

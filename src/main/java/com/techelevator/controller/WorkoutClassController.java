@@ -35,14 +35,14 @@ public class WorkoutClassController {
     private AuthProvider auth;
 
     @RequestMapping(path = "/workoutDetails", method = RequestMethod.GET)
-    public String displayWorkoutDetails(@RequestParam int workoutId, ModelMap modelHolder) {
+    public String displayWorkoutDetails(@RequestParam Long workoutId, ModelMap modelHolder) {
         WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
         modelHolder.put("workout", workout);
         return "workoutDetails";
     }
 
     @RequestMapping(path = "/workoutSignUp", method = RequestMethod.GET)
-    public String workoutSignUp(@RequestParam int workoutId, ModelMap modelHolder){
+    public String workoutSignUp(@RequestParam Long workoutId, ModelMap modelHolder){
         WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
         modelHolder.put("workout", workout);
         return "workoutSignup";
@@ -54,7 +54,7 @@ public class WorkoutClassController {
     }
 
     @RequestMapping(path = "/workoutSignUpProcess")
-    public String workoutSignUpProcess(@RequestParam int workoutId, HttpSession session, RedirectAttributes flash, ModelMap modelHolder){
+    public String workoutSignUpProcess(@RequestParam Long workoutId, HttpSession session, RedirectAttributes flash, ModelMap modelHolder){
         WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
         if(auth.getCurrentUser() == null){
             flash.addFlashAttribute("message", "Please login to sign up for workout sessions");
@@ -86,6 +86,7 @@ public class WorkoutClassController {
     @RequestMapping(path = "/addWorkoutClass", method = RequestMethod.POST)
     public String addWorkoutClassProcessor(@Valid @ModelAttribute WorkoutClass workoutClass, BindingResult result, RedirectAttributes flash){
         flash.addFlashAttribute("workout", workoutClass);
+        workoutClassDao.createWorkoutClass(workoutClass);
 
         if(result.hasErrors()){
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "workout", result);
@@ -95,6 +96,20 @@ public class WorkoutClassController {
         }
 
         flash.addFlashAttribute("message", "Classes successfully created");
+        return "redirect:/scheduleClassAdmin";
+    }
+
+    @RequestMapping(path = "/workoutCancel")
+    public String cancelWorkoutProcessor(@RequestParam Long workoutId, ModelMap modelHolder){
+        modelHolder.put("workout", workoutClassDao.getWorkoutClassById(workoutId));
+        return "workoutCancel";
+    }
+
+    @RequestMapping(path = "/workoutCancelProcess")
+    public String cancelWorkoutClass(@RequestParam Long workoutId, ModelMap modelHolder, RedirectAttributes flash){
+        WorkoutClass workoutClass = workoutClassDao.getWorkoutClassById(workoutId);
+        flash.addFlashAttribute("message", "Successfully cancelled workout class " + workoutClass.getClassName());
+        workoutClassDao.cancelWorkoutClass(workoutId);
         return "redirect:/scheduleClassAdmin";
     }
 }

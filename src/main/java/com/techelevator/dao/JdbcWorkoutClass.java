@@ -22,9 +22,16 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+
+    public List<WorkoutClass> getFirst5Classes() {
+        String sql = "SELECT * FROM workout_class WHERE date >= now() ORDER BY date ASC LIMIT 5;";
+        List<WorkoutClass> workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper());
+        return workoutClasses;
+    }
+
     @Override
     public List<WorkoutClass> getAllWorkoutClasses() {
-        String sql = "SELECT * FROM workout_class ORDER BY date ASC LIMIT 5;";
+        String sql = "SELECT * FROM workout_class WHERE date >= now() ORDER BY date ASC;";
         List<WorkoutClass> workoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper());
         return workoutClasses;
     }
@@ -44,22 +51,23 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
     }
 
     @Override
-    public WorkoutClass getWorkoutClassById(int workoutId) {
+    public WorkoutClass getWorkoutClassById(Long workoutId) {
         String sql = "SELECT * FROM workout_class WHERE id = ?;";
         WorkoutClass workout = jdbcTemplate.queryForObject(sql, new WorkoutRowMapper(), workoutId);
         return workout;
     }
 
     @Override
-    public int createWorkoutClass(String name, LocalDateTime date, String instructor, String description, int duration) {
-        String sql = "INSERT INTO workout_class (class_name, date, instructor, description, duration_in_minutes) VALUES (?, ?, ?, ?, ?) RETURNING id;";
-        return jdbcTemplate.update(sql, new WorkoutRowMapper(), name, date, instructor, description, duration);
+    public void createWorkoutClass(WorkoutClass workoutClass) {
+        String sql = "INSERT INTO workout_class (class_name, date, instructor, description, duration_in_minutes) VALUES (?, ?, ?, ?, ?);";
+        /*Integer id = */jdbcTemplate.update(sql, workoutClass.getClassName(), workoutClass.getDate(), workoutClass.getInstructor(), workoutClass.getDescription(), workoutClass.getDurationMinutes());
+        //return getWorkoutClassById(id);
     }
 
     @Override
-    public void cancelWorkoutClass(int classId) {
+    public void cancelWorkoutClass(Long classId) {
         String sql = "DELETE FROM workout_class WHERE id = ?;";
-        jdbcTemplate.update(sql, new WorkoutRowMapper(), classId);
+        jdbcTemplate.update(sql, classId);
     }
 }
 
