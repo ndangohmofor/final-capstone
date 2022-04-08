@@ -172,3 +172,9 @@ footer {
 .workoutSchedules {
     margin-top: 50px;
 }
+
+a.btn-primary {
+    margin: 5px;
+    background-color: forestgreen;
+    border-color: #734eb5;
+}

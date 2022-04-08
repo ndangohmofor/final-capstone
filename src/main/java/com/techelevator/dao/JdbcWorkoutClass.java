@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import com.techelevator.model.WorkoutClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +10,6 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -75,7 +73,7 @@ class WorkoutRowMapper implements RowMapper<WorkoutClass> {
         workoutClass.setDate(resultSet.getTimestamp("date").toLocalDateTime());
         workoutClass.setInstructor(resultSet.getString("instructor"));
         workoutClass.setDescription(resultSet.getString("description"));
-        workoutClass.setDuration_minutes(resultSet.getInt("duration_in_minutes"));
+        workoutClass.setDurationMinutes(resultSet.getInt("duration_in_minutes"));
         return workoutClass;
     }
 }

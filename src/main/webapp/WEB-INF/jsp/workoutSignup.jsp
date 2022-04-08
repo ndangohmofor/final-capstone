@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                         <th scope="rowgroup">Class Duration:</th>
-                        <th scope="row"><c:out value="${workout.duration_minutes} mins"/></th>
+                        <th scope="row"><c:out value="${workout.durationMinutes} mins"/></th>
                     </tr>
                     <tr>
                         <th scope="rowgroup">Instructor:</th>

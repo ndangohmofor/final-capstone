@@ -22,7 +22,7 @@
                         <th scope="row"><c:out value="${workout.className}"/></th>
                         <td><c:out value="${workout.date}"/></td>
                         <td><c:out value="${workout.instructor}"/></td>
-                        <td><c:out value="${workout.duration_minutes} mins"/></td>
+                        <td><c:out value="${workout.durationMinutes} mins"/></td>
                         <td><a href="workoutSignUp?workoutId=${workout.id}">Sign Me Up</a></td>
                     </tr>
                     <tr>
