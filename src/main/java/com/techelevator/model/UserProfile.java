@@ -1,19 +1,26 @@
 package com.techelevator.model;
 
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserProfile {
 
   private long id;
-  @NotBlank(message = "FirstName is required")
+  @NotBlank(message = "First Name is Required")
   private String firstName;
-  @NotBlank(message = "LastName is required")
+
+  @NotBlank(message = "Last Name is required")
   private String lastName;
-  @NotBlank(message = "Email is required")
+
+  @Email(message = "Email is required")
   private String email;
+
   private byte[] photo;
+
   private String goal;
+
   private long userId;
 
 

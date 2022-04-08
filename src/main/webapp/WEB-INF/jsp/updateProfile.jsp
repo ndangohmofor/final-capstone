@@ -11,14 +11,17 @@
     <div class="mb-3">
         <label for="firstName">First Name</label>
         <form:input type="text" class="form-control" path="firstName" id="firstName" value="${profile.firstName}"/>
+        <form:errors path="firstName" cssClass="bg-danger"/>
     </div>
     <div class="mb-3">
         <label for="lastName">Last Name</label>
         <form:input type="text" class="form-control" path="lastName" id="lastName" value="${profile.lastName}"/>
+        <form:errors path="lastName" cssClass="bg-danger"/>
     </div>
     <div class="mb-3">
         <label for="email">Email</label>
         <form:input type="email" class="form-control" path="email" id="email" value="${profile.email}"/>
+        <form:errors path="email" cssClass="bg-danger"/>
     </div>
     <div class="mb-3">
         <label for="goal">Update Goals</label>
@@ -31,3 +34,6 @@
 
 </body>
 </html>
+
+
+<%@ include file="common/footer.jspf" %>

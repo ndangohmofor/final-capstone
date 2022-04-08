@@ -45,12 +45,6 @@ public class EquipmentLogController {
             flash.addFlashAttribute("message", "Please login to View  Exercise Log");
             return "redirect:/login";
         }
-
-//        User user = (User) session.getAttribute("user");
-//        List<EquipmentLog> el = equipmentLogDao.getEquipmentLogByUser(user.getId());
-//        modelMap.put("log", el);
-//
-//        return "equipmentLog";
     }
 
     @RequestMapping (path = "/exerciseInput", method = RequestMethod.GET)

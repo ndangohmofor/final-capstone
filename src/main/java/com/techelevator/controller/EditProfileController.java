@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import static org.springframework.util.MimeTypeUtils.MULTIPART_FORM_DATA_VALUE;
 
 @Controller
@@ -29,28 +30,30 @@ public class EditProfileController {
     @Autowired
     EditProfileDao editProfileDao;
 
-    @RequestMapping (path = "/updateProfile", method = RequestMethod.GET)
+    @RequestMapping(path = "/updateProfile", method = RequestMethod.GET)
     public String displayUpdateForm(HttpSession session, ModelMap modelMap) {
         User user = (User) session.getAttribute("user");
         UserProfile userProfile = editProfileDao.displayProfileByUserId(user.getId());
-        modelMap.put("profile", userProfile);
-
+        if (!modelMap.containsAttribute("profile")) {
+            modelMap.put("profile", userProfile);
+        }
         return "updateProfile";
     }
 
-    @RequestMapping (path = "/updateProfile", method = RequestMethod.POST, consumes = {MULTIPART_FORM_DATA_VALUE})
-    public String submitUpdateProfile(@Valid @ModelAttribute("profile") UserProfile userProfile, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
-                                      @RequestParam String goal, HttpSession session, BindingResult result, RedirectAttributes flash) {
+    @RequestMapping(path = "/updateProfile", method = RequestMethod.POST)
+    public String submitUpdateProfile(@Valid @ModelAttribute UserProfile userProfile,
+                                      HttpSession session, BindingResult result, RedirectAttributes flash) {
+        flash.addFlashAttribute("profile", userProfile);
         if (result.hasErrors()) {
-            flash.addFlashAttribute("profile", userProfile);
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "profile", result);
-            flash.addFlashAttribute("message", "Please fix the following errors:");
+            flash.addFlashAttribute("profile", userProfile);
+            flash.addFlashAttribute("message", "Please Fill in Empty boxes");
             return "redirect:/updateProfile";
         }
         User user = (User) session.getAttribute("user");
-        editProfileDao.updateProfile(firstName,lastName,goal, email,user.getId());
+        editProfileDao.updateProfile(userProfile.getFirstName(), userProfile.getLastName(), userProfile.getGoal(), userProfile.getEmail(), user.getId());
+
         return "redirect:/profile";
-        //need to add workout profile
     }
 
 /*    @RequestMapping ("/updateConfirmation")
@@ -58,13 +61,14 @@ public class EditProfileController {
         return "updateConfirmation";
     }*/
 
-    @RequestMapping (path = "/profile", method = RequestMethod.GET)
-    public String viewProfile (ModelMap modelMap, HttpSession session) {
+    @RequestMapping(path = "/profile", method = RequestMethod.GET)
+    public String viewProfile(ModelMap modelMap, HttpSession session) {
         User user = (User) session.getAttribute("user");
         UserProfile userProfile = editProfileDao.displayProfileByUserId(user.getId());
         modelMap.put("profile", userProfile);
         return "displayProfile";
     }
+
     @RequestMapping(path = "/profile/image", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getProfileImage(@RequestParam("id") Long id) throws IOException {
         HttpHeaders headers = new HttpHeaders();
