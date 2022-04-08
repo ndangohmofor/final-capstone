@@ -5,7 +5,7 @@
 <body>
 <div>
 
-    <h2>Equipment Log</h2>
+    <h2>Workout Log</h2>
 
     <table class="table table-striped">
         <thead>
@@ -20,7 +20,7 @@
         <tbody>
         <c:forEach var="displayLog" items="${log}">
             <tr>
-                <td><c:out value="${displayLog.machineName}"/></td>
+                <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
                 <td><c:out value="${displayLog.date}"/></td>
                 <td><c:out value="${displayLog.duration}"/></td>
                 <td><c:out value="${displayLog.weight}"/></td>

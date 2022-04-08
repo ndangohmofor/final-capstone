@@ -1,6 +1,8 @@
 package com.techelevator.model;
 
 
+import org.springframework.util.StringUtils;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -80,6 +82,9 @@ public class EquipmentLog {
 
   public String getMachineName() {
     return machineName;
+  }
+  public String getCapitalizedMachineName() {
+    return StringUtils.capitalize(machineName);
   }
 
   public void setMachineName(String machineName) {
