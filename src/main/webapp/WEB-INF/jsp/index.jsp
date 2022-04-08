@@ -1,6 +1,8 @@
 
 <%@ include file="common/header.jspf" %>
 
+<div id="homeBackground">
+
 <section>
     <div class="col-lg-12">
         <%-- <img class="welcomeImg img-fluid" src="${pageContext.request.contextPath}/img/welcome.jpg"
@@ -15,12 +17,13 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img class="first-slide" src="${pageContext.request.contextPath}/img/carousel.png" alt="First slide">
+                    <img class="first-slide" src="${pageContext.request.contextPath}/img/gymsocial.jpg" alt="First slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Example headline.</h1>
-                            <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                            <c:url var="about" value="/about"/>
+                            <h1>About Us</h1>
+                            <h4>Learn more about our mission to increase productivity in the gym.</h4>
+                            <p><a class="btn btn-lg btn-primary" href="${about}" role="button">Learn More</a></p>
                         </div>
                     </div>
                 </div>
@@ -28,19 +31,19 @@
                     <img class="second-slide" src="${pageContext.request.contextPath}/img/stationarybike.png" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                            <c:url value="/register" var="register"/>
+                            <h1>Join the fun</h1>
+                            <h4>Sign up today and start your workout journey with us!</h4>
+                            <p><a class="btn btn-lg btn-primary" href="${register}" role="button">Register</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="item">
-                    <img class="third-slide" src="${pageContext.request.contextPath}/img/rowingmachine.png" alt="Third slide">
+                    <img class="third-slide" src="${pageContext.request.contextPath}/img/gyms-with-turf-social.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>One more for good measure.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                            <h4>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</h4>
                         </div>
                     </div>
                 </div>
@@ -67,6 +70,7 @@
     <div class="col-lg-12">
         <aside class="workoutSchedules">
             <section>
+                <a name="upcomingClasses"></a>
                 <h4 class="workout-header">Upcoming Workout Classes</h4>
                 <table class="table table-striped">
                     <thead>
@@ -82,7 +86,7 @@
                         <tr>
                             <th scope="row"><c:out value="${workout.className}" /></th>
                             <td><c:out value="${workout.date}" /></td>
-                            <td><c:out value="${workout.duration_minutes} mins" /></td>
+                            <td><c:out value="${workout.durationMinutes} mins" /></td>
                             <td><a href="workoutDetails?workoutId=${workout.id}">Further Details</a></td>
                         </tr>
                     </c:forEach>
@@ -93,14 +97,18 @@
     </div>
 </div>
 
+<div id="features">
+<h1 class="h1index">Features</h1>
+
 <div class="row container">
     <div class="col-sm-3 col-md-3">
         <div class="thumbnail">
             <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/bikess.png" alt="...">
             <div class="caption">
-                <h3>Cardio</h3>
-                <p>...</p>
-                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
+                <c:url value="/checkin" var="checkin"/>
+                <h3>Easy Tracking</h3>
+                <p class="thumbnailboxsize">Record your workout session through our easy one-click checkin and checkout process.</p>
+                <p><a href="${checkin}" class="btn btn-primary" role="button">Checkin</a></p>
             </div>
         </div>
     </div>
@@ -109,10 +117,10 @@
             <c:url var="runner" value="/img/runner.png"/>
             <img class="thumbnail-pic2" src="${runner}" alt="...">
             <div class="caption">
-                <h3>Aerobics</h3>
-                <p>...</p>
-
-                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
+                <c:url var="workoutlog" value="/exerciseLog"/>
+                <h3>Endurance</h3>
+                <p class="thumbnailboxsize">Keep track of your goals by using our workout log.</p>
+                <p><a href="${workoutlog}" class="btn btn-primary" role="button">Log your workout</a></p>
             </div>
         </div>
     </div>
@@ -120,9 +128,10 @@
         <div class="thumbnail">
             <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/lifting.png" alt="...">
             <div class="caption">
-                <h3>Weights</h3>
-                <p>...</p>
-                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
+                <c:url value="/viewMachineInfo" var="machineInfo"/>
+                <h3>Companion</h3>
+                <p class="thumbnailboxsize">We offer training on our workout machines to guide you through the proper techniques on perfecting your form. </p>
+                <p><a href="${machineInfo}" class="btn btn-primary" role="button">Machine Guides</a></p>
             </div>
         </div>
     </div>
@@ -131,13 +140,67 @@
             <c:url var="yoga" value="/img/yoga.jpg"/>
             <img class="thumbnail-pic2" src="${yoga}" alt="...">
             <div class="caption">
-                <h3>Weights</h3>
-                <p>...</p>
-                <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
+                <h3>Classes</h3>
+                <p class="thumbnailboxsize">Try any class you want, then another . . . and another. All classes are complimentary to you.</p>
+                <p><a href="#upcomingClasses" class="btn btn-primary" role="button">View Classes</a></p>
             </div>
         </div>
     </div>
 </div>
 
+    <br/>
+    <br/>
 
+    <div id="amenities">
+        <h1 class="h1index">Amenities</h1>
+    <div class="media amenitymedia amenityrightmargin">
+        <div class="media-left">
+                <img class="amenitiespics" src="${pageContext.request.contextPath}/img/amenityyoga.jpg" alt="Picture of lady doing yoga.">
+        </div>
+        <div class="media-body mediacolor">
+            <h4 class="media-heading">Yoga Retreats</h4>
+            <p class="amenitytext">Find your zen through our annual Yoga retreat in the Himalayas led by John C.<br/>
+            Many of our attendees describe the experience as eye opening and attend every year.<br/>
+            </p>
+        </div>
+    </div>
+        <div class="media amenitymedia amenityrightmargin">
+            <div class="media-body mediacolor">
+                <h4 class="media-heading">Personal Training</h4>
+                <p class="amenitytext">Meeting with our world-class trainers to help you meet your personal fitness goals.<br/>
+                <br/>
+                </p>
+            </div>
+            <div class="media-right">
+                <img class="amenitiespics" src="${pageContext.request.contextPath}/img/personaltrainer-carousel.jpg" alt="Picture of personal trainer.">
+            </div>
+        </div>
+        <div class="media amenitymedia amenityrightmargin">
+            <div class="media-left">
+                <img class="amenitiespics" src="${pageContext.request.contextPath}/img/water-sport.jpg" alt="Picture of swimmer in swimming pool.">
+            </div>
+            <div class="media-body mediacolor">
+                <h4 class="media-heading">Olympics Size Pool</h4>
+                <p class="amenitytext">Get your cardio in by swimming in our olympics size pool.We also have varying diving board heights.<br/>
+                At the end of your swim, rinse off and then relax in our sauna rooms.<br/>
+                </p>
+            </div>
+        </div>
+        <div class="media amenitymedia amenityrightmargin">
+            <div class="media-body mediacolor">
+                <h4 class="media-heading">Modern Facilities</h4>
+                <p class="amenitytext">Say goodbye to the old gym changing room experience. Our modern rooms will make you feel like you are at a 5-star hotel.<br/>
+                <br/>
+                </p>
+            </div>
+            <div class="media-right">
+                <img class="amenitiespics" src="${pageContext.request.contextPath}/img/gym-changing-room.jpg" alt="Picture of personal trainer.">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</div>
 <%@ include file="common/footer.jspf" %>

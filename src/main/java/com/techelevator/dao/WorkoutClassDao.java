@@ -10,8 +10,9 @@ public interface WorkoutClassDao {
     List<WorkoutClass> getAllWorkoutClasses();
     List<WorkoutClass> getWorkoutClassByName(String workoutClassName);
     List<WorkoutClass> getWorkoutClassByDate(LocalDateTime workoutClassDate);
-    WorkoutClass getWorkoutClassById(int workoutId);
-    int createWorkoutClass(String name, LocalDateTime date, String instructor, String description, int duration);
-    void cancelWorkoutClass(int id);
+    WorkoutClass getWorkoutClassById(Long workoutId);
+    void createWorkoutClass(WorkoutClass workoutClass);
+    void cancelWorkoutClass(Long id);
+    List<WorkoutClass> getFirst5Classes();
 
 }

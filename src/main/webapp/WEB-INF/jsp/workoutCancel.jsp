@@ -1,8 +1,8 @@
-<%@ include file="common/header.jspf" %>
+<%@ include file="common/headerAdmin.jspf" %>
 
 
 <div class="container">
-    <h4>Please Confirm Your SignUp for this Workout</h4>
+    <h4>Confirm cancellation of this class</h4>
     <div class="col-lg-6">
         <aside class="workoutSchedules">
             <section>
@@ -29,13 +29,13 @@
                     </tr>
                     <tr>
                         <th>
-                            <c:url value="/workoutSignUpProcess?workoutId=${workout.id}" var="signUpUrl"/>
-                            <form action="${signUpUrl}" method="POST">
-                                <button type="submit" name="workoutId" class="btn btn-primary">Sign Up</button>
+                            <c:url value="/workoutCancelProcess?workoutId=${workout.id}" var="cancelUrl"/>
+                            <form action="${cancelUrl}" method="POST">
+                                <button type="submit" name="workoutId" class="btn btn-primary">Cancel Workout</button>
                             </form>
                         </th>
                         <td><form>
-                            <a href="workoutDetails?workoutId=${workout.id}" name="cancel" class="btn btn-primary">Cancel</a>
+                            <a href="scheduleClassAdmin" name="cancel" class="btn btn-primary">Return</a>
                         </form></td>
                     </tr>
                     </tbody>

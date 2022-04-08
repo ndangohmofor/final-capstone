@@ -40,7 +40,7 @@ public class AccountController {
     @RequestMapping(method = RequestMethod.GET, path = {"/", "/index", "/indexAdmin"})
     public String index(ModelMap modelHolder) {
         modelHolder.put("user", auth.getCurrentUser());
-        List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
+        List<WorkoutClass> workouts = workoutClassDao.getFirst5Classes();
         modelHolder.addAttribute("workouts", workouts);
         if (auth.userHasRole(admin)) {
             return "indexAdmin";
