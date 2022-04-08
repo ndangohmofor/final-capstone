@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class WorkoutClassController {
@@ -46,7 +47,8 @@ public class WorkoutClassController {
     }
 
     @RequestMapping(path = "/workoutSignUpProcess")
-    public String workoutSignUpProcess(@RequestParam int workoutId, HttpSession session, RedirectAttributes flash){
+    public String workoutSignUpProcess(@RequestParam int workoutId, HttpSession session, RedirectAttributes flash, ModelMap modelHolder){
+        WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
         if(auth.getCurrentUser() == null){
             flash.addFlashAttribute("message", "Please login to sign up for workout sessions");
             session.setAttribute("previousRoute", "workoutSignUpProcess?workoutId="+workoutId);
@@ -54,6 +56,15 @@ public class WorkoutClassController {
         } else {
             workoutSignUpDao.signUpForWorkout(auth.getCurrentUser().getId(), workoutId);
         }
-        return "redirect:/signUpConfirmation";
+        modelHolder.put("workout", workout);
+        modelHolder.put("user", auth.getCurrentUser());
+        return "signUpConfirmation";
+    }
+
+    @RequestMapping(path = "/scheduleClassAdmin")
+    public String scheduleWorkoutClass(ModelMap modelHolder){
+        List<WorkoutClass> workoutClasses = workoutClassDao.getAllWorkoutClasses();
+        modelHolder.put("workouts", workoutClasses);
+        return "workoutClassScheduler";
     }
 }
