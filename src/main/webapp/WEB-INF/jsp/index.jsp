@@ -15,7 +15,7 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img class="first-slide" src="${pageContext.request.contextPath}/img/carousel.png" alt="First slide">
+                    <img class="first-slide" src="${pageContext.request.contextPath}/img/gymsocial.jpg" alt="First slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Example headline.</h1>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img class="third-slide" src="${pageContext.request.contextPath}/img/rowingmachine.png" alt="Third slide">
+                    <img class="third-slide" src="${pageContext.request.contextPath}/img/gyms-with-turf-social.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>One more for good measure.</h1>
@@ -93,13 +93,16 @@
     </div>
 </div>
 
+<div id="amenities">
+<h2>Gym Amenities</h2>
+
 <div class="row container">
     <div class="col-sm-3 col-md-3">
         <div class="thumbnail">
             <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/bikess.png" alt="...">
             <div class="caption">
-                <h3>Cardio</h3>
-                <p>...</p>
+                <h3>Easy Tracking</h3>
+                <p>Record your workout session through our easy one-click checkin and checkout process.</p>
                 <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
@@ -109,9 +112,8 @@
             <c:url var="runner" value="/img/runner.png"/>
             <img class="thumbnail-pic2" src="${runner}" alt="...">
             <div class="caption">
-                <h3>Aerobics</h3>
-                <p>...</p>
-
+                <h3>Endurance</h3>
+                <p>Keep track of your goals by using our workout log.</p>
                 <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
@@ -120,8 +122,8 @@
         <div class="thumbnail">
             <img class="thumbnail-pic" src="${pageContext.request.contextPath}/img/lifting.png" alt="...">
             <div class="caption">
-                <h3>Weights</h3>
-                <p>...</p>
+                <h3>Companion</h3>
+                <p>We offer training on our workout machines to guide you through the proper techniques on perfecting your form. </p>
                 <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
@@ -131,12 +133,13 @@
             <c:url var="yoga" value="/img/yoga.jpg"/>
             <img class="thumbnail-pic2" src="${yoga}" alt="...">
             <div class="caption">
-                <h3>Weights</h3>
-                <p>...</p>
+                <h3>Classes</h3>
+                <p>Try any class you want, then another . . . and another. All classes are complimentary to you.</p>
                 <p><a href="register" class="btn btn-primary" role="button">Sign Up</a> <a href="about" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

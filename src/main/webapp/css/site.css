@@ -2,7 +2,6 @@ body {
 /*padding-top: 70px;*/
     height: 100%;
     width: 100%;
-
 }
 
 
@@ -168,6 +167,7 @@ div.right-aside {
     color: #333;
     text-align: center;
 }
+
 /*
 .carousel,.item,.active {
     height: 100%;
