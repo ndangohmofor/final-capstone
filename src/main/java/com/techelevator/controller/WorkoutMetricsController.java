@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -18,31 +19,30 @@ public class WorkoutMetricsController {
     @Autowired
     JdbcEquipmentLogDao equipmentLogDao;
 
-    @RequestMapping(value="/workOutMetrics", method= RequestMethod.GET)
-    public String getWorkOutMetricsPage(ModelMap modelHolder, HttpSession session){
+    @RequestMapping(value = "/workOutMetrics", method = RequestMethod.GET)
+    public String getWorkOutMetricsPage(ModelMap modelHolder, HttpSession session) {
+        System.out.println("getWorkOutMetricsPage -- GET method ");
         User user = (User) session.getAttribute("user");
-        String viewName = "";
-        if(user.getRole().equalsIgnoreCase("user")){
-            List<EquipmentLog> logs = equipmentLogDao.getEquipmentLogByUser(user.getId());
-            modelHolder.put("log", logs);
-            viewName = "workOutMetrics";
-        }else if(user.getRole().equalsIgnoreCase("Admin")){
-            viewName = "workOutMetricsOfEmployee";
-        }
-        return viewName;
+        List<EquipmentLog> logs = equipmentLogDao.getEquipmentLogByUser(user.getId());
+        modelHolder.put("log", logs);
+        return  "workOutMetrics";
     }
 
 
-    @RequestMapping(value="/workOutMetricsOfEmp", method= RequestMethod.POST)
+    @RequestMapping(value = "/workOutMetricsOfEmp", method = RequestMethod.GET)
     public String getWorkOutMetricsOfUser(ModelMap modelHolder, HttpSession session) {
+      System.out.println("this is workOutMetricsOfEmp -- GET method");
+        return "workOutMetricsOfEmployee";
+    }
 
-        return "";
+    @RequestMapping(value = "/workOutMetricsOfEmp", method = RequestMethod.POST)
+    public String getWorkOutMetricsOfEmployee(@RequestParam String username, ModelMap modelHolder, HttpSession session) {
+        System.out.println("workOutMetricsOfEmp -- POSt "+username);
+        List<EquipmentLog> logs = equipmentLogDao.getEquipmentLogByUserName(username);
+        modelHolder.put("log", logs);
+        System.out.println("this is workOutMetricsOfEmp -- POST method data : "+logs.size()+" and "+logs);
+        return "workOutMetricsOfEmployee";
     }
 
 
-
-
-
-
-
-    }
+}
