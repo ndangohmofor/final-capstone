@@ -30,36 +30,31 @@ public class EditProfileController {
     @Autowired
     EditProfileDao editProfileDao;
 
-    @RequestMapping(path = "/updateProfile", method = RequestMethod.GET)
-    public String displayUpdateForm(HttpSession session, ModelMap modelMap) {
+    @RequestMapping(value = "/updateProfile", method = RequestMethod.GET)
+    public String updateProfile(ModelMap modelHolder, HttpSession session) {
         User user = (User) session.getAttribute("user");
         UserProfile userProfile = editProfileDao.displayProfileByUserId(user.getId());
-        if (!modelMap.containsAttribute("profile")) {
-            modelMap.put("profile", userProfile);
+        if (!modelHolder.containsAttribute("profile")) {
+            modelHolder.put("profile", userProfile);
         }
         return "updateProfile";
     }
 
     @RequestMapping(path = "/updateProfile", method = RequestMethod.POST)
-    public String submitUpdateProfile(@Valid @ModelAttribute UserProfile userProfile,
-                                      HttpSession session, BindingResult result, RedirectAttributes flash) {
-        flash.addFlashAttribute("profile", userProfile);
+    public String updateProfile(@Valid @ModelAttribute UserProfile userProfile, BindingResult result, RedirectAttributes flash, HttpSession session) {
         if (result.hasErrors()) {
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "profile", result);
             flash.addFlashAttribute("profile", userProfile);
-            flash.addFlashAttribute("message", "Please Fill in Empty boxes");
+            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "profile", result);
+            flash.addFlashAttribute("message", "Please fill in the boxes:");
             return "redirect:/updateProfile";
+        } else {
+            User user = (User) session.getAttribute("user");
+            editProfileDao.updateProfile(userProfile.getFirstName(), userProfile.getLastName(), userProfile.getGoal(), userProfile.getEmail(), user.getId());
+            flash.addFlashAttribute("message", "Profile updated");
+            return "redirect:/profile";
         }
-        User user = (User) session.getAttribute("user");
-        editProfileDao.updateProfile(userProfile.getFirstName(), userProfile.getLastName(), userProfile.getGoal(), userProfile.getEmail(), user.getId());
-
-        return "redirect:/profile";
     }
 
-/*    @RequestMapping ("/updateConfirmation")
-    public String displayUpdateConfirmation () {
-        return "updateConfirmation";
-    }*/
 
     @RequestMapping(path = "/profile", method = RequestMethod.GET)
     public String viewProfile(ModelMap modelMap, HttpSession session) {

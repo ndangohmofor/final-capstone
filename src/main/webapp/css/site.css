@@ -292,3 +292,41 @@ a.btn-primary {
     background-color: forestgreen;
     border-color: #734eb5;
 }
+.profile-body{
+    margin-top: 20px;
+    background-color: white;
+}
+
+.main {
+    padding:15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sidebar{
+    background-color: white;
+    color:black;
+    height: 100%;
+}
+.card-body img{
+    border-radius: 50%;
+}
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    border-radius: 25px;
+    padding: 20px;
+}
+.content{
+    background-color: #251552;
+    color: white;
+    padding: 20px;
+}
+.text-secondary{
+    font-size: 16px;
+}
+.profile-link{
+    list-style-type: none;
+    color: white;
+    font-size: 16px;
+}

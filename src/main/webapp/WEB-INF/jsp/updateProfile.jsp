@@ -1,26 +1,54 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="common/header.jspf" %>
 
-<html>
+<c:url var="updateProfileUrl" value="/updateProfile"/>
+<form:form action="${updateProfileUrl}" method="POST"  modelAttribute="profile">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <form:input class="form-control" path="firstName"/>
+        <form:errors path="firstName" cssClass="bg-danger"/>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <form:input class="form-control" path="lastName"/>
+        <form:errors path="lastName" cssClass="bg-danger"/>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <form:input type="text" class="form-control" path="email" value="${profile.email}"/>
+        <form:errors path="email" cssClass="bg-danger"/>
+    </div>
+    <div class="form-group">
+        <label for="goal">Update Goals</label>
+        <form:textarea class="form-control" rows="10" path="goal" id="goal" value="${profile.goal}"/>
+        <form:errors path="goal" cssClass="bg-danger"/>
+    </div>
+
+    <button type="submit" class="btn btn-default">Update Profile</button>
+</form:form>
+
+<%@ include file = "common/footer.jspf" %>
+
+
+<%--<html>
 <body>
 <c:url var="updateProfileUrl" value="/updateProfile"/>
-<form:form action="${updateProfileUrl}" method="POST"  modelAttribute="profile" enctype="multipart/form-data">
+<form:form action="${updateProfileUrl}" method="POST"  modelAttribute="profile">
     <h2>Update profile</h2>
     <p>Please fill out all sections</p>
     <div class="mb-3">
         <label for="firstName">First Name</label>
-        <form:input type="text" class="form-control" path="firstName" id="firstName" value="${profile.firstName}"/>
+        <form:input type="text" class="form-control" path="firstName" id="firstName"/>
         <form:errors path="firstName" cssClass="bg-danger"/>
     </div>
     <div class="mb-3">
         <label for="lastName">Last Name</label>
-        <form:input type="text" class="form-control" path="lastName" id="lastName" value="${profile.lastName}"/>
+        <form:input type="text" class="form-control" path="lastName" id="lastName"/>
         <form:errors path="lastName" cssClass="bg-danger"/>
     </div>
     <div class="mb-3">
         <label for="email">Email</label>
-        <form:input type="email" class="form-control" path="email" id="email" value="${profile.email}"/>
+        <form:input type="email" class="form-control" path="email" id="email"/>
         <form:errors path="email" cssClass="bg-danger"/>
     </div>
     <div class="mb-3">
@@ -33,7 +61,7 @@
 </form:form>
 
 </body>
-</html>
+</html>--%>
 
 
 <%@ include file="common/footer.jspf" %>

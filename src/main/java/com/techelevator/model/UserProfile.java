@@ -15,10 +15,12 @@ public class UserProfile {
   private String lastName;
 
   @Email(message = "Email is required")
+  @NotBlank(message = "Email is Required")
   private String email;
 
   private byte[] photo;
 
+  @NotBlank(message = "Must have goals to get fit")
   private String goal;
 
   private long userId;

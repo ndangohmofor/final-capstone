@@ -3,16 +3,24 @@ package com.techelevator.model;
 
 import org.springframework.util.StringUtils;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class EquipmentLog {
 
   private long id;
+  @NotNull (message = "Please provide duration of exercise")
   private long duration;
+
   private LocalDateTime date;
+
+  @NotNull (message = "Please provide number of reps")
   private long reps;
+
+  @NotNull (message = "Please add weight")
   private long weight;
+
   private long userId;
   private long machineId;
   private String machineName;
