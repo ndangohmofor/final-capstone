@@ -34,7 +34,7 @@
                             <c:url value="/register" var="register"/>
                             <h1>Join the fun</h1>
                             <h4>Sign up today and start your workout journey with us!</h4>
-                            <p><a class="btn btn-lg btn-primary" href="${register}" role="button">Register</a></p>
+                            <p><a class="btn btn-lg btn-primary " href="${register}" role="button">Register</a></p>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,8 @@
             <div class="caption">
                 <h3>Classes</h3>
                 <p class="thumbnailboxsize">Try any class you want, then another . . . and another. All classes are complimentary to you.</p>
-                <p><a href="#upcomingClasses" class="btn btn-primary" role="button">View Classes</a></p>
+                <c:url var="viewAllClassesUrl" value="/allWorkoutClasses"/>
+                <p><a href="${viewAllClassesUrl}" class="btn btn-primary" role="button">View Classes</a></p>
             </div>
         </div>
     </div>

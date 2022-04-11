@@ -31,7 +31,7 @@
     </c:forEach>
     </tbody>
     </table>
-
+    <a href="addMachine" class="btn btn-primary" name="addMachine" id="addMachine">Add Machine</a>
     </div>
 </div>
 

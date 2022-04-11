@@ -47,9 +47,9 @@ public class JdbcMachineDao implements MachineDao {
 
 
     @Override
-    public void addMachine(String machineName, String machineType, String machineReference, int machineUsage) {
-        String sql = "insert into machine(machine_name, machine_type, machine_reference, total_usage) values (?,?,?,?)";
-        template.update(sql, machineName, machineType, machineReference, machineUsage);
+    public void addMachine(String machineName, String machineType, String machineReference) {
+        String sql = "insert into machine(machine_name, machine_type, machine_reference) values (?,?,?)";
+        template.update(sql, machineName, machineType, machineReference);
     }
 
 

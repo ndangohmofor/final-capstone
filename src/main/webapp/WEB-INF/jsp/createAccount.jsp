@@ -29,7 +29,7 @@
 
 
 
-    <button type="submit" class="btn btn-default">Create Account</button>
+    <button type="submit" class="btn btn-default">Create Profile</button>
 </form:form>
 
 <%@ include file="common/footer.jspf" %>

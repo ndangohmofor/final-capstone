@@ -17,9 +17,9 @@
         <tbody>
         <c:forEach var="displayLog" items="${log}">
             <tr>
-                <td><c:out value="${displayLog.checkIn}"/></td>
-                <td><c:out value="${displayLog.checkOut}"/></td>
-                <td><c:out value="${displayLog.machineName}"/></td>
+                <td><c:out value="${displayLog.checkIn.toLocalDate()} ${displayLog.checkIn.toLocalTime().withNano(0)}"/></td>
+                <td><c:out value="${displayLog.checkOut.toLocalDate()} ${displayLog.checkOut.toLocalTime().withNano(0)}"/></td>
+                <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
                 <td><c:out value="${displayLog.weight}"/></td>
                 <td><c:out value="${displayLog.reps}"/></td>
             </tr>
