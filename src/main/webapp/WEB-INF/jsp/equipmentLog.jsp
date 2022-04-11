@@ -23,7 +23,7 @@
                 <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
                 <td><c:out value="${displayLog.date}"/></td>
                 <td><c:out value="${displayLog.duration}"/></td>
-                <td><c:out value="${displayLog.weight}"/></td>git push
+                <td><c:out value="${displayLog.weight}"/></td>
                 <td><c:out value="${displayLog.reps}"/></td>
             </tr>
         </c:forEach>
