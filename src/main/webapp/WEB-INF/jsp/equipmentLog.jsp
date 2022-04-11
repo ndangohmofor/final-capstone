@@ -23,14 +23,14 @@
                 <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
                 <td><c:out value="${displayLog.date}"/></td>
                 <td><c:out value="${displayLog.duration}"/></td>
-                <td><c:out value="${displayLog.weight}"/></td>git push
+                <td><c:out value="${displayLog.weight}"/></td>
                 <td><c:out value="${displayLog.reps}"/></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
-    <c:url var="exerciseInputUrl" value="/exerciseInput"/>
+    <c:url var="exerciseInputUrl" value="/exerciseInputForm"/>
     <form action="${exerciseInputUrl}" method="get">
         <button class="btn btn-primary" type="submit"><a href="${exerciseInputUrl}"></a>Add WorkOut</button>
     </form>

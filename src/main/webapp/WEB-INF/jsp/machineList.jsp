@@ -16,6 +16,7 @@
             <th>ID</th>
             <th>Machine Name</th>
             <th>Machine Type</th>
+            <th>Machine Usage</th>
         </tr>
         </thead>
     <tbody>
@@ -24,6 +25,7 @@
             <td>${machine.id}</td>
             <td>${machine.machineName}</td>
             <td>${machine.machineType}</td>
+            <td>${machineUsages}</td>
 
         </tr>
     </c:forEach>
