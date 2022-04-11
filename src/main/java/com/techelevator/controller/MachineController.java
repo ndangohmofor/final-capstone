@@ -55,8 +55,8 @@ public class MachineController {
     }
 
     @RequestMapping(name = "/addMachine", method = RequestMethod.POST)
-    public String addMachineForm(@RequestParam String machineName, @RequestParam String machineType, @RequestParam String machineReference) {
-        jdbcMachineDao.addMachine(machineName, machineType, machineReference);
+    public String addMachineForm(@RequestParam String machineName, @RequestParam String machineType, @RequestParam String machineReference, @RequestParam int machineUsage) {
+        jdbcMachineDao.addMachine(machineName, machineType, machineReference, machineUsage);
         return "redirect:/viewMachines";
     }
 
