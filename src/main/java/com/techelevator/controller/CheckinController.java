@@ -38,7 +38,7 @@ public class CheckinController {
     public String displayCheckinPage(ModelMap model, HttpSession session, RedirectAttributes flash, ModelMap checkinLogModel) throws UnauthorizedException {
         if(auth.userHasRole(new String[] {"admin","user"})) {
             User user = (User) session.getAttribute("user");
-            checkinLogModel.put("checkinLog", jdbcGymCheckinDao.getCheckInLogForUser(user.getId()));
+            checkinLogModel.put("checkinLog", jdbcGymCheckinDao.getTimeSinceJoined(user.getId()));
 
             if ((jdbcGymCheckinDao.getNumberOfCheckins(user.getId()) >= 1)) {
                 flash.addFlashAttribute("message", "You have an open checkin. Please checkout before checking in again.");

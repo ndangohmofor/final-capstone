@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -63,6 +65,22 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         String sqlSelectActiveCheckin = "SELECT id from gym_checkin where is_checked_in = true and user_id = ? limit 1";
         long checkinId = jdbcTemplate.queryForObject(sqlSelectActiveCheckin, Long.class, userID);
         return  checkinId;
+    }
+
+    public float getTimeSinceJoined(Long userId){
+        String sqlSelectTimeSinceJoined = "SELECT check_in FROM gym_checkin where user_id = ? order by check_in asc limit 1 ";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectTimeSinceJoined, userId);
+        if (result.next()){
+            float timeSinceJoined = ChronoUnit.DAYS.between((result.getDate("check_in").toLocalDate()), LocalDate.now());
+            if(timeSinceJoined >= 365){
+                timeSinceJoined = timeSinceJoined/365;
+                return timeSinceJoined;
+            } else {
+                return timeSinceJoined;
+            }
+        }
+
+        return 0;
     }
 
     public GymCheckin getCheckinObject (long userID){
