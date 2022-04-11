@@ -22,6 +22,7 @@
 <%--===================================================================--%>
 
 </head>
+<main>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <img class="logoImg" src="${pageContext.request.contextPath}/img/Logo.png" alt="Workout Planner Logo">
@@ -43,7 +44,7 @@
                     <li><a href="${checkinoutUrl}">Check In/Out User</a></li>
                     <c:url var="workoutLogUrl" value="/workOutMetricsOfEmp"/>
                     <li><a href="${workoutLogUrl}">View Workout Log</a></li>
-                    <c:url var="visitMetricUrl" value="/visitMetricAdmin"/>
+                    <c:url var="visitMetricUrl" value="/workoutAdmin"/>
                     <li><a href="${visitMetricUrl}">User Visit Metric</a></li>
                     <c:url var="scheduleClassUrl" value="/scheduleClassAdmin"/>
                     <li><a href="${scheduleClassUrl}">Schedule Class</a></li>
