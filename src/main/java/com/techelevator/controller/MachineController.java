@@ -1,7 +1,5 @@
 package com.techelevator.controller;
 
-import com.techelevator.authentication.AuthProvider;
-import com.techelevator.authentication.UnauthorizedException;
 import com.techelevator.dao.JdbcMachineDao;
 import com.techelevator.model.Machine;
 import com.techelevator.model.User;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,13 +23,14 @@ public class MachineController {
     User user = new User();
 
     @RequestMapping("/viewMachines")
-    public String showMachines(@RequestParam(required = false) String machineName, @RequestParam int machineUsage, ModelMap map) /*throws UnauthorizedException*/ {
+    public String showMachines(@RequestParam(required = false) String machineName, /*@RequestParam int machineUsage*/ ModelMap map) /*throws UnauthorizedException*/ {
 
         if (machineName == null) {
+            jdbcMachineDao.updateMachineUsage();
             List<Machine> machines = jdbcMachineDao.getMachines();
-            List<Machine> usageOfMachine = jdbcMachineDao.getMachineUsage(machineUsage);
+            /*List<Machine> usageOfMachine = jdbcMachineDao.updateMachineUsage(machineUsage);*/
             map.put("machines", machines);
-            map.put("machineUsages", usageOfMachine);
+            /*map.put("machineUsages", usageOfMachine);*/
         } else {
             map.put("machines", jdbcMachineDao.getMachinesByName(machineName));
         }
