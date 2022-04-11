@@ -37,9 +37,12 @@ public class JdbcMachineDao implements MachineDao {
     }
 
     @Override
-    public List<Machine> getMachineUsage(){
-        return template.query("select machine_name, count(date) as usage from equipment_log join machine  on equipment_log.machine_id = machine.id where machine_name ilike ?",new MachineRowMapper());
+    public List<Machine> getMachineUsage(int machineUsage){
+        String sql = "update machine set total_usage = (select count(duration) from equipment_log where machine_id = ?) where machine.id = ?";
+        template.update(sql, machineUsage);
+        return template.query("select total_usage from machine where machine.id = ?", new MachineRowMapper());
     }
+
 
 
     @Override
@@ -60,6 +63,7 @@ class MachineRowMapper implements RowMapper<Machine> {
         machine.setMachineName(result.getString("machine_name"));
         machine.setMachineType(result.getString("machine_type"));
         machine.setMachineReference(result.getString("machine_reference"));
+        machine.setMachineUsage(result.getInt("total_usage"));
         return machine;
     }
 }
