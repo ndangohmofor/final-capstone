@@ -8,7 +8,7 @@ public interface MachineDao {
     List<Machine> getMachines();
     List<Machine> getMachinesByName(String machineName);
     List<Machine> getMachinesByType(String machineType);
-    List<Machine> getMachineUsage(int machineUsage);
-    void addMachine(String machineName, String machineType, String machineReference);
+    void updateMachineUsage();
+    void addMachine(String machineName, String machineType, String machineReference, int machineUsage);
 
 }
