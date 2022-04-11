@@ -27,12 +27,13 @@ public class MachineController {
     User user = new User();
 
     @RequestMapping("/viewMachines")
-    public String showMachines(@RequestParam(required = false) String machineName, ModelMap map) /*throws UnauthorizedException*/ {
+    public String showMachines(@RequestParam(required = false) String machineName, @RequestParam int machineUsage, ModelMap map) /*throws UnauthorizedException*/ {
 
         if (machineName == null) {
             List<Machine> machines = jdbcMachineDao.getMachines();
+            List<Machine> usageOfMachine = jdbcMachineDao.getMachineUsage(machineUsage);
             map.put("machines", machines);
-
+            map.put("machineUsages", usageOfMachine);
         } else {
             map.put("machines", jdbcMachineDao.getMachinesByName(machineName));
         }
@@ -63,12 +64,14 @@ public class MachineController {
     }
 
     @RequestMapping(value = "/viewMachineInfo")
-    public String viewMachineInfo(ModelMap model, HttpSession session) {
+    public String viewMachineInfo(ModelMap model) {
         List<Machine> machines = jdbcMachineDao.getMachines();
-        User user = (User) session.getAttribute("user");
-        Machine machine = new Machine();
+
         model.put("machines", machines);
+
         return "machineInfo";
     }
+
+
 
 }

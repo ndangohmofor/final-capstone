@@ -7,7 +7,15 @@ public class Machine {
   private String machineName;
   private String machineType;
   private String machineReference;
+  private int machineUsage;
 
+  public int getMachineUsage() {
+    return machineUsage;
+  }
+
+  public void setMachineUsage(int machineUsage) {
+    this.machineUsage = machineUsage;
+  }
 
   public long getId() {
     return id;
