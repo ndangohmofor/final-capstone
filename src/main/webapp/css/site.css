@@ -296,6 +296,7 @@ a.btn-primary {
     background-color: forestgreen;
     border-color: #734eb5;
 }
+/*Profile page Css*/
 .profile-body{
     margin-top: 20px;
     background-color: white;
@@ -313,12 +314,12 @@ a.btn-primary {
 .card-body img{
     border-radius: 50%;
 }
-.card{
+.card-profile{
     position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 15px;
-    border-radius: 25px;
+    border-radius: 20px;
     padding: 20px;
 }
 .content{
@@ -333,4 +334,7 @@ a.btn-primary {
     list-style-type: none;
     color: white;
     font-size: 16px;
+}
+.profile-header{
+    text-align: center;
 }
