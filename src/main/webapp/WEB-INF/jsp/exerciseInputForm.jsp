@@ -7,14 +7,6 @@
 
 <c:url var="exerciseFormUrl" value="/exerciseInputForm"/>
 <form:form action="${exerciseFormUrl}" method="POST" modelAttribute="log">
-<%--    <div class="mb-3">--%>
-<%--        <label for=machineType>Workout Type</label>--%>
-<%--        <form:select id="machineType" class="form-control" path="machineType">--%>
-<%--            <option value="option" selected>Please Select workout type</option>--%>
-<%--            <option value="cardio">Cardio</option>--%>
-<%--            <option value="weights">Weights</option>--%>
-<%--        </form:select>--%>
-<%--    </div>--%>
     <div class="mb-3">
         <label for="machineId">Machines</label>
         <form:select id="machineId" path="machineId" class="form-control">

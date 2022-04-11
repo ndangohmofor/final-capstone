@@ -19,8 +19,6 @@
                     </div>
                 </div>
             </div>
-            <%--            <c:url var="photoUrl" value="/profile/image?id=${profile.id}"/>--%>
-            <%--            <img src="${photoUrl}"/>--%>
         </div>
         <div class="col-md-8 mt-1">
             <div class="card mb-3 content">
