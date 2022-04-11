@@ -90,6 +90,9 @@
                             <td><a href="workoutDetails?workoutId=${workout.id}">Further Details</a></td>
                         </tr>
                     </c:forEach>
+                    <tr>
+                        <th scope="row" rowspan="4"><a href="allWorkoutClasses">View all classes</a></th>
+                    </tr>
                     </tbody>
                 </table>
             </section>
