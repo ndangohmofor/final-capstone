@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import org.springframework.util.StringUtils;
+
 import java.time.LocalDateTime;
 
 public class WorkoutMetrics {
@@ -40,6 +42,8 @@ public class WorkoutMetrics {
     public String getMachineName() {
         return machineName;
     }
+
+    public String getCapitalizedMachineName() { return StringUtils.capitalize(machineName); }
 
     public void setMachineName(String machineName) {
         this.machineName = machineName;

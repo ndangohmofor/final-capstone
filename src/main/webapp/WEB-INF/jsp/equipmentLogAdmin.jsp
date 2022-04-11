@@ -5,7 +5,7 @@
 <body>
 <div>
 
-    <h2>Workout Log</h2>
+    <h2 class="profile-header">Workout Log</h2>
 <c:url var="workoutLogAdminUrl" value="/workoutAdminSearch"/>
     <div>
         <form action="${workoutLogAdminUrl}" method="GET">
@@ -14,12 +14,10 @@
                 <input type="text" placeholder="Search By Last Name" class="form-control" id="input" name="input"/>
             </div>
             <div>
-                <input type="submit" placeholder="Search"/>
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>
     </div>
-
-<%--    <c:out value="${message}"/>--%>
 
     <table class="table table-striped">
         <thead>

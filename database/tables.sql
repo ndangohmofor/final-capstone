@@ -28,7 +28,8 @@ CREATE TABLE machine (
     id SERIAL PRIMARY KEY,
     machine_name varchar(50) NOT NULL,
     machine_type varchar(50) NOT NULL,
-    machine_reference varchar(250)
+    machine_reference varchar(250),
+    total_usage integer
 );
 
 CREATE TABLE equipment_log (

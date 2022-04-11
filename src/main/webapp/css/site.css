@@ -189,6 +189,17 @@ div.right-aside {
     border-color: #ffb74d;
 }
 
+.btn-logOff:hover {
+    color: #fff;
+    background-color: #e64a19;
+    border-color: #ffb74d;
+}
+.btn-logOff {
+    color: #fff;
+    background-color: #ffb74d;
+    border-color: #f57c00;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #ffb74d;
@@ -291,11 +302,11 @@ footer {
     margin-top: 50px;
 }
 
-a.btn-primary {
+/*a.btn-primary {
     margin: 5px;
     background-color: forestgreen;
     border-color: #734eb5;
-}
+}*/
 /*Profile page Css*/
 .profile-body{
     margin-top: 20px;
@@ -321,6 +332,7 @@ a.btn-primary {
     margin-top: 15px;
     border-radius: 20px;
     padding: 20px;
+    border: solid orange;
 }
 .content{
     background-color: #251552;
@@ -337,4 +349,14 @@ a.btn-primary {
 }
 .profile-header{
     text-align: center;
+}
+.form-container{
+    padding: 20px;
+    border: solid orange;
+    border-spacing: 5px;
+    border-radius: 20px;
+    margin: 20px 50px 20px 50px;
+    overflow: auto;
+    scrollbar-shadow-color: #333333;
+    background-color: aliceblue;
 }

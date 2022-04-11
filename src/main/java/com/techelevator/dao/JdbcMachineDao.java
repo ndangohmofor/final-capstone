@@ -39,7 +39,7 @@ public class JdbcMachineDao implements MachineDao {
     @Override
     public void updateMachineUsage(){
         String sql = "update machine\n" +
-                "set total_usage = (select sum(duration) from equipment_log  where machine_id = machine.id)";
+                "set total_usage = (select sum(duration) from equipment_log  where machine_id = machine.id order by total_usage desc)";
         template.update(sql);
 
     }
