@@ -112,4 +112,11 @@ public class WorkoutClassController {
         workoutClassDao.cancelWorkoutClass(workoutId);
         return "redirect:/scheduleClassAdmin";
     }
+
+    @RequestMapping(path = "allWorkoutClasses")
+    public String viewAllWorkoutClasses(ModelMap modelHolder){
+        List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
+        modelHolder.put("workouts", workouts);
+        return "allWorkoutClasses";
+    }
 }
