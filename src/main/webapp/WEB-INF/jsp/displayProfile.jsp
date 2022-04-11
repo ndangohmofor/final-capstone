@@ -6,9 +6,9 @@
 <body class="profile-body">
 <div class="container">
 
-    <div class="main">
+    <div class="main-profile">
         <div class="row">
-            <div class="col-md-4 mt-1">
+            <div class="col-md-3 mt-1">
                 <div class="card-profile text-center sidebar">
                     <div class="card-body">
                         <c:url var="photoUrl" value="/profile/image?id=${profile.id}"/>
