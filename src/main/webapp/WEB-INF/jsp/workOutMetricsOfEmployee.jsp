@@ -1,4 +1,16 @@
-<%@ include file="common/header.jspf" %>
+<%@ include file="common/headerAdmin.jspf" %>
+
+
+<c:url var="workOutMetricsOfEmpUrl" value="/workOutMetricsOfEmp"/>
+<form action="${workOutMetricsOfEmpUrl}" method="POST">
+    <div class="form-group">
+        <label for="userName">UserName</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+    </div>
+
+    <button type="submit" class="btn btn-default">Get User Workout Metrics</button>
+</form>
+
 
 <div>
 
@@ -27,7 +39,7 @@
         </tbody>
     </table>
 
-    </form>
+
 </div>
 
-<%@ include file="common/footer.jspf" %>
+    <%@ include file="common/footer.jspf" %>
