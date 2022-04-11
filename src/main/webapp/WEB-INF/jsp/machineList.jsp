@@ -25,7 +25,7 @@
             <td>${machine.id}</td>
             <td>${machine.machineName}</td>
             <td>${machine.machineType}</td>
-            <td>${machineUsages}</td>
+            <td>${machine.machineUsage}</td>
 
         </tr>
     </c:forEach>
