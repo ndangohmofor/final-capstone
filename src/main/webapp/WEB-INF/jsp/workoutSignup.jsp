@@ -17,7 +17,7 @@
                     <tbody>
                     <tr>
                         <th scope="rowgroup">Date & Time:</th>
-                        <th scope="row"><c:out value="${workout.date}"/></th>
+                        <th scope="row"><c:out value="${workout.date.toLocalDate()} ${workout.date.toLocalTime()}"/></th>
                     </tr>
                     <tr>
                         <th scope="rowgroup">Class Duration:</th>
