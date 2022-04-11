@@ -19,9 +19,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th scope="col">Check In</th>
+            <th scope="col">Check Out</th>
             <th scope="col">Machine</th>
-            <th scope="col">Date</th>
-            <th scope="col">Duration</th>
             <th scope="col">Weight</th>
             <th scope="col">Reps</th>
         </tr>
@@ -29,9 +29,9 @@
         <tbody>
         <c:forEach var="displayLog" items="${log}">
             <tr>
+                <td><c:out value="${displayLog.checkIn}"/></td>
+                <td><c:out value="${displayLog.checkOut}"/></td>
                 <td><c:out value="${displayLog.machineName}"/></td>
-                <td><c:out value="${displayLog.date}"/></td>
-                <td><c:out value="${displayLog.duration}"/></td>
                 <td><c:out value="${displayLog.weight}"/></td>
                 <td><c:out value="${displayLog.reps}"/></td>
             </tr>
