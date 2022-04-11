@@ -353,6 +353,7 @@ footer {
 /*    padding: 50px;*/
 /*    position: relative;*/
 /*    display: contents;*/
+/*    max-width: content-box;*/
 /*}*/
 .form-container{
     padding: 20px;
