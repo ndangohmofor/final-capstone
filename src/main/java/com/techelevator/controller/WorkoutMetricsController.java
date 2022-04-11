@@ -1,8 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.JdbcEquipmentLogDao;
+import com.techelevator.dao.JdbcWorkoutMetricsDao;
+import com.techelevator.dao.WorkoutMetricsDao;
 import com.techelevator.model.EquipmentLog;
 import com.techelevator.model.User;
+import com.techelevator.model.WorkoutMetrics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,13 +20,13 @@ import java.util.List;
 public class WorkoutMetricsController {
 
     @Autowired
-    JdbcEquipmentLogDao equipmentLogDao;
+    JdbcWorkoutMetricsDao workoutMetricsDao;
 
     @RequestMapping(value = "/workOutMetrics", method = RequestMethod.GET)
     public String getWorkOutMetricsPage(ModelMap modelHolder, HttpSession session) {
         System.out.println("getWorkOutMetricsPage -- GET method ");
         User user = (User) session.getAttribute("user");
-        List<EquipmentLog> logs = equipmentLogDao.getEquipmentLogByUser(user.getId());
+        List<WorkoutMetrics> logs = workoutMetricsDao.getWorkoutMetricsByUser(user.getUsername());
         modelHolder.put("log", logs);
         return  "workOutMetrics";
     }
@@ -38,7 +41,7 @@ public class WorkoutMetricsController {
     @RequestMapping(value = "/workOutMetricsOfEmp", method = RequestMethod.POST)
     public String getWorkOutMetricsOfEmployee(@RequestParam String username, ModelMap modelHolder, HttpSession session) {
         System.out.println("workOutMetricsOfEmp -- POSt "+username);
-        List<EquipmentLog> logs = equipmentLogDao.getEquipmentLogByUserName(username);
+        List<WorkoutMetrics> logs = workoutMetricsDao.getWorkoutMetricsByUser(username);
         modelHolder.put("log", logs);
         System.out.println("this is workOutMetricsOfEmp -- POST method data : "+logs.size()+" and "+logs);
         return "workOutMetricsOfEmployee";
