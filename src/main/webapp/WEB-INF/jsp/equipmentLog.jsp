@@ -30,7 +30,7 @@
         </tbody>
     </table>
 
-    <c:url var="exerciseInputUrl" value="/exerciseInput"/>
+    <c:url var="exerciseInputUrl" value="/exerciseInputForm"/>
     <form action="${exerciseInputUrl}" method="get">
         <button class="btn btn-primary" type="submit"><a href="${exerciseInputUrl}"></a>Add WorkOut</button>
     </form>

@@ -5,6 +5,7 @@ import com.techelevator.authentication.UnauthorizedException;
 import com.techelevator.dao.JdbcEquipmentLogDao;
 import com.techelevator.model.EquipmentLog;
 import com.techelevator.model.User;
+import com.techelevator.model.UserProfile;
 import org.bouncycastle.math.raw.Mod;
 import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -33,9 +35,9 @@ public class EquipmentLogController {
     @Autowired
     private AuthProvider auth;
 
-    @RequestMapping (value = "/exerciseLog", method = RequestMethod.GET)
-    public String displayExerciseLog (HttpSession session, ModelMap modelMap, RedirectAttributes flash){
-        if (auth.userHasRole(new String[] { "admin", "user" })) {
+    @RequestMapping(value = "/exerciseLog", method = RequestMethod.GET)
+    public String displayExerciseLog(HttpSession session, ModelMap modelMap, RedirectAttributes flash) {
+        if (auth.userHasRole(new String[]{"admin", "user"})) {
             User user = (User) session.getAttribute("user");
             List<EquipmentLog> el = equipmentLogDao.getEquipmentLogByUser(user.getId());
             modelMap.put("log", el);
@@ -47,35 +49,33 @@ public class EquipmentLogController {
         }
     }
 
-    @RequestMapping (path = "/exerciseInput", method = RequestMethod.GET)
-    public String displayExerciseInputForm (HttpSession session) throws UnauthorizedException {
-        if (auth.userHasRole(new String[] { "admin", "user" })) {
-            return "exerciseInputForm";
-        } else {
-            throw new UnauthorizedException();
+    @RequestMapping(value = "/exerciseInputForm", method = RequestMethod.GET)
+    public String displayWorkoutInputForm(ModelMap modelHolder, HttpSession session) {
+        if (!modelHolder.containsAttribute("log")) {
+            modelHolder.put("log", new EquipmentLog());
         }
-
+        return "exerciseInputForm";
     }
 
-    @RequestMapping (path = "/exerciseInput", method = RequestMethod.POST)
-    public String submitExerciseInputForm (@Valid @ModelAttribute("log") EquipmentLog log, HttpSession session,
-                                           @RequestParam  long duration, @RequestParam long weight, @RequestParam long reps, @RequestParam long machineId,
-                                           BindingResult result, RedirectAttributes flash){
+    @RequestMapping(path = "/exerciseInputForm", method = RequestMethod.POST)
+    public String displayWorkoutInputForm(@Valid @ModelAttribute EquipmentLog equipmentLog, BindingResult result, RedirectAttributes flash, HttpSession session) {
         if (result.hasErrors()) {
-            flash.addFlashAttribute("log", log);
+            flash.addFlashAttribute("log", equipmentLog);
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "log", result);
-            flash.addFlashAttribute("message", "Please fix the following errors:");
+            flash.addFlashAttribute("message", "Please fill in the boxes:");
             return "redirect:/exerciseInputForm";
+        } else {
+            User user = (User) session.getAttribute("user");
+            LocalDateTime dateTime = LocalDateTime.now();
+            equipmentLogDao.addExerciseToLog(equipmentLog.getDuration(), dateTime, equipmentLog.getReps(), equipmentLog.getWeight(), user.getId(), equipmentLog.getMachineId());
+            flash.addFlashAttribute("message", "Workout Added");
+            return "redirect:/exerciseLog";
         }
-        LocalDateTime dateTime = LocalDateTime.now();
-        User user = (User) session.getAttribute("user");
-        equipmentLogDao.addExerciseToLog(duration,dateTime,reps,weight,user.getId(),machineId);
-        return "redirect:/exerciseLog";
     }
 
-    @RequestMapping (value = "/workoutAdmin", method = RequestMethod.GET)
-    public String searchExerciseLogAdmin (HttpSession session) throws UnauthorizedException {
-        if (auth.userHasRole(new String[] { "admin"})) {
+    @RequestMapping(value = "/workoutAdmin", method = RequestMethod.GET)
+    public String searchExerciseLogAdmin(HttpSession session) throws UnauthorizedException {
+        if (auth.userHasRole(new String[]{"admin"})) {
             User user = (User) session.getAttribute("user");
             return "equipmentLogAdmin";
         } else {
@@ -84,8 +84,8 @@ public class EquipmentLogController {
     }
 
 
-    @RequestMapping (value = "/workoutAdminSearch", method = RequestMethod.GET)
-    public String displayExerciseLogAdmin (HttpSession session, ModelMap modelMap, RedirectAttributes flash, @RequestParam String input){
+    @RequestMapping(value = "/workoutAdminSearch", method = RequestMethod.GET)
+    public String displayExerciseLogAdmin(HttpSession session, ModelMap modelMap, RedirectAttributes flash, @RequestParam String input) {
         User user = (User) session.getAttribute("user");
         List<EquipmentLog> el = equipmentLogDao.getUserLogsByName(input);
 //        modelMap.put("log", el);

@@ -10,6 +10,7 @@ import sun.awt.EventQueueItem;
 
 import javax.sql.DataSource;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class JdbcEquipmentLogDao implements EquipmentLogDao {
         String logSql = "SELECT *\n" +
                 "FROM equipment_log\n" +
                 "JOIN machine on equipment_log.machine_id = machine.id\n" +
-                "WHERE user_id = ?;";
+                "WHERE user_id = ? ORDER BY date DESC;";
         SqlRowSet results = template.queryForRowSet(logSql, userId);
         while (results.next()) {
             log.add(mapToRowEquipmentLog(results));
