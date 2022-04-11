@@ -19,9 +19,9 @@ public class JdbcEditProfileDao implements EditProfileDao {
     public JdbcEditProfileDao(DataSource dataSource) {this.template = new JdbcTemplate(dataSource);}
 
     @Override
-    public void updateProfile (String firstName, String lastName, String goal, String email,long id) {
-    String sqlUserUpdate = "UPDATE user_profile SET first_name = ?, last_name= ?, goal = ?, email= ? WHERE user_id = ?";
-    template.update(sqlUserUpdate, firstName, lastName, goal, email, id);
+    public void updateProfile (String firstName, String lastName, String goal, String email,long id, byte[] photo ) {
+    String sqlUserUpdate = "UPDATE user_profile SET first_name = ?, last_name= ?, photo=?,goal = ?, email= ? WHERE user_id = ?";
+    template.update(sqlUserUpdate, firstName, lastName, photo, goal, email, id);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class JdbcEditProfileDao implements EditProfileDao {
         userProfile.setFirstName(results.getString("first_name"));
         userProfile.setLastName(results.getString("last_name"));
         userProfile.setEmail(results.getString("email"));
-//        userProfile.setPhoto((byte[]) results.getObject("photo"));
+        userProfile.setPhoto((byte[]) results.getObject("photo"));
         userProfile.setGoal(results.getString("goal"));
         userProfile.setUserId(results.getLong("user_id"));
         return userProfile;
