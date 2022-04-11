@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="common/header.jspf" %>
 
 <body>
 <div>
 
-    <h2>Workout Log</h2>
+    <h2 class="profile-header">Workout Log</h2>
 
     <table class="table table-striped">
         <thead>
@@ -21,7 +22,7 @@
         <c:forEach var="displayLog" items="${log}">
             <tr>
                 <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
-                <td><c:out value="${displayLog.date}"/></td>
+                <td><c:out value="${displayLog.date.toLocalDate()} ${displayLog.date.toLocalTime().withNano(0)}"/></td>
                 <td><c:out value="${displayLog.duration}"/></td>
                 <td><c:out value="${displayLog.weight}"/></td>
                 <td><c:out value="${displayLog.reps}"/></td>
