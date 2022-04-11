@@ -38,6 +38,17 @@ public class JdbcEquipmentLogDao implements EquipmentLogDao {
         return log;
     }
 
+    public List<EquipmentLog> getEquipmentLogByUserName(String userName) {
+        List<EquipmentLog> log = new ArrayList<EquipmentLog>();
+        String logSql = "select * from equipment_log e join machine m on e.machine_id = m.id join app_user u on e.user_id=u.id and u.user_name= ?";
+        SqlRowSet results = template.queryForRowSet(logSql, userName);
+        while (results.next()) {
+            log.add(mapToRowEquipmentLog(results));
+        }
+        return log;
+
+    }
+
     @Override
     public void addExerciseToLog(long duration, LocalDateTime date, long reps, long weight, long userId, long machineId) {
         String sql = "insert into equipment_log(duration, date, reps, weight, user_id, machine_id) values (?,?,?,?,?,?);";

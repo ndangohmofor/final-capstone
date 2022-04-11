@@ -67,7 +67,7 @@
 
 <%--Beginning of classes--%>
 
-    <div class="col-lg-12">
+    <div class="animate__animated animate__shakeX col-lg-12"  id="calendar">
         <aside class="workoutSchedules">
             <section>
                 <a name="upcomingClasses"></a>

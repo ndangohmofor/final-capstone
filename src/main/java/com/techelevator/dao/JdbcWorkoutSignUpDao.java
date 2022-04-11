@@ -19,7 +19,7 @@ public class JdbcWorkoutSignUpDao implements WorkoutSignUpDao {
     @Override
     public void signUpForWorkout(long userId, long workoutId) {
         String sql = "INSERT INTO workout_user (workout_id, user_id) VALUES (?, ?);";
-        jdbcTemplate.update(sql, userId, workoutId);
+        jdbcTemplate.update(sql, workoutId, userId);
     }
 
     @Override

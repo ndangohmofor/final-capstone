@@ -41,7 +41,7 @@
                 <ul class="nav navbar-nav">
                     <c:url var="checkinoutUrl" value="/checkinOutAdmin"/>
                     <li><a href="${checkinoutUrl}">Check In/Out User</a></li>
-                    <c:url var="workoutLogUrl" value="/workoutAdmin"/>
+                    <c:url var="workoutLogUrl" value="/workOutMetricsOfEmp"/>
                     <li><a href="${workoutLogUrl}">View Workout Log</a></li>
                     <c:url var="visitMetricUrl" value="/visitMetricAdmin"/>
                     <li><a href="${visitMetricUrl}">User Visit Metric</a></li>

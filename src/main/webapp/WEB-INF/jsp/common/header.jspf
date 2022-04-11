@@ -8,7 +8,11 @@
     <title><c:out value="${pageTitle}"/>Workout Planner</title>
 
 <%--if you don't want to use the Bootstrap 4 framework comment out all the lines up to the ====== below--%>
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
         <c:url var="cssUrl" value="/css/site.css"/>
         <link rel="stylesheet" href="${cssUrl}" />
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -26,7 +30,7 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <img class="logoImg" src="${pageContext.request.contextPath}/img/Logo.png" alt="Workout Planner Logo">
-        <h2 class="appTitle">Workout Planner</h2>
+        <h2 class="animate__animated animate__bounce appTitle">Workout Planner</h2>
         <div class="container nav-div">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
