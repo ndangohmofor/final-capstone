@@ -39,7 +39,7 @@
             <form:input type="text" path="reps" id="reps" value="0" class="form-control"/>
             <form:errors path="reps" cssClass="bg-danger"/>
         </div>
-        <button type="submit" class="btn btn-default">Add Workout</button>
+        <button type="submit" class="btn btn-primary">Add Workout</button>
     </div>
 </form:form>
 

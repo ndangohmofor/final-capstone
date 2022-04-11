@@ -65,7 +65,7 @@
                         <li><a href="${registerUrl}">Register User</a></li>
                         <li>
                             <form action="${logoffUrl}" method="POST" class="navbar-form">
-                                <button type="submit" class="btn btn-primary">Log Off</button>
+                                <button type="submit" class="btn btn-logOff">Log Off</button>
                             </form>
                         </li>
                     </c:if>
