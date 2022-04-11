@@ -34,7 +34,7 @@
                             <c:url value="/register" var="register"/>
                             <h1>Join the fun</h1>
                             <h4>Sign up today and start your workout journey with us!</h4>
-                            <p><a class="btn btn-lg btn-primary" href="${register}" role="button">Register</a></p>
+                            <p><a class="btn btn-lg btn-primary " href="${register}" role="button">Register</a></p>
                         </div>
                     </div>
                 </div>

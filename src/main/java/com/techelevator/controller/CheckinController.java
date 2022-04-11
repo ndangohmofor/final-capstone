@@ -35,10 +35,11 @@ public class CheckinController {
     private AuthProvider auth;
 
     @RequestMapping(path = "/checkin", method = RequestMethod.GET)
-    public String displayCheckinPage(ModelMap model, HttpSession session, RedirectAttributes flash, ModelMap checkinLogModel) throws UnauthorizedException {
+    public String displayCheckinPage(ModelMap model, HttpSession session, RedirectAttributes flash, ModelMap checkinLogModel, ModelMap avgSessionModel) throws UnauthorizedException {
         if(auth.userHasRole(new String[] {"admin","user"})) {
             User user = (User) session.getAttribute("user");
             checkinLogModel.put("checkinLog", jdbcGymCheckinDao.getTimeSinceJoined(user.getId()));
+            avgSessionModel.put("avgTime", jdbcGymCheckinDao.getAvgCheckinTimes(user.getId()));
 
             if ((jdbcGymCheckinDao.getNumberOfCheckins(user.getId()) >= 1)) {
                 flash.addFlashAttribute("message", "You have an open checkin. Please checkout before checking in again.");
