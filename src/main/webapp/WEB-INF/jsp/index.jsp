@@ -145,7 +145,8 @@
             <div class="caption">
                 <h3>Classes</h3>
                 <p class="thumbnailboxsize">Try any class you want, then another . . . and another. All classes are complimentary to you.</p>
-                <p><a href="#upcomingClasses" class="btn btn-primary" role="button">View Classes</a></p>
+                <c:url var="viewAllClassesUrl" value="/allWorkoutClasses"/>
+                <p><a href="${viewAllClassesUrl}" class="btn btn-primary" role="button">View Classes</a></p>
             </div>
         </div>
     </div>
