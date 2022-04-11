@@ -9,6 +9,6 @@ public interface MachineDao {
     List<Machine> getMachinesByName(String machineName);
     List<Machine> getMachinesByType(String machineType);
     void updateMachineUsage();
-    void addMachine(String machineName, String machineType, String machineReference, int machineUsage);
+    void addMachine(String machineName, String machineType, String machineReference);
 
 }
