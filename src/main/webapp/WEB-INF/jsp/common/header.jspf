@@ -49,7 +49,7 @@
                     <c:url var="aboutUrl" value="/about"/>
                     <li><a href="${aboutUrl}">About</a></li>
                     <c:url var="privateUrl" value="/private"/>
-                    <li><a href="${privateUrl}">Private</a></li>
+                    <%--<li><a href="${privateUrl}">Private</a></li>--%>
                     <%--<c:url var="createAccountUrl" value="/createAccount"/>
                     <li><a href="${createAccountUrl}">Create Account</a></li>--%>
                     <c:url var="userCheckinOutUrl" value="/checkin"/>
@@ -69,7 +69,7 @@
                         <li><a id="Register" href="${registerUrl}">Register</a></li>
                     </c:if>
                     <c:if test="${not empty user}">
-                        <li><a href="${profileUrl}"><c:out value="${user.capitalizedUsername}"/></a></li>
+                        <li><a href="${profileUrl}"><c:out value="${user.capitalizedUsername}"/><br><c:out value="${user.role}"/></a></li>
                         <c:url var="logoffUrl" value="/logoff"/>
                         <li>
                             <form action="${logoffUrl}" method="POST" class="navbar-form">
