@@ -78,13 +78,18 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         return Period.ZERO;
     }
 
-    public String getAvgCheckinTimes(Long userId){
-        String sqlAvgSessionTime = "SELECT avg(check_out - check_in) as average_session from gym_checkin where user_id = ?";
+    public String[] getAvgCheckinTimes(Long userId){
+        /*String sqlAvgSessionTime = "SELECT avg(check_out - check_in) as average_session from gym_checkin where user_id = ?";*/
+        String sqlAvgSessionTime = "SELECT concat(to_char(avg(check_out - check_in), 'HH:MI'))as average_session from gym_checkin where user_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlAvgSessionTime, userId);
         String sessionResult;
+        int hours;
+        int minutes;
+        String[] time = new String[2];
         if(result.next()){
             sessionResult = result.getString("average_session");
-            return sessionResult;
+            time = sessionResult.split(":");
+            return time;
         }
 
         return null;
