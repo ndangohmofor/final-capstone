@@ -65,7 +65,11 @@ public class CheckinController {
     }
 
     @RequestMapping(path = "/checkin", method = RequestMethod.POST)
-    public String createCheckin(ModelMap checkin, HttpSession session, RedirectAttributes flash) throws UnauthorizedException{
+    public String createCheckin(ModelMap checkin, HttpSession session, RedirectAttributes flash,
+                                ModelMap checkinLogModel,
+                                ModelMap avgSessionModel,
+                                ModelMap hourModel,
+                                ModelMap minuteModel) throws UnauthorizedException{
         if(auth.userHasRole(new String[] {"admin","user"})) {
             User user = (User) session.getAttribute("user");
 
@@ -78,6 +82,13 @@ public class CheckinController {
             }
 
             flash.addAttribute("message", "Checkin was successful! Don't forget to checkout once you are finished with your workout.");
+
+            /*TRYING TO PASS THROUGH METRICS*/
+            checkinLogModel.put("checkinLog", jdbcGymCheckinDao.getTimeSinceJoined(user.getId()));
+            avgSessionModel.put("avgTime", jdbcGymCheckinDao.getAvgCheckinTimes(user.getId()));
+            String[] time = jdbcGymCheckinDao.getAvgCheckinTimes(user.getId());
+            hourModel.put("hours",time[0]);
+            minuteModel.put("minutes",time[1]);
             return "checkout";
         } else {
             flash.addFlashAttribute("message", "Please login to access this page");
