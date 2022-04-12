@@ -321,7 +321,7 @@ nav>li>a:hover {/*EDIT*/
 main{
     display: block;
     position: relative;
-    min-height: 90vh;
+    min-height: 120vh;
 }
 footer {
     position: relative;
@@ -427,12 +427,12 @@ div.container.d-flex.justify-content-center.py-5 {
     font-family: Arial;
     height:100vh;
     background-image: url("../img/bgtest.png");
-    overflow: hidden;
+    overflow: auto;
     background-size: cover;
 }
 .center{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -505,7 +505,7 @@ form .text-field{
 }
 .centerRegister{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -629,7 +629,7 @@ form .registerForm-group{
     overflow: auto;
     background-size: cover;
 }
-.centerAccount{
+/*.centerAccount{
     position: absolute;
     top: 50%;
     left:50%;
@@ -638,7 +638,7 @@ form .registerForm-group{
     background: white;
     border-radius: 10px;
     height: 400px;
-}
+}*/
 .centerAccount{
     position: absolute;
     top: 50%;
@@ -678,7 +678,7 @@ form .infoform-group{
     background: none;
     outline: none;
 }
-.form-group label{
+.infoform-group label{
     position: absolute;
     top: 65px;
     left: 5px;
@@ -686,6 +686,9 @@ form .infoform-group{
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
+}
+label.goalLabel {
+    margin-top: 170px;
 }
 
 .infobtn{
