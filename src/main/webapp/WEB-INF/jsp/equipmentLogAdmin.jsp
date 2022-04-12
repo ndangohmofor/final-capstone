@@ -10,8 +10,8 @@
     <div>
         <form action="${workoutLogAdminUrl}" method="GET">
             <div>
-                <label for="input">Search Member</label>
-                <input type="text" placeholder="Search By Last Name" class="form-control" id="input" name="input"/>
+                <label for="input">Search Username</label>
+                <input type="text" placeholder="Search By Username" class="form-control" id="input" name="input"/>
             </div>
             <br>
             <div>
