@@ -15,7 +15,6 @@
             </div>
             <div class="col-lg-6">
                 <div class="aboutus-banner">
-                    <img src="http://themeinnovation.com/demo2/html/build-up/img/home1/about1.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -23,7 +22,7 @@
                     <div class="feature-box">
                         <div class="clearfix">
                             <div class="iconset">
-                                <span class="glyphicon glyphicon-cog icon"></span>
+                                <span class="glyphicon glyphicon-eye-open icon"></span>
                             </div>
                             <div class="feature-content">
                                 <h4>Our Vision & Mission</h4>
@@ -34,10 +33,10 @@
                     <div class="feature-box">
                         <div class="clearfix">
                             <div class="iconset">
-                                <span class="glyphicon glyphicon-cog icon"></span>
+                                <span class="glyphicon glyphicon-th-list icon"></span>
                             </div>
                             <div class="feature-content">
-                                <h4>Reliable services</h4>
+                                <h4>Reliable Workout Plans</h4>
                                 <p>Donec vitae sapien ut libero venenatis faucibu. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt</p>
                             </div>
                         </div>
