@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.authentication.AuthProvider;
 import com.techelevator.dao.JdbcMachineDao;
 import com.techelevator.model.Machine;
 import com.techelevator.model.User;
@@ -9,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class MachineController {
 
     @Autowired
     JdbcMachineDao jdbcMachineDao;
+
+    @Autowired
+    private AuthProvider auth;
 
 
     User user = new User();
@@ -49,9 +54,13 @@ public class MachineController {
     }
 
     @RequestMapping(value = "/addMachine", method = RequestMethod.GET)
-    public String showAddMachineForm(ModelMap model) {
+    public String showAddMachineForm(ModelMap model, RedirectAttributes flash) {
         model.put("types", jdbcMachineDao.getMachines());
-        return "machineInput";
+        if (auth.isLoggedIn()) {
+            return "machineInput";
+        }
+        flash.addFlashAttribute("message", "Please login to proceed");
+        return "redirect:/login";
     }
 
     @RequestMapping(name = "/addMachine", method = RequestMethod.POST)
@@ -68,7 +77,6 @@ public class MachineController {
 
         return "machineInfo";
     }
-
 
 
 }
