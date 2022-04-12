@@ -573,22 +573,62 @@ form .form-group{
 
 
 /*checkin*/
-#checkin-container{
-    padding: 20px;
+#checkin-container {
+    padding: 5vh 2vw 52vh 2vw;
     border: solid orange;
     border-spacing: 5px;
     border-radius: 20px;
-    margin: 20px 350px 20px 350px;
-    overflow: auto;
+    margin: 5vh 4vw 5vh 4vw;
+    overflow-wrap: break-word;
+    /* overflow: auto; */
     scrollbar-shadow-color: #333333;
     background-color: aliceblue;
     float: left;
+    width: 21vw;
+    height: 70vh;
 }
 
-#visit-metrics-section{
-    float: right
+#visit-metrics-section {
+    padding: 5vh 2vw 52vh 2vw;
+    border-spacing: 5px;
+    border-radius: 20px;
+    border: solid orange;
+    margin: 5vh 4vw 5vh 4vw;
+    scrollbar-shadow-color: #333333;
+    background-color: #251552;
+    float: left;
+    max-width: 21vw;
+    max-height: 70vh;
+    color: white;
 }
 
+.checkin-filler {
+    padding-top: 5vh;
+}
+
+.checkin-button{
+    margin-top: 5vh;
+}
+
+#avg-workout {
+    background-color: #b2aec1;
+    border-radius: 5px;
+    margin-top: 4vh;
+    padding: 1vh;
+}
+
+.avg-workout-header{
+    color: #251552;
+    font-weight: bold;
+}
+
+.checkin-button {
+    padding-top: 4vh;
+}
+
+.time-since{
+    font-size: large;
+}
 
 /*
 About Us Section*/
