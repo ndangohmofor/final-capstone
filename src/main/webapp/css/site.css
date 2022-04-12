@@ -59,6 +59,15 @@ div.right-aside {
     width: auto;
 }
 
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #d9edf7!important;
+}
 /*MachineInfo.JSP*/
 
 .infoTitle{/*EDIT*/
@@ -134,7 +143,7 @@ nav>li>a:hover {/*EDIT*/
 }
 
 .navbar-inverse .navbar-nav>li>a {/*EDIT*/
-    font-size: 19px;
+    font-size: 14px;
     font-weight: 600;
     color: #d9edf7;
 }
