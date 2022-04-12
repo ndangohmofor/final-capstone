@@ -21,9 +21,9 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <c:url var="about" value="/about"/>
-                            <h1>About Us</h1>
-                            <h4>Learn more about our mission to increase productivity in the gym.</h4>
-                            <p><a class="btn btn-lg btn-primary" href="${about}" role="button">Learn More</a></p>
+                            <h1 class="carouselTitle">About Us</h1>
+                            <h4 class="carouselText">Learn more about our mission to increase productivity in the gym.</h4>
+                            <p><a class="btn btn-lg btn-success" href="${about}" role="button">Learn More</a></p>
                         </div>
                     </div>
                 </div>
@@ -32,9 +32,9 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <c:url value="/register" var="register"/>
-                            <h1>Join the fun</h1>
-                            <h4>Sign up today and start your workout journey with us!</h4>
-                            <p><a class="btn btn-lg btn-primary" href="${register}" role="button">Register</a></p>
+                            <h1 class="carouselTitle">Join the fun</h1>
+                            <h4 class="carouselText">Sign up today and start your workout journey with us!</h4>
+                            <p><a class="btn btn-lg btn-success " href="${register}" role="button">Register</a></p>
                         </div>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
                     <img class="third-slide" src="${pageContext.request.contextPath}/img/gyms-with-turf-social.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>One more for good measure.</h1>
-                            <h4>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</h4>
+                            <h1 class="carouselTitle">Meet with a trainer today.</h1>
+                            <h4 class="carouselText">Get a free training session when you inquire about our training options. We guarantee to find a plan that works for you!</h4>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
 
 <%--Beginning of classes--%>
 
-    <div class="animate__animated animate__shakeX col-lg-12"  id="calendar">
+    <div class="col-lg-12"  id="calendar">
         <aside class="workoutSchedules">
             <section>
                 <a name="upcomingClasses"></a>
@@ -111,7 +111,7 @@
                 <c:url value="/checkin" var="checkin"/>
                 <h3>Easy Tracking</h3>
                 <p class="thumbnailboxsize">Record your workout session through our easy one-click checkin and checkout process.</p>
-                <p><a href="${checkin}" class="btn btn-primary" role="button">Checkin</a></p>
+                <p><a href="${checkin}" class="btn btn-success" role="button">Checkin</a></p>
             </div>
         </div>
     </div>
@@ -123,7 +123,7 @@
                 <c:url var="workoutlog" value="/exerciseLog"/>
                 <h3>Endurance</h3>
                 <p class="thumbnailboxsize">Keep track of your goals by using our workout log.</p>
-                <p><a href="${workoutlog}" class="btn btn-primary" role="button">Log your workout</a></p>
+                <p><a href="${workoutlog}" class="btn btn-success" role="button">Log your workout</a></p>
             </div>
         </div>
     </div>
@@ -134,7 +134,7 @@
                 <c:url value="/viewMachineInfo" var="machineInfo"/>
                 <h3>Companion</h3>
                 <p class="thumbnailboxsize">We offer training on our workout machines to guide you through the proper techniques on perfecting your form. </p>
-                <p><a href="${machineInfo}" class="btn btn-primary" role="button">Machine Guides</a></p>
+                <p><a href="${machineInfo}" class="btn btn-success" role="button">Machine Guides</a></p>
             </div>
         </div>
     </div>
@@ -145,7 +145,8 @@
             <div class="caption">
                 <h3>Classes</h3>
                 <p class="thumbnailboxsize">Try any class you want, then another . . . and another. All classes are complimentary to you.</p>
-                <p><a href="#upcomingClasses" class="btn btn-primary" role="button">View Classes</a></p>
+                <c:url var="viewAllClassesUrl" value="/allWorkoutClasses"/>
+                <p><a href="${viewAllClassesUrl}" class="btn btn-success" role="button">View Classes</a></p>
             </div>
         </div>
     </div>

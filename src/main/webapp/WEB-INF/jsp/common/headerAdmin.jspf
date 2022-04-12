@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <img class="logoImg" src="${pageContext.request.contextPath}/img/Logo.png" alt="Workout Planner Logo">
-        <h2>Workout Planner</h2>
+        <h2 class="appTitle">Workout Planner</h2>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,17 +35,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <c:url var="homeUrl" value="/"/>
-                <a href="${homeUrl}" class="navbar-brand">Home</a>
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <c:url var="homeUrl" value="/"/>
+                    <a href="${homeUrl}" class="navbar-brand">Home</a>
                     <c:url var="checkinoutUrl" value="/checkinOutAdmin"/>
                     <li><a href="${checkinoutUrl}">Check In/Out User</a></li>
                     <c:url var="workoutLogUrl" value="/workOutMetricsOfEmp"/>
-                    <li><a href="${workoutLogUrl}">View Workout Log</a></li>
+                    <li><a href="${workoutLogUrl}">User Visit Metric</a></li>
                     <c:url var="visitMetricUrl" value="/workoutAdmin"/>
-                    <li><a href="${visitMetricUrl}">User Visit Metric</a></li>
+                    <li><a href="${visitMetricUrl}">View Workout Log</a></li>
                     <c:url var="scheduleClassUrl" value="/scheduleClassAdmin"/>
                     <li><a href="${scheduleClassUrl}">Schedule Class</a></li>
                     <c:url var="viewMachineUrl" value="/viewMachines"/>

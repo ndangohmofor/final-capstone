@@ -2,14 +2,14 @@ package com.techelevator.dao;
 
 import com.techelevator.model.GymCheckin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.sql.Time;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -67,20 +67,27 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
         return  checkinId;
     }
 
-    public float getTimeSinceJoined(Long userId){
+    public Period getTimeSinceJoined(Long userId){
         String sqlSelectTimeSinceJoined = "SELECT check_in FROM gym_checkin where user_id = ? order by check_in asc limit 1 ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectTimeSinceJoined, userId);
+        Period period;
         if (result.next()){
-            float timeSinceJoined = ChronoUnit.DAYS.between((result.getDate("check_in").toLocalDate()), LocalDate.now());
-            if(timeSinceJoined >= 365){
-                timeSinceJoined = timeSinceJoined/365;
-                return timeSinceJoined;
-            } else {
-                return timeSinceJoined;
-            }
+           period = Period.between((result.getDate("check_in").toLocalDate()), LocalDate.now());
+            return period;
+        }
+        return Period.ZERO;
+    }
+
+    public String getAvgCheckinTimes(Long userId){
+        String sqlAvgSessionTime = "SELECT avg(check_out - check_in) as average_session from gym_checkin where user_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlAvgSessionTime, userId);
+        String sessionResult;
+        if(result.next()){
+            sessionResult = result.getString("average_session");
+            return sessionResult;
         }
 
-        return 0;
+        return null;
     }
 
     public GymCheckin getCheckinObject (long userID){

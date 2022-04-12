@@ -40,19 +40,27 @@ public class EditProfileController {
         return "updateProfile";
     }
 
-    @RequestMapping(path = "/updateProfile", method = RequestMethod.POST)
-    public String updateProfile(@Valid @ModelAttribute UserProfile userProfile, BindingResult result, RedirectAttributes flash, HttpSession session) {
+    @RequestMapping(path = "/updateProfile", method = RequestMethod.POST, consumes = {MULTIPART_FORM_DATA_VALUE})
+    public String updateProfile(@Valid @ModelAttribute UserProfile userProfile, BindingResult result, @RequestParam("photoContainer") MultipartFile photoContainer, RedirectAttributes flash, HttpSession session) throws IOException {
+        User user = (User) session.getAttribute("user");
         if (result.hasErrors()) {
             flash.addFlashAttribute("profile", userProfile);
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "profile", result);
             flash.addFlashAttribute("message", "Please fill in the boxes:");
             return "redirect:/updateProfile";
-        } else {
-            User user = (User) session.getAttribute("user");
-            editProfileDao.updateProfile(userProfile.getFirstName(), userProfile.getLastName(), userProfile.getGoal(), userProfile.getEmail(), user.getId());
-            flash.addFlashAttribute("message", "Profile updated");
-            return "redirect:/profile";
         }
+        if (photoContainer.isEmpty()){
+            userProfile.setPhoto(null);
+        }
+        else {
+            userProfile.setPhoto(photoContainer.getBytes());
+//            editProfileDao.updateProfile(userProfile.getFirstName(), userProfile.getLastName(), userProfile.getGoal(), userProfile.getEmail(), user.getId());
+//            flash.addFlashAttribute("message", "Profile updated");
+//            return "redirect:/profile";
+        }
+        editProfileDao.updateProfile(userProfile.getFirstName(), userProfile.getLastName(), userProfile.getGoal(), userProfile.getEmail(), user.getId(), userProfile.getPhoto());
+        flash.addFlashAttribute("message", "Profile updated");
+        return "redirect:/profile";
     }
 
 

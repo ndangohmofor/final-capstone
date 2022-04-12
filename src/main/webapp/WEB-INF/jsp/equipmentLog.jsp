@@ -23,8 +23,7 @@
             <c:forEach var="displayLog" items="${log}">
                 <tr>
                     <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
-                    <td><c:out
-                            value="${displayLog.date.toLocalDate()} ${displayLog.date.toLocalTime().withNano(0)}"/></td>
+                    <td><c:out value="${displayLog.date.toLocalDate()} ${displayLog.date.toLocalTime().withNano(0)}"/></td>
                     <td><c:out value="${displayLog.duration}"/></td>
                     <td><c:out value="${displayLog.weight}"/></td>
                     <td><c:out value="${displayLog.reps}"/></td>
