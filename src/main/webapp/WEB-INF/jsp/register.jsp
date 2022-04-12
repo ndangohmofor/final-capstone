@@ -36,5 +36,10 @@
     </div>
         </form:form>
 </div>
+<div class="qr-code">
+    <c:url var="qr" value="/img/qrcode.png"/>
+    <img id="qr-code-image" src="${qr}" alt="QR code for website">
+</div>
+
 </body>
 <%@ include file = "common/footer.jspf" %>
