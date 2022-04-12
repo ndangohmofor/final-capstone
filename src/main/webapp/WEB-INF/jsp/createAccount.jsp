@@ -27,7 +27,7 @@
         <input type="file" class="form-control" id="photoContainer" name="photoContainer" />
     </div>
     <div class="infoform-group">
-        <label for="goal">Goal</label>
+        <label for="goal" class="goalLabel">Goal</label>
         <form:textarea class="form-control" rows="10" path="goal" placeholder="Tell us more about your workout goals..."></form:textarea>
     </div>
 
