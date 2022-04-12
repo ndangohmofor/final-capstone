@@ -515,7 +515,7 @@ form .text-field{
 }
 .centerRegisterAdmin{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -573,34 +573,6 @@ form .registerForm-group{
     pointer-events: none;
 }
 
-/*form .form-group{
-    position: relative;
-    border-bottom: 2px solid #adadad;
-    margin: 30px 0;
-    bottom: 20px;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-}
-.form-group input  {
-    width: 100%;
-    padding: 0 5px;
-    height: 45px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-}
-.form-group label{
-    position: absolute;
-    top: 65px;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-}*/
-
 .registerbtn{
     color: #fff;
     background-color: #ffb74d;
@@ -629,16 +601,7 @@ form .registerForm-group{
     overflow: auto;
     background-size: cover;
 }
-/*.centerAccount{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    background: white;
-    border-radius: 10px;
-    height: 400px;
-}*/
+
 .centerAccount{
     position: absolute;
     top: 50%;
