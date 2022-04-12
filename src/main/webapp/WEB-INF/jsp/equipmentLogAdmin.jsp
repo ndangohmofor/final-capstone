@@ -13,11 +13,13 @@
                 <label for="input">Search Member</label>
                 <input type="text" placeholder="Search By Last Name" class="form-control" id="input" name="input"/>
             </div>
+            <br>
             <div>
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>
     </div>
+    <br>
 
     <table class="table table-striped">
         <thead>
