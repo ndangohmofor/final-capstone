@@ -6,17 +6,17 @@
 <div class="centerRegisterAdmin">
     <h1>Register Users</h1>
     <form:form action="${registerUrl}" method="POST" modelAttribute="user">
-        <div class="form-group">
+        <div class="registerForm-group">
             <label for="username">Username</label>
             <form:input class="form-control" path="username" placeholder="Username"/>
             <form:errors path="username" cssClass="bg-danger"/>
         </div>
-        <div class="form-group">
+        <div class="registerForm-group">
             <label for="password">Password</label>
             <form:password class="form-control" path="password"/>
             <form:errors path="password" cssClass="bg-danger"/>
         </div>
-        <div class="form-group">
+        <div class="registerForm-group">
             <label for="confirmPassword">Confirm Password</label>
             <form:password class="form-control" path="confirmPassword"/>
             <form:errors path="passwordMatching" cssClass="bg-danger"/>

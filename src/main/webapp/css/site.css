@@ -498,9 +498,9 @@ form .text-field{
     margin: 0;
     padding: 0;
     font-family: Arial;
-    height:100vh;
+    height:100%;
     background-image: url("../img/bgtest.png");
-    overflow: hidden;
+    overflow: auto;
     background-size: cover;
 }
 .centerRegister{
@@ -544,7 +544,36 @@ form .text-field{
     padding: 0 40px;
     box-sizing: border-box;
 }
-form .form-group{
+
+form .registerForm-group{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+    bottom: 20px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.registerForm-group input  {
+    width: 100%;
+    padding: 0 5px;
+    height: 45px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.registerForm-group label{
+    position: absolute;
+    top: 65px;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/*form .form-group{
     position: relative;
     border-bottom: 2px solid #adadad;
     margin: 30px 0;
@@ -570,7 +599,7 @@ form .form-group{
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
-}
+}*/
 
 .registerbtn{
     color: #fff;
