@@ -293,9 +293,11 @@ footer {
 }
 
 .alert-danger {
-    color: forestgreen;
-    background-color: lightgreen;
-    border-color: forestgreen;
+    color: #337ab7;
+    background-color: #d9edf7;
+    font-weight: bold;
+    border-color: #337ab7;
+    margin-top: 10px;
 }
 
 .workoutSchedules {
