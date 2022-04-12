@@ -435,10 +435,10 @@ div.container.d-flex.justify-content-center.py-5 {
     top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 500px;
     background: white;
     border-radius: 10px;
-    height: 30vh;
+    height: 300px;
 }
 .center h1{
     text-align: center;
