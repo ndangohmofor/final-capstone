@@ -493,6 +493,85 @@ form .text-field{
     position: absolute;
 }
 
+/*Register*/
+.register{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    height:100vh;
+    background-image: url("../img/bgtest.png");
+    overflow: hidden;
+    background-size: cover;
+}
+.centerRegister{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: white;
+    border-radius: 10px;
+    height: 400px;
+}
+.centerRegister h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid orange;
+    color: #251552;
+}
+.centerRegister form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+form .form-group{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+    bottom: 20px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.form-group input  {
+    width: 100%;
+    padding: 0 5px;
+    height: 45px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+.form-group label{
+    position: absolute;
+    top: 65px;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.registerbtn{
+    color: #fff;
+    background-color: #ffb74d;
+    border-color: #f57c00;
+    padding: 5px 10px 5px 10px;
+}
+.registerbtn:hover {
+    color: #fff;
+    background-color: #e64a19;
+    border-color: #ffb74d;
+}
+.btnDiv{
+    width: 100%;
+    left: 0;
+    bottom: 10px;
+    position: absolute;
+}
+
+
+
+
 /*checkin*/
 #checkin-container{
     padding: 20px;
