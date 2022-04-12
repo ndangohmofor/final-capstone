@@ -21,8 +21,8 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <c:url var="about" value="/about"/>
-                            <h1>About Us</h1>
-                            <h4>Learn more about our mission to increase productivity in the gym.</h4>
+                            <h1 class="carouselTitle">About Us</h1>
+                            <h4 class="carouselText">Learn more about our mission to increase productivity in the gym.</h4>
                             <p><a class="btn btn-lg btn-success" href="${about}" role="button">Learn More</a></p>
                         </div>
                     </div>
@@ -32,8 +32,8 @@
                     <div class="container">
                         <div class="carousel-caption">
                             <c:url value="/register" var="register"/>
-                            <h1>Join the fun</h1>
-                            <h4>Sign up today and start your workout journey with us!</h4>
+                            <h1 class="carouselTitle">Join the fun</h1>
+                            <h4 class="carouselText">Sign up today and start your workout journey with us!</h4>
                             <p><a class="btn btn-lg btn-success " href="${register}" role="button">Register</a></p>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                     <img class="third-slide" src="${pageContext.request.contextPath}/img/gyms-with-turf-social.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Meet with a trainer today.</h1>
-                            <h4>Get a free training session when you inquire about our training options. We guarantee to find a plan that works for you!</h4>
+                            <h1 class="carouselTitle">Meet with a trainer today.</h1>
+                            <h4 class="carouselText">Get a free training session when you inquire about our training options. We guarantee to find a plan that works for you!</h4>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
 
 <%--Beginning of classes--%>
 
-    <div class="animate__animated animate__shakeX col-lg-12"  id="calendar">
+    <div class="col-lg-12"  id="calendar">
         <aside class="workoutSchedules">
             <section>
                 <a name="upcomingClasses"></a>

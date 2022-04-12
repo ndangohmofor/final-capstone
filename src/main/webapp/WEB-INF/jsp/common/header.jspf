@@ -63,9 +63,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${empty user}">
                         <c:url var="loginUrl" value="/login"/>
-                        <li><a href="${loginUrl}">Login</a></li>
+                        <li><a id="login" href="${loginUrl}">Login</a></li>
                         <c:url var="registerUrl" value="/register"/>
-                        <li><a href="${registerUrl}">Register</a></li>
+                        <li><a id="Register" href="${registerUrl}">Register</a></li>
                     </c:if>
                     <c:if test="${not empty user}">
                         <li><a href="${profileUrl}"><c:out value="${user.capitalizedUsername}"/></a></li>
