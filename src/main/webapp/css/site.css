@@ -71,7 +71,11 @@ div.right-aside {
     color: #d9edf7!important;
 }
 /*MachineInfo.JSP*/
-
+.machineInfo{
+    background-image: url("../img/bgtest.png");
+    background-attachment: fixed;
+    background-size: cover;
+}
 .infoTitle{/*EDIT*/
     text-align: center;
     color: #251552;

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="common/header.jspf" %>
-
+<body class="machineInfo">
 <section id="main-content">
     <c:url var="viewMachineInfoUrl" value="/viewMachineInfo"/>
     <c:url var="stationaryBikeUrl" value="https://www.youtube.com/watch?v=0xyrFXI4rHI"/>
@@ -146,11 +146,13 @@
                 <img src="${pageContext.request.contextPath}/img/chestpress.png" class="card-img-top" alt="chest press">
                 <div class="card-body">
                     <h5 class="card-title">Chess Press</h5>
-                    <p class="card-text">Chest Press can help build muscle specifically in the chest error and also
+                    <p class="card-text">Chest Press can help build muscle specifically in the chest area and also
                         shoulders. Click the button below to below to learn more.</p>
                     <a href="${chestPressUrl}" target="_blank" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
     </div>
+</section>
+</body>
 <%@ include file="common/footer.jspf" %>
