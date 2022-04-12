@@ -25,6 +25,9 @@ import java.util.List;
 @Controller
 public class WorkoutClassController {
 
+    private String[] admin = new String[]{"admin", "employee"};
+    private String[] user = new String[]{"user"};
+
     @Autowired
     private WorkoutClassDao workoutClassDao;
 
@@ -42,23 +45,23 @@ public class WorkoutClassController {
     }
 
     @RequestMapping(path = "/workoutSignUp", method = RequestMethod.GET)
-    public String workoutSignUp(@RequestParam Long workoutId, ModelMap modelHolder){
+    public String workoutSignUp(@RequestParam Long workoutId, ModelMap modelHolder) {
         WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
         modelHolder.put("workout", workout);
         return "workoutSignup";
     }
 
     @RequestMapping(path = "/signUpConfirmation")
-    public String signUpConfirmation(ModelMap modelHolder){
+    public String signUpConfirmation(ModelMap modelHolder) {
         return "signUpConfirmation";
     }
 
     @RequestMapping(path = "/workoutSignUpProcess")
-    public String workoutSignUpProcess(@RequestParam Long workoutId, HttpSession session, RedirectAttributes flash, ModelMap modelHolder){
+    public String workoutSignUpProcess(@RequestParam Long workoutId, HttpSession session, RedirectAttributes flash, ModelMap modelHolder) {
         WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
-        if(auth.getCurrentUser() == null){
+        if (auth.getCurrentUser() == null) {
             flash.addFlashAttribute("message", "Please login to sign up for workout sessions");
-            session.setAttribute("previousRoute", "workoutSignUpProcess?workoutId="+workoutId);
+            session.setAttribute("previousRoute", "workoutSignUpProcess?workoutId=" + workoutId);
             return "redirect:/login";
         } else {
             workoutSignUpDao.signUpForWorkout(auth.getCurrentUser().getId(), workoutId);
@@ -69,26 +72,34 @@ public class WorkoutClassController {
     }
 
     @RequestMapping(path = "/scheduleClassAdmin")
-    public String scheduleWorkoutClass(ModelMap modelHolder){
+    public String scheduleWorkoutClass(ModelMap modelHolder, RedirectAttributes flash) {
         List<WorkoutClass> workoutClasses = workoutClassDao.getAllWorkoutClasses();
         modelHolder.put("workouts", workoutClasses);
-        return "workoutClassScheduler";
+        if (auth.userHasRole(admin)) {
+            return "workoutClassScheduler";
+        }
+        flash.addFlashAttribute("message", "Please login as an admin to proceed");
+        return "redirect:/login";
     }
 
     @RequestMapping(path = "/addWorkoutClass", method = RequestMethod.GET)
-    public String addWorkoutClass(ModelMap modelHolder){
-        if(!modelHolder.containsAttribute("workout")){
+    public String addWorkoutClass(ModelMap modelHolder, RedirectAttributes flash) {
+        if (!modelHolder.containsAttribute("workout")) {
             modelHolder.put("workout", new WorkoutClass());
         }
-        return "addWorkoutClass";
+        if (auth.userHasRole(admin)) {
+            return "addWorkoutClass";
+        }
+        flash.addFlashAttribute("message", "Please login as an admin to proceed");
+        return "redirect:/login";
     }
 
     @RequestMapping(path = "/addWorkoutClass", method = RequestMethod.POST)
-    public String addWorkoutClassProcessor(@Valid @ModelAttribute WorkoutClass workoutClass, BindingResult result, RedirectAttributes flash){
+    public String addWorkoutClassProcessor(@Valid @ModelAttribute WorkoutClass workoutClass, BindingResult result, RedirectAttributes flash) {
         flash.addFlashAttribute("workout", workoutClass);
         workoutClassDao.createWorkoutClass(workoutClass);
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "workout", result);
             flash.addFlashAttribute("workout", workoutClass);
 
@@ -100,21 +111,29 @@ public class WorkoutClassController {
     }
 
     @RequestMapping(path = "/workoutCancel")
-    public String cancelWorkoutProcessor(@RequestParam Long workoutId, ModelMap modelHolder){
+    public String cancelWorkoutProcessor(@RequestParam Long workoutId, ModelMap modelHolder, RedirectAttributes flash) {
         modelHolder.put("workout", workoutClassDao.getWorkoutClassById(workoutId));
-        return "workoutCancel";
+        if (auth.userHasRole(admin)) {
+            return "workoutCancel";
+        }
+        flash.addFlashAttribute("message", "Please login as an admin to proceed");
+        return "redirect:/login";
     }
 
     @RequestMapping(path = "/workoutCancelProcess")
-    public String cancelWorkoutClass(@RequestParam Long workoutId, ModelMap modelHolder, RedirectAttributes flash){
-        WorkoutClass workoutClass = workoutClassDao.getWorkoutClassById(workoutId);
-        flash.addFlashAttribute("message", "Successfully cancelled workout class " + workoutClass.getClassName());
-        workoutClassDao.cancelWorkoutClass(workoutId);
-        return "redirect:/scheduleClassAdmin";
+    public String cancelWorkoutClass(@RequestParam Long workoutId, ModelMap modelHolder, RedirectAttributes flash) {
+        if (auth.userHasRole(admin)) {
+            WorkoutClass workoutClass = workoutClassDao.getWorkoutClassById(workoutId);
+            flash.addFlashAttribute("message", "Successfully cancelled workout class " + workoutClass.getClassName());
+            workoutClassDao.cancelWorkoutClass(workoutId);
+            return "redirect:/scheduleClassAdmin";
+        }
+        flash.addFlashAttribute("message", "Please login as an admin to proceed");
+        return "redirect:/login";
     }
 
     @RequestMapping(path = "allWorkoutClasses")
-    public String viewAllWorkoutClasses(ModelMap modelHolder){
+    public String viewAllWorkoutClasses(ModelMap modelHolder) {
         List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
         modelHolder.put("workouts", workouts);
         return "allWorkoutClasses";
