@@ -40,12 +40,12 @@ public class JdbcGymCheckinDao implements GymCheckinDao {
 
 
     @Override
-    public List<GymCheckin> getCheckInLogForUser (long userId) {
-        List<GymCheckin> userCheckins = new ArrayList<>();
-        String sqlSelectAllUserCheckins = "SELECT * FROM gym_checkin where user_id = ?";
+    public List<LocalDate> getCheckInLogForUser (long userId) {
+        List<LocalDate> userCheckins = new ArrayList<>();
+        String sqlSelectAllUserCheckins = "SELECT cast(check_in as date) as visit_date from gym_checkin where user_id = ? limit 10";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectAllUserCheckins, userId);
         while (result.next()){
-            userCheckins.add(mapRowToGymCheckin(result));
+            userCheckins.add(result.getDate("visit_date").toLocalDate());
         }
         return userCheckins;
     }

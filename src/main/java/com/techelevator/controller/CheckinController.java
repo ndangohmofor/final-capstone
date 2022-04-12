@@ -38,13 +38,13 @@ public class CheckinController {
     public String displayCheckinPage(ModelMap model, HttpSession session,
                                      RedirectAttributes flash,
                                      ModelMap checkinLogModel,
-                                     ModelMap avgSessionModel,
+                                     ModelMap totalSessionDatesModel,
                                      ModelMap hourModel,
                                      ModelMap minuteModel) throws UnauthorizedException {
         if(auth.userHasRole(new String[] {"admin","user"})) {
             User user = (User) session.getAttribute("user");
             checkinLogModel.put("checkinLog", jdbcGymCheckinDao.getTimeSinceJoined(user.getId()));
-            avgSessionModel.put("avgTime", jdbcGymCheckinDao.getAvgCheckinTimes(user.getId()));
+            totalSessionDatesModel.put("dates", jdbcGymCheckinDao.getCheckInLogForUser(user.getId()));
             String[] time = jdbcGymCheckinDao.getAvgCheckinTimes(user.getId());
             hourModel.put("hours",time[0]);
             minuteModel.put("minutes",time[1]);
@@ -67,7 +67,7 @@ public class CheckinController {
     @RequestMapping(path = "/checkin", method = RequestMethod.POST)
     public String createCheckin(ModelMap checkin, HttpSession session, RedirectAttributes flash,
                                 ModelMap checkinLogModel,
-                                ModelMap avgSessionModel,
+                                ModelMap totalSessionDatesModel,
                                 ModelMap hourModel,
                                 ModelMap minuteModel) throws UnauthorizedException{
         if(auth.userHasRole(new String[] {"admin","user"})) {
@@ -85,7 +85,7 @@ public class CheckinController {
 
             /*TRYING TO PASS THROUGH METRICS*/
             checkinLogModel.put("checkinLog", jdbcGymCheckinDao.getTimeSinceJoined(user.getId()));
-            avgSessionModel.put("avgTime", jdbcGymCheckinDao.getAvgCheckinTimes(user.getId()));
+            totalSessionDatesModel.put("dates", jdbcGymCheckinDao.getCheckInLogForUser(user.getId()));
             String[] time = jdbcGymCheckinDao.getAvgCheckinTimes(user.getId());
             hourModel.put("hours",time[0]);
             minuteModel.put("minutes",time[1]);

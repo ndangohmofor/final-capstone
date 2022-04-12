@@ -595,13 +595,13 @@ form .form-group{
 
 /*checkin*/
 #checkin-container {
-    padding: 5vh 2vw 52vh 2vw;
+    padding: 5vh 2vw 5vh 2vw;
     border: solid orange;
     border-spacing: 5px;
     border-radius: 20px;
     margin: 5vh 4vw 5vh 4vw;
     overflow-wrap: break-word;
-    /* overflow: auto; */
+    overflow: auto;
     scrollbar-shadow-color: #333333;
     background-color: aliceblue;
     float: left;
@@ -610,16 +610,17 @@ form .form-group{
 }
 
 #visit-metrics-section {
-    padding: 5vh 2vw 52vh 2vw;
+    padding: 5vh 2vw 5vh 2vw;
     border-spacing: 5px;
     border-radius: 20px;
     border: solid orange;
     margin: 5vh 4vw 5vh 4vw;
     scrollbar-shadow-color: #333333;
     background-color: #251552;
+    overflow: auto;
     float: left;
-    max-width: 21vw;
-    max-height: 70vh;
+    width: 21vw;
+    height: 70vh;
     color: white;
 }
 
@@ -649,6 +650,12 @@ form .form-group{
 
 .time-since{
     font-size: large;
+}
+
+.visit-div {
+    height: 22vh;
+    overflow: auto;
+    border-radius: 4px;
 }
 
 /*

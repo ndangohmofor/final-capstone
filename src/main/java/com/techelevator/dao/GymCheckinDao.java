@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface GymCheckinDao {
-    List<GymCheckin> getCheckInLogForUser(long userId);
+    List<LocalDate> getCheckInLogForUser(long userId);
     List<GymCheckin> getAllUserCheckInLog();
 
 }
