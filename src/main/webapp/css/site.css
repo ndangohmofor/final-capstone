@@ -71,7 +71,11 @@ div.right-aside {
     color: #d9edf7!important;
 }
 /*MachineInfo.JSP*/
-
+.machineInfo{
+    background-image: url("../img/bgtest.png");
+    background-attachment: fixed;
+    background-size: cover;
+}
 .infoTitle{/*EDIT*/
     text-align: center;
     color: #251552;
@@ -321,7 +325,7 @@ nav>li>a:hover {/*EDIT*/
 main{
     display: block;
     position: relative;
-    min-height: 90vh;
+    min-height: 120vh;
 }
 footer {
     position: relative;
@@ -427,12 +431,12 @@ div.container.d-flex.justify-content-center.py-5 {
     font-family: Arial;
     height:100vh;
     background-image: url("../img/bgtest.png");
-    overflow: hidden;
+    overflow: auto;
     background-size: cover;
 }
 .center{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -498,14 +502,14 @@ form .text-field{
     margin: 0;
     padding: 0;
     font-family: Arial;
-    height:100vh;
+    height:100%;
     background-image: url("../img/bgtest.png");
-    overflow: hidden;
+    overflow: auto;
     background-size: cover;
 }
 .centerRegister{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -515,7 +519,7 @@ form .text-field{
 }
 .centerRegisterAdmin{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -544,7 +548,8 @@ form .text-field{
     padding: 0 40px;
     box-sizing: border-box;
 }
-form .form-group{
+
+form .registerForm-group{
     position: relative;
     border-bottom: 2px solid #adadad;
     margin: 30px 0;
@@ -553,7 +558,7 @@ form .form-group{
     border-right: none;
     border-left: none;
 }
-.form-group input  {
+.registerForm-group input  {
     width: 100%;
     padding: 0 5px;
     height: 45px;
@@ -562,7 +567,7 @@ form .form-group{
     background: none;
     outline: none;
 }
-.form-group label{
+.registerForm-group label{
     position: absolute;
     top: 65px;
     left: 5px;
@@ -600,16 +605,7 @@ form .form-group{
     overflow: auto;
     background-size: cover;
 }
-.centerAccount{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    background: white;
-    border-radius: 10px;
-    height: 400px;
-}
+
 .centerAccount{
     position: absolute;
     top: 50%;
@@ -649,7 +645,7 @@ form .infoform-group{
     background: none;
     outline: none;
 }
-.form-group label{
+.infoform-group label{
     position: absolute;
     top: 65px;
     left: 5px;
@@ -657,6 +653,9 @@ form .infoform-group{
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
+}
+label.goalLabel {
+    margin-top: 170px;
 }
 
 .infobtn{
