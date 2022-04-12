@@ -14,9 +14,9 @@
     <c:url var="legCurlUrl" value="https://www.youtube.com/watch?v=QjNFk4F5dAs"/>
     <c:url var="benchPressUrl" value="https://www.youtube.com/watch?v=rxD321l2svE&t=125s"/>
 
-    <h2>Machine Guide</h2>
+    <h2 class="infoTitle">Machine Guide</h2>
     <%--First Row--%>
-    <div class="row">
+    <div id="infoCards" class="row">
         <div class="col-sm-6">
             <div class="card" style="width: 42rem;">
                 <span class="border border-secondary"></span>
