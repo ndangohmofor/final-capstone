@@ -480,6 +480,7 @@ form .text-field{
     color: #fff;
     background-color: #ffb74d;
     border-color: #f57c00;
+    padding: 5px 10px 5px 10px;
 }
 .loginbtn:hover {
     color: #fff;
