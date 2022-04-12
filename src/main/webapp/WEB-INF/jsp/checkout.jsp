@@ -10,7 +10,20 @@
     <input type="hidden" id="checkinID" name="checkinID" value="${checkin.id}">
     <input type="hidden" id="checkin" name="checkin" value="${checkin}">
 </form>
-    <h4 class="checkin-filler"></h4>
+    <h4 class="checkin-filler">Previous Visits:</h4>
+    <div class="visit-div">
+    <table class="visits-table table table-striped">
+        <tbody>
+        <c:forEach var="date" items="${dates}">
+            <tr>
+                <td>
+                <c:out value="${date}"/><br/>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    </div>
 </div>
 <section id="visit-metrics-section">
     <h3 id="visit-metrics-heading">Visit Metrics:</h3>
