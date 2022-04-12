@@ -1,7 +1,23 @@
 </main>
 <hr>
-<footer>
-    <p>&copy; 2018 - Home</p>
+<footer class="text-center text-lg-start" style="background-color: #734eb5;">
+    <div class="container d-flex justify-content-center py-5">
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #FFA500;">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #FFA500;">
+            <i class="fab fa-youtube"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #FFA500;">
+            <i class="fab fa-instagram"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #FFA500;">
+            <i class="fab fa-twitter"></i>
+        </button>
+    </div>
+    <div class="text-center p-3 border-top border-white" style="background-color: rgba(0, 0, 0, 0.2);">
+        <br><a class="text-white" href="index">&copy; 2022 - Home</a>
+    </div>
 </footer>
 </hr>
 </div>
