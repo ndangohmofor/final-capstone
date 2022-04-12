@@ -31,7 +31,7 @@
                         <th>
                             <c:url value="/workoutCancelProcess?workoutId=${workout.id}" var="cancelUrl"/>
                             <form action="${cancelUrl}" method="POST">
-                                <button type="submit" name="workoutId" class="btn btn-primary">Cancel Workout</button>
+                                <button type="submit" name="workoutId" class="btn btn-danger">Cancel Workout</button>
                             </form>
                         </th>
                         <td><form>

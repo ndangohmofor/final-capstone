@@ -22,7 +22,7 @@
                         <td><c:out value="${workout.date.toLocalDate()} ${workout.date.toLocalTime()}"/></td>
                         <td><c:out value="${workout.instructor}"/></td>
                         <td><c:out value="${workout.durationMinutes} mins"/></td>
-                        <td><a href="workoutCancel?workoutId=${workout.id}">Cancel Class</a></td>
+                        <td><a href="workoutCancel?workoutId=${workout.id}" type="button" class="btn btn-danger">Cancel Class</a></td>
                     </tr>
                     <tr>
                         <th>Description:</th>
@@ -31,9 +31,9 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="index" name="cancel" class="btn btn-primary">Return</a>
+                <a href="index" name="cancel" class="btn btn-primary" style="margin: 5px">Return</a>
             </section>
-            <a href="addWorkoutClass" name="addWorkoutClass" class="btn btn-primary">Add Workout Class</a>
+            <a href="addWorkoutClass" name="addWorkoutClass" class="btn btn-primary"  style="margin: 5px">Add Workout Class</a>
         </aside>
     </div>
 </div>
