@@ -595,6 +595,16 @@ form .registerForm-group{
     position: absolute;
 }
 
+.qr-code{
+    float:left;
+}
+
+#qr-code-image {
+    width: 8vw;
+    margin-top: 4vh;
+    margin-left: 3vh;
+}
+
 /*CreateAccountProfileInfo*/
 .createAccount{
     margin: 0;
