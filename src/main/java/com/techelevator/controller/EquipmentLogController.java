@@ -90,7 +90,7 @@ public class EquipmentLogController {
         List<EquipmentLog> el = equipmentLogDao.getUserLogsByName(input);
 //        modelMap.put("log", el);
         if (el.isEmpty()) {
-            flash.addFlashAttribute("message", "There is no Member with the last name: " + input);
+            flash.addFlashAttribute("message", "There is no workouts for member: " + input);
             return "redirect:/workoutAdmin";
         } else {
             modelMap.put("message", "Results for: " + input);
