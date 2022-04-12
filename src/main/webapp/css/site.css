@@ -1,5 +1,5 @@
 body {
-/*padding-top: 70px;*/
+    /*padding-top: 70px;*/
     height: 100%;
     width: 100%;
 }
@@ -17,6 +17,7 @@ body > div.container h2 {
     height: 60px;
     border-radius: 15px;
 }
+
 /*Test Layout*/
 .logoImg {
     height: 60px;
@@ -30,20 +31,21 @@ body > div.container h2 {
     background-color: #251552;
 }
 
-.appTitle{
+.appTitle {
     font-size: 30px;
-    color: aliceblue;
+    color: whitesmoke;
     font-family: "JetBrains Mono Medium", sans-serif;
 }
 
 .navbar {
     position: relative;
     min-height: 50px;
-    margin-bottom: 0px!important;
+    margin-bottom: 0px !important;
     border: 1px solid transparent;
     display: flex;
     align-items: center;
 }
+
 /*Test Layout*/
 .nav-div {
     float: right;
@@ -380,6 +382,7 @@ footer {
     margin-top: 15px;
     border-radius: 20px;
     padding: 20px;
+    border: solid orange;
 }
 .content{
     background-color: #251552;
@@ -397,12 +400,6 @@ footer {
 .profile-header{
     text-align: center;
 }
-/*.container-profile{*/
-/*    padding: 50px;*/
-/*    position: relative;*/
-/*    display: contents;*/
-/*    max-width: content-box;*/
-/*}*/
 .form-container{
     padding: 20px;
     border: solid orange;
@@ -412,4 +409,14 @@ footer {
     overflow: auto;
     scrollbar-shadow-color: #333333;
     background-color: aliceblue;
+}
+
+footer {
+    background-color: #734eb5;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+div.container.d-flex.justify-content-center.py-5 {
+    background-color: #734eb5;
+    width: unset;
 }
