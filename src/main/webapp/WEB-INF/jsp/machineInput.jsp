@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="types" items="${machines}">
+            <c:forEach var="machine" items="${types}">
                 <tr>
                     <td>${machine.id}</td>
                     <td>${machine.machineName}</td>

@@ -41,9 +41,12 @@
     	 to connect to a database -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://ec2-34-197-84-74.compute-1.amazonaws.com:5432/dejg0m5tl30r4h" />
+<!--		<property name="url" value="jdbc:postgresql://ec2-34-197-84-74.compute-1.amazonaws.com:5432/dejg0m5tl30r4h" />
 		<property name="username" value="prnpdxrgkepdcn" />
-		<property name="password" value="c21c357fdd3848ea966a7aa4c6cb653c9a0c8f7012b9c311668b01b1681f4c26" />
+		<property name="password" value="c21c357fdd3848ea966a7aa4c6cb653c9a0c8f7012b9c311668b01b1681f4c26" />-->
+		<property name="url" value="jdbc:postgresql://localhost:5432/workout" />
+		<property name="username" value="postgres" />
+		<property name="password" value="postgres1" />
 
 	</bean>
 	
