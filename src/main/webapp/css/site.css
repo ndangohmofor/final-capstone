@@ -475,7 +475,6 @@ form .text-field{
     pointer-events: none;
 }
 
-
 .loginbtn{
     color: #fff;
     background-color: #ffb74d;
@@ -491,6 +490,5 @@ form .text-field{
     width: 100%;
     left: 0;
     bottom: 10px;
-    padding-top: 100px;
     position: absolute;
 }

@@ -7,12 +7,10 @@
     <form action="${loginUrl}" method="post">
         <div class="text-field">
             <input type="text" id="username" name="username">
-            <span></span>
             <label for="username">Username</label>
         </div>
         <div class="text-field">
             <input type="password" id="password" name="password">
-            <span></span>
             <label for="password">Password</label>
         </div>
         <div class="text-center btnDiv">
