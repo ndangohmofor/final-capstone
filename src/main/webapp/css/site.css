@@ -513,6 +513,27 @@ form .text-field{
     border-radius: 10px;
     height: 400px;
 }
+.centerRegisterAdmin{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: white;
+    border-radius: 10px;
+    height: 550px;
+}
+.centerRegisterAdmin h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid orange;
+    color: #251552;
+}
+.centerRegisterAdmin form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
 .centerRegister h1{
     text-align: center;
     padding: 0 0 20px 0;
