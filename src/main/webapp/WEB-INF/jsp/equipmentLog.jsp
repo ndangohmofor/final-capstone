@@ -5,10 +5,13 @@
 
 <body>
 <div>
-
+    <c:url var="exerciseInputUrl" value="/exerciseInputForm"/>
     <h2 class="profile-header">Workout Log</h2>
 
     <div class="form-container">
+        <form action="${exerciseInputUrl}" method="get">
+            <button class="btn btn-success" type="submit"><a href="${exerciseInputUrl}"></a>Add WorkOut</button>
+        </form><br>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -32,11 +35,6 @@
             </tbody>
         </table>
     </div>
-
-    <c:url var="exerciseInputUrl" value="/exerciseInputForm"/>
-    <form action="${exerciseInputUrl}" method="get">
-        <button class="btn btn-success" type="submit"><a href="${exerciseInputUrl}"></a>Add WorkOut</button>
-    </form>
 </div>
 
 </body>
