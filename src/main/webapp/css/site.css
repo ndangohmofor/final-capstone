@@ -492,3 +492,20 @@ form .text-field{
     bottom: 10px;
     position: absolute;
 }
+
+/*checkin*/
+#checkin-container{
+    padding: 20px;
+    border: solid orange;
+    border-spacing: 5px;
+    border-radius: 20px;
+    margin: 20px 350px 20px 350px;
+    overflow: auto;
+    scrollbar-shadow-color: #333333;
+    background-color: aliceblue;
+    float: left;
+}
+
+#visit-metrics-section{
+    float: right
+}

@@ -2,7 +2,7 @@
 
 
 <div class="container">
-    <div class="form-container">
+    <div id="checkin-container">
 <h2>Checkin to your workout session:</h2>
 <c:url value="/checkin" var="checkin"/>
 <form action="${checkin}" method="post">
@@ -13,26 +13,19 @@
 <br/>
 <br/>
 <br/>
-<h3>Visit Metrics:</h3>
-<div class="container">
-    <%--<c:forEach items="${checkinLog}" var="item">
-        <span><c:out value="${item.id}"/></span>
-        <span><c:out value="${item.checkIn}"/></span>
-        <span><c:out value="${item.checkOut}"/></span>
-        <span><c:out value="${item.userId}"/></span>
-        <br/>
-    </c:forEach>--%>
+    <section id="visit-metrics-section">
+<h3 id="visit-metrics-heading">Visit Metrics:</h3>
+<div id="first-joined">
+    <div>
     <c:out value="Time since you first joined: ${checkinLog.years} years, ${checkinLog.months} months, and ${checkinLog.days} days!"/>
         <br/>
-<%--        <c:choose>
-            <c:when test="${checkinLog < 365}">
-                <span><c:out value="days!"/></span>
-            </c:when>
-            <c:otherwise>
-                <span><c:out value="years!"/></span>
-            </c:otherwise>
-        </c:choose>--%>
-        <c:out value="Average workout: ${avgTime}! "/>
+    </div>
 </div>
+        <div id="avg-workout">
+    <span><h3 class="text-success"><c:out value="${hours}"/></h3><c:out value=" hour(s)."/></span><br/>
+        <span><h3 class="text-success"><c:out value="${minutes}"/></h3><c:out value=" minutes(s)."/></span>
+        </div>
+    </section>
 </div>
+
 <%@ include file = "common/footer.jspf" %>

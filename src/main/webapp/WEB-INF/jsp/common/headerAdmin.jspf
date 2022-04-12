@@ -61,7 +61,7 @@
                         <li><a href="${registerUrl}">Register</a></li>
                     </c:if>--%>
                     <c:if test="${not empty user}">
-                        <li><a href="${homeUrl}"><c:out value="${user.capitalizedUsername}"/></a></li>
+                        <li><a href="${homeUrl}"><c:out value="${user.capitalizedUsername}"/><br><c:out value="${user.role}"/></a></li>
                         <c:url var="logoffUrl" value="/logoff"/>
                         <c:url var="registerUrl" value="registerAdmin"/>
                         <li><a href="${registerUrl}">Register User</a></li>
