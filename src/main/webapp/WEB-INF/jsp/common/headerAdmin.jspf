@@ -83,3 +83,4 @@
             <c:out value="${message}"/>
         </div>
     </c:if>
+        </div>
