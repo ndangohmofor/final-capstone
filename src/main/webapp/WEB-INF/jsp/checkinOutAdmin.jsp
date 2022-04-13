@@ -3,6 +3,14 @@
 <h2 class="profile-header">Member Checkin/Checkout</h2>
 <br/>
 
+<c:url var="viewUser" value="/checkinOutAdmin"/>
+<form action="${viewUser}" method="GET">
+    <label for="userName">Search by Username:</label>
+    <input id="userName" name="userName">
+    <input type="submit">
+</form>
+
+
 <table class="table table-striped">
     <thead>
     <tr>
