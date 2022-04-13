@@ -8,8 +8,8 @@
             <div class="col-lg-6">
                 <div class="aboutus">
                     <h2 class="aboutus-title">About Us</h2>
-                    <p class="aboutus-text">Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
-                    <p class="aboutus-text">This is Workout Planner's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem</p>
+                    <p class="aboutus-text">Founded in 2022, Workout Planner started off as a manual journaling process. It has since then grown to be a simple and efficient digital process to help gym members increase their productivity.</p>
+                    <p class="aboutus-text"> Today, Workout Planner is a leader in establishing healthy routines and lifestyles for our members.</p>
                     <a class="aboutus-more" href="#">read more</a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                             </div>
                             <div class="feature-content">
                                 <h4>Our Vision & Mission</h4>
-                                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+                                <p>We strive to streamline workout tracking to help gym members achieve more during their workout sessions and assess their progress.</p>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="feature-content">
                                 <h4>Reliable Workout Plans</h4>
-                                <p>Donec vitae sapien ut libero venenatis faucibu. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt</p>
+                                <p>Our team of personal trainers and health specialists work together to create workout plans based on your unique fitness goals.</p>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="feature-content">
                                 <h4>Great support</h4>
-                                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+                                <p>We are here to guide you through your entire fitness journey. Whether it is training on our machines, creating and tracking your schedule, or even creating new goals, we will be there with you along the way!</p>
                             </div>
                         </div>
                     </div>
