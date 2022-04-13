@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.dao.WorkoutClassDao;
 import com.techelevator.dao.WorkoutSignUpDao;
+import com.techelevator.model.User;
 import com.techelevator.model.WorkoutClass;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,5 +145,40 @@ public class WorkoutClassController {
         List<WorkoutClass> workouts = workoutClassDao.getAllWorkoutClasses();
         modelHolder.put("workouts", workouts);
         return "allWorkoutClasses";
+    }
+
+    @RequestMapping(path = "myWorkoutClasses")
+    public String myWorkoutClasses(HttpSession session, ModelMap modelHolder, RedirectAttributes flash){
+        if(auth.isLoggedIn()){
+            User user = (User) session.getAttribute("user");
+            List<WorkoutClass> myWorkouts = workoutClassDao.myWorkoutClasses(user.getId());
+            modelHolder.put("workouts", myWorkouts);
+            return "myWorkoutClasses";
+        }
+        flash.addFlashAttribute("message", "Please sign in to view your workout classes");
+        return "redirect:/login";
+    }
+
+    @RequestMapping(path = "cancelWorkout")
+    public String cancelWorkout(Long workoutId, ModelMap modelHolder, RedirectAttributes flash){
+        if (auth.isLoggedIn()){
+            WorkoutClass workout = workoutClassDao.getWorkoutClassById(workoutId);
+            modelHolder.put("workout", workout);
+            return "cancelWorkout";
+        }
+        flash.addFlashAttribute("message", "Please sign in to cancel your workout classes");
+        return "redirect:/login";
+    }
+
+    @RequestMapping(path = "workoutDelete")
+    public String deleteWorkoutReservation(Long workoutId, RedirectAttributes flash, HttpSession session){
+        if (auth.isLoggedIn()){
+            User user = (User) session.getAttribute("user");
+            workoutSignUpDao.cancelMyWorkoutReservation(user.getId(), workoutId);
+            flash.addFlashAttribute("message", "Your reservation was canceled successfully");
+            return "redirect:/myWorkoutClasses";
+        }
+        flash.addFlashAttribute("message", "Please sign in to cancel your workout classes");
+        return "redirect:/login";
     }
 }

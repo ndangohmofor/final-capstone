@@ -2,7 +2,8 @@
 
 
 <div class="container">
-    <h2>Welcome to the Workout Planner!</h2>
+    <h2>You Are About to Cancel You Workout Reservation!</h2>
+    <h4>You will lose your spot and will need to do another reservation again (subject to availability) if you change your mind</h4>
     <div class="col-lg-12">
         <aside class="workoutSchedules">
             <section>
@@ -23,7 +24,7 @@
                         <td><c:out value="${workout.date.toLocalDate()} ${workout.date.toLocalTime()}"/></td>
                         <td><c:out value="${workout.instructor}"/></td>
                         <td><c:out value="${workout.durationMinutes} mins"/></td>
-                        <td><a href="workoutSignUp?workoutId=${workout.id}" class="btn btn-primary">Sign Me Up</a></td>
+                        <td><a href="workoutDelete?workoutId=${workout.id}" class="btn btn-danger">Cancel My Reservation</a></td>
                     </tr>
                     <tr>
                         <th>Description:</th>
