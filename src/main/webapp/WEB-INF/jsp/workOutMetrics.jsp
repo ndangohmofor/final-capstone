@@ -11,8 +11,8 @@
                         <thead>
                         <tr>
                             <th scope="col">Date: <c:out value="${displayLog.workOutDate}"/></th>
-                            <th scope="col">Check In: <c:out value="${displayLog.gym_checkin.toLocalDate()} ${displayLog.gym_checkin.toLocalTime().withNano(0)}"/></th>
-                            <th scope="col">Check Out: <c:out value="${displayLog.gym_checkout.toLocalDate()} ${displayLog.gym_checkout.toLocalTime().withNano(0)}"/></th>
+                            <th scope="col">Check In: <c:out value="${displayLog.gym_checkin.toLocalDate()} ${displayLog.gym_checkin.toLocalTime().withSecond(0).withNano(0)}"/></th>
+                            <th scope="col">Check Out: <c:out value="${displayLog.gym_checkout.toLocalDate()} ${displayLog.gym_checkout.toLocalTime().withSecond(0).withNano(0)}"/></th>
                         </tr>
                         </thead>
                     </table>

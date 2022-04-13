@@ -27,8 +27,8 @@
             <th scope="col">Machine</th>
             <th scope="col">Date</th>
             <th scope="col">Time</th>
-            <th scope="col">Duration</th>
-            <th scope="col">Weight</th>
+            <th scope="col">Duration (min)</th>
+            <th scope="col">Weight (lbs)</th>
             <th scope="col">Reps</th>
         </tr>
         </thead>
@@ -37,7 +37,7 @@
             <tr>
                 <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
                 <td><c:out value="${displayLog.date.toLocalDate()}"/></td>
-                <td><c:out value="${displayLog.date.toLocalTime().withNano(0)}"/></td>
+                <td><c:out value="${displayLog.date.toLocalTime().withSecond(0).withNano(0)}"/></td>
                 <td><c:out value="${displayLog.duration}"/></td>
                 <td><c:out value="${displayLog.weight}"/></td>
                 <td><c:out value="${displayLog.reps}"/></td>
