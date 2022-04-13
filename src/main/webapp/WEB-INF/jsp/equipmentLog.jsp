@@ -17,6 +17,7 @@
             <tr>
                 <th scope="col">Machine</th>
                 <th scope="col">Date</th>
+                <th scope="col">Time</th>
                 <th scope="col">Duration</th>
                 <th scope="col">Weight</th>
                 <th scope="col">Reps</th>
@@ -26,7 +27,8 @@
             <c:forEach var="displayLog" items="${log}">
                 <tr>
                     <td><c:out value="${displayLog.capitalizedMachineName}"/></td>
-                    <td><c:out value="${displayLog.date.toLocalDate()} ${displayLog.date.toLocalTime().withNano(0)}"/></td>
+                    <td><c:out value="${displayLog.date.toLocalDate()}"/></td>
+                    <td><c:out value="${displayLog.date.toLocalTime().withNano(0)}"/></td>
                     <td><c:out value="${displayLog.duration}"/></td>
                     <td><c:out value="${displayLog.weight}"/></td>
                     <td><c:out value="${displayLog.reps}"/></td>
