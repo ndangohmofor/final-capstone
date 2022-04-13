@@ -16,7 +16,7 @@
         </button>
     </div>
     <div class="text-center p-3 border-top border-white" style="background-color: rgba(0, 0, 0, 0.2);">
-        <br><a class="text-white" href="index">&copy; 2022 - Home</a>
+        <br><a class="text-white" href="index">&copy; 2022 - Workout Planner. All Rights Reserved.</a>
     </div>
 </footer>
 </hr>
