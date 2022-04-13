@@ -25,6 +25,7 @@
                             <thead>
                             <tr>
                                 <th>Machine</th>
+                                <th>Duration</th>
                                 <th>Weight</th>
                                 <th>Reps</th>
                             </tr>
@@ -33,6 +34,7 @@
                             <c:forEach var="displayEquipments" items="${displayLog.equipments}">
                                 <tr>
                                     <td><c:out value="${displayEquipments.capitalizedMachineName}"/></td>
+                                    <td><c:out value="${displayEquipments.duration}"/></td>
                                     <td><c:out value="${displayEquipments.weight}"/></td>
                                     <td><c:out value="${displayEquipments.reps}"/></td>
                                 </tr>

@@ -41,7 +41,7 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
     @Override
     public List<WorkOutMetricsLog> getWorkoutMetricsByUser(Long userId) {
 
-        String sql = "SELECT CHECK_IN, CHECK_OUT, MACHINE_NAME, WEIGHT, REPS FROM (SELECT COUNT(GC.CHECK_IN || ' ' || GC.CHECK_OUT)," +
+        String sql = "SELECT CHECK_IN, CHECK_OUT, MACHINE_NAME, DURATION, WEIGHT, REPS FROM (SELECT COUNT(GC.CHECK_IN || ' ' || GC.CHECK_OUT)," +
                 "       GC.check_in," +
                 "       GC.check_out," +
                 "       M.MACHINE_NAME," +
@@ -69,6 +69,7 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
                  WorkOutMetricsLog wmLog = equipmentsInSession.get(key);
                  EquipmentLog e = new EquipmentLog();
                  e.setMachineName(results.getString("machine_name"));
+                 e.setDuration(results.getLong("duration"));
                  e.setWeight(results.getLong("weight"));
                  e.setReps(results.getLong("reps"));
                  wmLog.getEquipments().add(e);
@@ -82,8 +83,9 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
                      wmLog.setGym_checkout(results.getTimestamp("check_out").toLocalDateTime());
                  EquipmentLog e = new EquipmentLog();
                   e.setMachineName(results.getString("machine_name"));
-                 e.setWeight(results.getLong("weight"));
-                 e.setReps(results.getLong("reps"));
+                  e.setDuration(results.getLong("duration"));
+                  e.setWeight(results.getLong("weight"));
+                  e.setReps(results.getLong("reps"));
                  wmLog.getEquipments().add(e);
                  equipmentsInSession.put(key, wmLog);
              }
