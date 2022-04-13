@@ -60,7 +60,7 @@ public class AccountController {
             session.setAttribute("user", auth.getCurrentUser());
             /*String previousRoute = (session.getAttribute("previousRoute") == null) ? "privateAdmin" : session.getAttribute("previousRoute").toString();
             session.removeAttribute("previousRoute");*/
-            return "redirect:/privateAdmin";
+            return "redirect:/indexAdmin";
         }
         if (auth.signIn(username, password) && auth.userHasRole(user)) {
             //creating session and adding user
