@@ -7,7 +7,7 @@
 <form action="${viewUser}" method="GET">
     <label for="userName">Search by Username:</label>
     <input id="userName" name="userName">
-    <input type="submit" class="btn-secondary btn-sm">
+    <input type="submit" class="btn btn-sm">
 </form>
 
 
@@ -28,7 +28,7 @@
                 <c:choose>
                     <c:when test="${checkins.contains(user.id)}">
                         <form action="${adminCheckInOut}" method="POST">
-                            <input type="submit" id="checkout" name="checkout" value="checkout" class="btn">
+                            <input type="submit" id="checkout" name="checkout" value="checkout" class="btn btn-sm">
                             <input type="hidden" name="username" value="${user.username}">
                             <input type="hidden" name="checktype" value="checkout">
                         </form>
