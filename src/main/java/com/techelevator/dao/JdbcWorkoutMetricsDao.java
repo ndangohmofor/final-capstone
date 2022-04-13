@@ -25,15 +25,15 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
     public List<WorkOutMetricsLog> getWorkoutMetricsByUser(String userName) {
 
         String sql = "select id from app_user where user_name = ?";
-        long id =0;
+        long id = 0;
         try {
             id = template.queryForObject(sql, Long.class, userName);
-        }catch(Exception e){
+        } catch (Exception e) {
             id = 0;
         }
-        if(id != 0){
+        if (id != 0) {
             return getWorkoutMetricsByUser(id);
-        }else {
+        } else {
             return null;
         }
     }
@@ -88,8 +88,8 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
                  equipmentsInSession.put(key, wmLog);
              }
         }
-        for(Map.Entry<String, WorkOutMetricsLog> e : equipmentsInSession.entrySet()){
-              wmMetrics.add(e.getValue());
+        for (Map.Entry<String, WorkOutMetricsLog> e : equipmentsInSession.entrySet()) {
+            wmMetrics.add(e.getValue());
             System.out.println(e.getValue());
         }
         return wmMetrics;
