@@ -1,57 +1,62 @@
 <%@ include file="common/headerAdmin.jspf" %>
 
 
+<h2 class="profile-header">Workout Visit Metrics</h2>
+
 <c:url var="workOutMetricsOfEmpUrl" value="/workOutMetricsOfEmp"/>
 <form action="${workOutMetricsOfEmpUrl}" method="POST">
     <div class="form-group">
-        <label for="userName">UserName</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        <label for="userName">Search Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Search By Username" />
     </div>
-
-    <button type="submit" class="btn btn-default">Get User Workout Metrics</button>
+    <div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
 </form>
-
-
-<div>
-
-    <h2>Workout Metrics</h2>
-
-    <c:forEach var="displayLog" items="${log}">
-        <div style="width:90%;margin:auto;" >
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">Date: <c:out value="${displayLog.workOutDate}"/></th>
-                    <th scope="col">Check In: <c:out value="${displayLog.gym_checkin.toLocalDate()} ${displayLog.gym_checkin.toLocalTime().withNano(0)}"/></th>
-                    <th scope="col">Check Out: <c:out value="${displayLog.gym_checkout.toLocalDate()} ${displayLog.gym_checkout.toLocalTime().withNano(0)}"/></th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-        <div style="width:80%;margin:auto;" class="form-container">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Machine</th>
-                    <th>Weight</th>
-                    <th>Reps</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="displayEquipments" items="${displayLog.equipments}">
-                    <tr>
-                        <td><c:out value="${displayEquipments.capitalizedMachineName}"/></td>
-                        <td><c:out value="${displayEquipments.weight}"/></td>
-                        <td><c:out value="${displayEquipments.reps}"/></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+<br>
+<div id="accordion">
+    <c:forEach var="displayLog" items="${log}" varStatus="loop">
+        <div class="card, form-container" style="margin:0px">
+            <div class="card-header" id="headingOne">
+                <div class="btn btn-link" data-toggle="collapse" data-target="#collapse_${loop.count}" aria-expanded="true" aria-controls="collapseOne">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date: <c:out value="${displayLog.workOutDate}"/></th>
+                            <th scope="col">Check In: <c:out value="${displayLog.gym_checkin.toLocalDate()} ${displayLog.gym_checkin.toLocalTime().withNano(0)}"/></th>
+                            <th scope="col">Check Out: <c:out value="${displayLog.gym_checkout.toLocalDate()} ${displayLog.gym_checkout.toLocalTime().withNano(0)}"/></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div id="collapse_${loop.count}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <div>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Machine</th>
+                                <th>Weight</th>
+                                <th>Reps</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="displayEquipments" items="${displayLog.equipments}">
+                                <tr>
+                                    <td><c:out value="${displayEquipments.capitalizedMachineName}"/></td>
+                                    <td><c:out value="${displayEquipments.weight}"/></td>
+                                    <td><c:out value="${displayEquipments.reps}"/></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <br>
     </c:forEach>
-
-
 </div>
 
     <%@ include file="common/footer.jspf" %>
