@@ -45,7 +45,7 @@
                     <c:url var="checkinoutUrl" value="/checkinOutAdmin"/>
                     <li><a href="${checkinoutUrl}">Check In/Out User</a></li>
                     <c:url var="workoutLogUrl" value="/workOutMetricsOfEmp"/>
-                    <li><a href="${workoutLogUrl}">User Visit Metric</a></li>
+                    <li><a href="${workoutLogUrl}">Workout Metrics</a></li>
                     <c:url var="visitMetricUrl" value="/workoutAdmin"/>
                     <li><a href="${visitMetricUrl}">View Workout Log</a></li>
                     <c:url var="scheduleClassUrl" value="/scheduleClassAdmin"/>

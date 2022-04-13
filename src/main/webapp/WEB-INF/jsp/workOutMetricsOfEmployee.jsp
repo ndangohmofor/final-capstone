@@ -1,7 +1,7 @@
 <%@ include file="common/headerAdmin.jspf" %>
 
 
-<h2 class="profile-header">Workout Visit Metrics</h2>
+<h2 class="profile-header">Workout Metrics</h2>
 
 <c:url var="workOutMetricsOfEmpUrl" value="/workOutMetricsOfEmp"/>
 <form action="${workOutMetricsOfEmpUrl}" method="POST">
