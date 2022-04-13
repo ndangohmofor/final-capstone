@@ -864,3 +864,9 @@ a:hover, a:active {
     text-align: center;
     width: 70px;
 }
+
+/* Admin Home Page */
+
+.adminButtonMenu {
+    width: 115px;
+}
