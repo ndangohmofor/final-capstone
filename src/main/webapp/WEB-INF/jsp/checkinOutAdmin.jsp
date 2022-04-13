@@ -7,7 +7,7 @@
 <form action="${viewUser}" method="GET">
     <label for="userName">Search by Username:</label>
     <input id="userName" name="userName">
-    <input type="submit">
+    <input type="submit" class="btn-secondary btn-sm">
 </form>
 
 

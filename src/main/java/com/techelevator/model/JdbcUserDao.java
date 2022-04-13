@@ -114,6 +114,19 @@ public class JdbcUserDao implements UserDao {
         return users;
     }
 
+    public List<User> getUserFromCheckinSearch(String userName) {
+        List<User> users = new ArrayList<User>();
+        String sqlSelectAllUsers = "SELECT id, user_name, role FROM app_user WHERE user_name ilike ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllUsers, "%" + userName + "%");
+
+        while (results.next()) {
+            User user = mapResultToUser(results);
+            users.add(user);
+        }
+
+        return users;
+    }
+
     private User mapResultToUser(SqlRowSet results) {
         User user = new User();
         user.setId(results.getLong("id"));
