@@ -1,10 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.WorkoutClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class JdbcWorkoutSignUpDao implements WorkoutSignUpDao {
@@ -12,7 +15,7 @@ public class JdbcWorkoutSignUpDao implements WorkoutSignUpDao {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public JdbcWorkoutSignUpDao(DataSource dataSource){
+    public JdbcWorkoutSignUpDao(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -23,8 +26,8 @@ public class JdbcWorkoutSignUpDao implements WorkoutSignUpDao {
     }
 
     @Override
-    public void cancelMyWorkoutReservation(long userId, long workoutId) {
-        String sql = "DELETE FROM workout_user WHERE workout_id = ? AND user_id = ?;";
+    public void cancelMyWorkoutReservation(Long userId, Long workoutId) {
+        String sql = "DELETE FROM workout_user WHERE user_id = ? AND workout_id = ?;";
         jdbcTemplate.update(sql, userId, workoutId);
     }
 }

@@ -14,5 +14,5 @@ public interface WorkoutClassDao {
     void createWorkoutClass(WorkoutClass workoutClass);
     void cancelWorkoutClass(Long id);
     List<WorkoutClass> getFirst5Classes();
-
+    List<WorkoutClass> myWorkoutClasses(Long userId);
 }

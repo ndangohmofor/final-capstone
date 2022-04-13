@@ -1,7 +1,7 @@
 <%@ include file = "common/header.jspf" %>
 
 <div class="container">
-    <h2>Upcoming Workout Classes</h2>
+    <h2>Workouts I am signed Up For</h2>
     <div class="col-lg-12">
         <aside class="workoutSchedules">
             <section>
@@ -22,7 +22,7 @@
                             <td><c:out value="${workout.date.toLocalDate()} ${workout.date.toLocalTime()}"/></td>
                             <td><c:out value="${workout.instructor}"/></td>
                             <td><c:out value="${workout.durationMinutes} mins"/></td>
-                            <td><a href="workoutDetails?workoutId=${workout.id}" class="btn btn-primary">Further Details</a></td>
+                            <td><a href="cancelWorkout?workoutId=${workout.id}" class="btn btn-danger">Cancel Reservation</a></td>
                         </tr>
                         <tr>
                             <th>Description:</th>
@@ -31,8 +31,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="index" name="cancel" class="btn btn-primary">Return</a>
-                <a href="myWorkoutClasses" name="myWorkoutClasses" class="btn btn-primary">My Classes</a>
+                <a href="allWorkoutClasses" name="cancel" class="btn btn-primary">Return</a>
             </section>
         </aside>
     </div>

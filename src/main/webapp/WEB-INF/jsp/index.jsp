@@ -87,7 +87,7 @@
                             <th scope="row"><c:out value="${workout.className}" /></th>
                             <td><c:out value="${workout.date.toLocalDate()} ${workout.date.toLocalTime()}" /></td>
                             <td><c:out value="${workout.durationMinutes} mins" /></td>
-                            <td><a href="workoutDetails?workoutId=${workout.id}">Further Details</a></td>
+                            <td><a href="workoutDetails?workoutId=${workout.id}" class="btn btn-primary">Further Details</a></td>
                         </tr>
                     </c:forEach>
                     <tr>

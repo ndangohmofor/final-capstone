@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -68,6 +69,14 @@ public class JdbcWorkoutClass implements WorkoutClassDao {
     public void cancelWorkoutClass(Long classId) {
         String sql = "DELETE FROM workout_class WHERE id = ?;";
         jdbcTemplate.update(sql, classId);
+    }
+
+    @Override
+    public List<WorkoutClass> myWorkoutClasses (Long userId){
+        List<WorkoutClass> myWorkoutClasses = new ArrayList<>();
+        String sql = "SELECT ID, CLASS_NAME, DATE, INSTRUCTOR, DESCRIPTION, DURATION_IN_MINUTES FROM workout_class wc JOIN workout_user wu on wc.id = wu.workout_id WHERE wu.user_id = ? ORDER BY DATE;";
+        myWorkoutClasses = jdbcTemplate.query(sql, new WorkoutRowMapper(), userId);
+        return myWorkoutClasses;
     }
 }
 

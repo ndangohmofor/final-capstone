@@ -60,6 +60,8 @@
                     <li><a href="${equipmentLogUrl}">Workout Log</a></li>
                     <c:url var="workoutMetricsUrl" value="/workOutMetrics"/>
                     <li><a href="${workoutMetricsUrl}">Workout Metrics</a></li>
+                    <c:url var="workoutClassesUrl" value="/myWorkoutClasses"/>
+                    <li><a href="${workoutClassesUrl}">Reserved Classes</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${empty user}">
