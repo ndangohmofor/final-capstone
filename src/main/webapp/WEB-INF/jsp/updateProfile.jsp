@@ -1,6 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="common/header.jspf" %>
-
+<style>
+    .form-container{
+        margin:0px 300px;
+    }
+</style>
 <body>
 <h2 class="profile-header">Update Profile Information</h2>
 <div class="form-container">
