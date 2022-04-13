@@ -69,8 +69,8 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
                  WorkOutMetricsLog wmLog = equipmentsInSession.get(key);
                  EquipmentLog e = new EquipmentLog();
                  e.setMachineName(results.getString("machine_name"));
-                 e.setWeight(results.getInt("weight"));
-                 e.setReps(results.getInt("reps"));
+                 e.setWeight(results.getLong("weight"));
+                 e.setReps(results.getLong("reps"));
                  wmLog.getEquipments().add(e);
              }else{
                  WorkOutMetricsLog wmLog = new WorkOutMetricsLog();
@@ -82,8 +82,8 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
                      wmLog.setGym_checkout(results.getTimestamp("check_out").toLocalDateTime());
                  EquipmentLog e = new EquipmentLog();
                   e.setMachineName(results.getString("machine_name"));
-                 e.setWeight(results.getInt("weight"));
-                 e.setReps(results.getInt("reps"));
+                 e.setWeight(results.getLong("weight"));
+                 e.setReps(results.getLong("reps"));
                  wmLog.getEquipments().add(e);
                  equipmentsInSession.put(key, wmLog);
              }

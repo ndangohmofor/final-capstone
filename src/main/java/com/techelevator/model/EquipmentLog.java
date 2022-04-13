@@ -1,6 +1,8 @@
 package com.techelevator.model;
 
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotNull;
@@ -11,15 +13,15 @@ public class EquipmentLog {
 
   private long id;
   @NotNull (message = "Please provide duration of exercise")
-  private long duration;
+  private Long duration;
 
   private LocalDateTime date;
 
   @NotNull (message = "Please provide number of reps")
-  private long reps;
+  private Long reps;
 
   @NotNull (message = "Please add weight")
-  private long weight;
+  private Long weight;
 
   private long userId;
   private long machineId;
@@ -35,11 +37,11 @@ public class EquipmentLog {
   }
 
 
-  public long getDuration() {
+  public Long getDuration() {
     return duration;
   }
 
-  public void setDuration(long duration) {
+  public void setDuration(Long duration) {
     this.duration = duration;
   }
 
@@ -53,20 +55,20 @@ public class EquipmentLog {
   }
 
 
-  public long getReps() {
+  public Long getReps() {
     return reps;
   }
 
-  public void setReps(long reps) {
+  public void setReps(Long reps) {
     this.reps = reps;
   }
 
 
-  public long getWeight() {
+  public Long getWeight() {
     return weight;
   }
 
-  public void setWeight(long weight) {
+  public void setWeight(Long weight) {
     this.weight = weight;
   }
 
