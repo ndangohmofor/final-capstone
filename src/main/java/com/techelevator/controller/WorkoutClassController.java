@@ -6,6 +6,7 @@ import com.techelevator.dao.WorkoutSignUpDao;
 import com.techelevator.model.WorkoutClass;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,7 +65,13 @@ public class WorkoutClassController {
             session.setAttribute("previousRoute", "workoutSignUpProcess?workoutId=" + workoutId);
             return "redirect:/login";
         } else {
-            workoutSignUpDao.signUpForWorkout(auth.getCurrentUser().getId(), workoutId);
+            try {
+                workoutSignUpDao.signUpForWorkout(auth.getCurrentUser().getId(), workoutId);
+            } catch (DuplicateKeyException e){
+                flash.addFlashAttribute("message", "You are already signed up for this class");
+                flash.addAttribute("workoutId", workoutId);
+                return "redirect:/workoutSignUp";
+            }
         }
         modelHolder.put("workout", workout);
         modelHolder.put("user", auth.getCurrentUser());
