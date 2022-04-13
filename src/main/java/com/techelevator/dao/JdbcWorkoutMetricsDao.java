@@ -64,29 +64,29 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
         Map<String, WorkOutMetricsLog> equipmentsInSession = new LinkedHashMap<String, WorkOutMetricsLog>();
         List<WorkOutMetricsLog> wmMetrics = new ArrayList<WorkOutMetricsLog>();
         while (results.next()) {
-            String key = "" + results.getTimestamp("check_in").toLocalDateTime() + " " + results.getTimestamp("check_out").toLocalDateTime();
-            if (equipmentsInSession.containsKey(key)) {
-                WorkOutMetricsLog wmLog = equipmentsInSession.get(key);
-                EquipmentLog e = new EquipmentLog();
-                e.setMachineName(results.getString("machine_name"));
-                e.setWeight(results.getInt("weight"));
-                e.setReps(results.getInt("reps"));
-                wmLog.getEquipments().add(e);
-            } else {
-                WorkOutMetricsLog wmLog = new WorkOutMetricsLog();
-                if (results.getTimestamp("check_in") != null)
-                    wmLog.setWorkOutDate(results.getTimestamp("check_in").toLocalDateTime().toLocalDate());
-                if (results.getTimestamp("check_in") != null)
-                    wmLog.setGym_checkin(results.getTimestamp("check_in").toLocalDateTime());
-                if (results.getTimestamp("check_out") != null)
-                    wmLog.setGym_checkout(results.getTimestamp("check_out").toLocalDateTime());
-                EquipmentLog e = new EquipmentLog();
-                e.setMachineName(results.getString("machine_name"));
-                e.setWeight(results.getInt("weight"));
-                e.setReps(results.getInt("reps"));
-                wmLog.getEquipments().add(e);
-                equipmentsInSession.put(key, wmLog);
-            }
+             String key = ""+ results.getTimestamp("check_in").toLocalDateTime()+" " +results.getTimestamp("check_out").toLocalDateTime();
+             if(equipmentsInSession.containsKey(key)){
+                 WorkOutMetricsLog wmLog = equipmentsInSession.get(key);
+                 EquipmentLog e = new EquipmentLog();
+                 e.setMachineName(results.getString("machine_name"));
+                 e.setWeight(results.getLong("weight"));
+                 e.setReps(results.getLong("reps"));
+                 wmLog.getEquipments().add(e);
+             }else{
+                 WorkOutMetricsLog wmLog = new WorkOutMetricsLog();
+                 if(results.getTimestamp("check_in") != null)
+                     wmLog.setWorkOutDate(results.getTimestamp("check_in").toLocalDateTime().toLocalDate());
+                 if(results.getTimestamp("check_in")!=null)
+                     wmLog.setGym_checkin(results.getTimestamp("check_in").toLocalDateTime());
+                 if(results.getTimestamp("check_out")!=null)
+                     wmLog.setGym_checkout(results.getTimestamp("check_out").toLocalDateTime());
+                 EquipmentLog e = new EquipmentLog();
+                  e.setMachineName(results.getString("machine_name"));
+                 e.setWeight(results.getLong("weight"));
+                 e.setReps(results.getLong("reps"));
+                 wmLog.getEquipments().add(e);
+                 equipmentsInSession.put(key, wmLog);
+             }
         }
         for (Map.Entry<String, WorkOutMetricsLog> e : equipmentsInSession.entrySet()) {
             wmMetrics.add(e.getValue());

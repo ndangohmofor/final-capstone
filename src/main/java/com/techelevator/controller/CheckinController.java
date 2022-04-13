@@ -126,9 +126,13 @@ public class CheckinController {
     }
 
     @RequestMapping(value = "/checkinOutAdmin", method = RequestMethod.GET)
-    public String displayCheckinAdmin(ModelMap modelMap, ModelMap checkinMapper, RedirectAttributes flash) throws UnauthorizedException {
+    public String displayCheckinAdmin(ModelMap modelMap, ModelMap checkinMapper, RedirectAttributes flash, @RequestParam(required = false)String userName) throws UnauthorizedException {
         if(auth.userHasRole(new String[] {"admin","user"})) {
-            modelMap.put("users", jdbcUserDao.getAllUsers());
+            if(userName == null || userName.equals("")) {
+                modelMap.put("users", jdbcUserDao.getAllUsers());
+            } else {
+                modelMap.put("users", jdbcUserDao.getUserFromCheckinSearch(userName));
+            }
             checkinMapper.put("checkins", jdbcGymCheckinDao.getCheckedInUsers());
             return "checkinOutAdmin";
         } else {
