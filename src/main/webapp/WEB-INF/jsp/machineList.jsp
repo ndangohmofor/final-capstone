@@ -16,7 +16,7 @@
             <th>ID</th>
             <th>Machine Name</th>
             <th>Machine Type</th>
-            <th>Machine Usage</th>
+            <th>Machine Usage(minutes)</th>
         </tr>
         </thead>
     <tbody>
