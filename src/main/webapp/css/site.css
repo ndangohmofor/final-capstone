@@ -436,13 +436,15 @@ div.container.d-flex.justify-content-center.py-5 {
 }
 .center{
     position: absolute;
+    display: block;
     top: 40%;
     left:50%;
     transform: translate(-50%, -50%);
     width: 500px;
     background: white;
     border-radius: 10px;
-    height: 300px;
+    margin: auto;
+    height: 320px;
 }
 .center h1{
     text-align: center;
@@ -514,6 +516,7 @@ form .text-field{
     transform: translate(-50%, -50%);
     width: 500px;
     background: white;
+    margin: auto;
     border-radius: 10px;
     height: 400px;
 }
@@ -526,6 +529,7 @@ form .text-field{
     background: white;
     border-radius: 10px;
     height: 550px;
+    margin: auto;
 }
 .centerRegisterAdmin h1{
     text-align: center;

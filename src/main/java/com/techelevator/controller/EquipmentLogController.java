@@ -88,7 +88,6 @@ public class EquipmentLogController {
     public String displayExerciseLogAdmin(HttpSession session, ModelMap modelMap, RedirectAttributes flash, @RequestParam String input) {
         User user = (User) session.getAttribute("user");
         List<EquipmentLog> el = equipmentLogDao.getUserLogsByName(input);
-//        modelMap.put("log", el);
         if (el.isEmpty()) {
             flash.addFlashAttribute("message", "There is no workouts for member: " + input);
             return "redirect:/workoutAdmin";
