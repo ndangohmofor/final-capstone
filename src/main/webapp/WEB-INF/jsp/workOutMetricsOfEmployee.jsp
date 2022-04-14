@@ -37,8 +37,8 @@
                             <thead>
                             <tr>
                                 <th>Machine</th>
-                                <th>Duration</th>
-                                <th>Weight</th>
+                                <th>Duration (min)</th>
+                                <th>Weight (lbs)</th>
                                 <th>Reps</th>
                             </tr>
                             </thead>

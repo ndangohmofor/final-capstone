@@ -25,12 +25,12 @@
             <form:errors path="machineId" cssClass="bg-danger"/>
         </div>
         <div class="form-group">
-            <label for="duration">Duration</label>
+            <label for="duration">Duration (min)</label>
             <form:input type="text" path="duration" id="duration" value="0" class="form-control"/>
             <form:errors path="duration" cssClass="bg-danger"/>
         </div>
         <div class="form-group">
-            <label for="weight">Weight</label>
+            <label for="weight">Weight (lbs)</label>
             <form:input type="text" path="weight" id="weight" value="0" class="form-control"/>
             <form:errors path="weight" cssClass="bg-danger"/>
         </div>
