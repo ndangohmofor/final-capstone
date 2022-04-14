@@ -184,8 +184,8 @@
                 <img class="amenitiespics" src="${pageContext.request.contextPath}/img/water-sport.jpg" alt="Picture of swimmer in swimming pool.">
             </div>
             <div class="media-body mediacolor">
-                <h4 class="media-heading">Olympics Size Pool</h4>
-                <p class="amenitytext">Get your cardio in by swimming in our olympics size pool.We also have varying diving board heights.<br/>
+                <h4 class="media-heading">Olympic Size Pool</h4>
+                <p class="amenitytext">Get your cardio in by swimming in our olympic size pool.We also have varying diving board heights.<br/>
                 At the end of your swim, rinse off and then relax in our sauna rooms.<br/>
                 </p>
             </div>
