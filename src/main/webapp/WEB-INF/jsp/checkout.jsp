@@ -28,15 +28,20 @@
 <section id="visit-metrics-section">
     <h3 id="visit-metrics-heading">Visit Metrics:</h3>
     <div id="first-joined">
-        <div class="time-since">
-            <c:out value="Time since your first session: ${checkinLog.years} years, ${checkinLog.months} months, and ${checkinLog.days} days!"/>
+        <div class="avg-workout">
+            <h4 class="avg-workout-header">Time Since First Visit:</h4>
+            <br/>
+            <h4><span class="text-success h3"><c:out value="${checkinLog.years}"/></span><span class="text-muted"><c:out value=" year(s)."/></span></h4>
+            <h4><span class="text-success h3"><c:out value="${checkinLog.months}"/></span><span class="text-muted"><c:out value=" month(s)."/></span></h4>
+            <h4><span class="text-success h3"><c:out value="${checkinLog.days}"/></span><span class="text-muted"><c:out value=" day(s)."/></span></h4>
             <br/>
         </div>
     </div>
-    <div id="avg-workout">
+    <div class="avg-workout">
         <h4 class="avg-workout-header">Average Workout:</h4>
-        <span><h3 class="text-success"><c:out value="${hours}"/></h3><c:out value=" hour(s)."/></span><br/>
-        <span><h3 class="text-success"><c:out value="${minutes}"/></h3><c:out value=" minutes(s)."/></span>
+        <br/>
+        <h4><span class="text-success h3"><c:out value="${hours}"/></span><span class="text-muted"><c:out value=" hour(s)."/></span></h4>
+        <h4><span class="text-success h3"><c:out value="${minutes}"/></span><span class="text-muted"><c:out value=" minute(s)."/></span></h4>
     </div>
 </section>
 </div>
