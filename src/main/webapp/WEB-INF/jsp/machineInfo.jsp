@@ -6,7 +6,7 @@
     <c:url var="stationaryBikeUrl" value="https://www.youtube.com/watch?v=0xyrFXI4rHI"/>
     <c:url var="treadmillUrl" value="https://www.youtube.com/watch?v=FDavXHUMpGA"/>
     <c:url var="rowMachineUrl" value="https://www.youtube.com/watch?v=X7fzHnnohvM"/>
-    <c:url var="ellipticalUrl" value="https://www.youtube.com/watch?v=9r7SsbzKh9I"/>
+    <c:url var="ellipticalUrl" value="https://www.youtube.com/watch?v=jHolibmlRUE"/>
     <c:url var="stairMasterUrl" value="https://www.youtube.com/watch?v=fhj7dHcpD2Q"/>
     <c:url var="legPressUrl" value="https://www.youtube.com/watch?v=xgQAn-b4ems"/>
     <c:url var="chestPressUrl" value="https://www.youtube.com/watch?v=bRgJ9mGQvdk"/>
@@ -66,7 +66,7 @@
                     <p class="card-text">A elliptical can help burn a lot of calories, puts less stress on your joints,
                         burns body fat, targets specific leg muscles and improves balance. Click the button below to
                         learn more</p>
-                    <a href="${treadmillUrl}" target="_blank" class="btn btn-primary">Learn More</a>
+                    <a href="${ellipticalUrl}" target="_blank" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
