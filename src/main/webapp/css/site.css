@@ -888,3 +888,18 @@ a:hover, a:active {
     height: 150px;
     padding-bottom: 20px;
 }
+
+.adminCardStyling{
+    display: block;
+    /* border: 1px solid orange; */
+    border-right: 1px solid gray;
+    /* border-radius: 1rem; */
+    flex-direction: column;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    padding: 15px;
+    /* background-color: aliceblue; */
+    /* border-right: 3px solid orange !important; */
+}
