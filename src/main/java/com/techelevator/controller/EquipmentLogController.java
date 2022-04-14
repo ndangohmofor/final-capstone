@@ -44,7 +44,7 @@ public class EquipmentLogController {
 
             return "equipmentLog";
         } else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to access the workout log");
             return "redirect:/login";
         }
     }
