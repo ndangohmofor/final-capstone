@@ -870,3 +870,11 @@ a:hover, a:active {
 .adminButtonMenu {
     width: 115px;
 }
+
+.adminLogo{
+    width: 313px;
+}
+.adminCard{
+    height: 150px;
+    padding-bottom: 20px;
+}
