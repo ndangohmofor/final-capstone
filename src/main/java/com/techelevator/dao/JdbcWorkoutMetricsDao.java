@@ -53,7 +53,7 @@ public class JdbcWorkoutMetricsDao implements WorkoutMetricsDao {
                 "         JOIN gym_checkin gc on el.user_id = gc.user_id and el.date between gc.check_in and gc.check_out" +
                 "         JOIN machine m on el.machine_id = m.id" +
                 " WHERE AU.id = ?" +
-                " GROUP BY GC.check_in, GC.check_out, M.MACHINE_NAME, EL.DURATION, EL.REPS, EL.WEIGHT) AS RESULTS;";
+                " GROUP BY GC.check_in, GC.check_out, M.MACHINE_NAME, EL.DURATION, EL.REPS, EL.WEIGHT ORDER BY GC.check_in desc) AS RESULTS;";
 
         SqlRowSet results = template.queryForRowSet(sql, userId);
         List<WorkOutMetricsLog> wmMetrics = extractResults1(results);
