@@ -17,7 +17,7 @@
     <!-- Content Row-->
     <div class="row gx-4 gx-lg-5">
         <div class="col-lg-2 mb-5">
-            <div class="card h-100">
+            <div class="adminCardStyling h-100">
                 <div class="card-body adminCard">
                     <h2 class="card-title">Member Checkin/Checkout</h2>
                     <p class="card-text">Check members in and out of their workout</p>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-lg-2 mb-5">
-            <div class="card h-100">
+            <div class="adminCardStyling h-100">
                 <div class="card-body adminCard">
                     <h2 class="card-title">Workout Metrics</h2>
                     <p class="card-text">View member workouts per session</p>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-lg-2 mb-5 ">
-            <div class="card h-100">
+            <div class="adminCardStyling h-100">
                 <div class="card-body adminCard">
                     <h2 class="card-title">Workout Log</h2>
                     <p class="card-text">View equipment log history for member</p>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="col-lg-2 mb-5">
-            <div class="card h-100">
+            <div class="adminCardStyling h-100">
                 <div class="card-body adminCard">
                     <h2 class="card-title">Schedule a Class</h2>
                     <p class="card-text">Schedule or cancel classes</p>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="col-lg-2 mb-5">
-            <div class="card h-100">
+            <div class="adminCardStyling h-100">
                 <div class="card-body adminCard">
                     <h2 class="card-title">Machine Metrics</h2>
                     <p class="card-text">Monitor machine usage and add new machines.</p>
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="col-lg-2 mb-5">
-            <div class="card h-100">
+            <div class="adminCardStyling h-100">
                 <div class="card-body adminCard">
                     <h2 class="card-title">Register Users</h2>
                     <p class="card-text">Register new users.</p>
