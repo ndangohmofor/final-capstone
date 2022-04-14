@@ -399,7 +399,7 @@ footer {
     padding: 20px;
 }
 .text-secondary{
-    font-size: 16px;
+    font-size: 18px;
 }
 .profile-link{
     list-style-type: none;
@@ -408,6 +408,8 @@ footer {
 }
 .profile-header{
     text-align: center;
+    color: #251552;
+    font-weight: bold;
 }
 .form-container{
     padding: 20px;
