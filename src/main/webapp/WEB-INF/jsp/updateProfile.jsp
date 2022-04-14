@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="photoContainer">Photo</label>
-                <input type="file" class="form-control" id="photoContainer" name="photoContainer" />
+                <input type="file" class="form-control" id="photoContainer" name="photoContainer" value="${profile.photo}"/>
             </div>
             <div class="form-group">
                 <label for="goal">Update Goals</label>

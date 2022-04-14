@@ -55,9 +55,7 @@
                             <div class="col-md-3">
                                 <h5>Goal</h5>
                             </div>
-                            <div class="col-md-9 text-secondary">
-                                <c:out value="${profile.goal}"/>
-                            </div>
+                            <pre class="col-md-9 text-secondary"><c:out value="${profile.goal}"/></pre>
                         </div>
                     </div>
                 </div>
