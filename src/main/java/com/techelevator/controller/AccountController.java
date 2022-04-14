@@ -89,11 +89,12 @@ public class AccountController {
     }
 
     @RequestMapping(value = {"/register", "/registerAdmin"}, method = RequestMethod.GET)
-    public String register(ModelMap modelHolder) {
+    public String register(ModelMap modelHolder, HttpSession session) {
         if (!modelHolder.containsAttribute("user")) {
             modelHolder.put("user", new User());
         }
         if (auth.userHasRole(admin)) {
+            modelHolder.put("userAdmin",session.getAttribute("user"));
             return "registerAdmin";
         }
         return "register";
