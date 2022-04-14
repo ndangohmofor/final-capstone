@@ -10,7 +10,6 @@
                     <h2 class="aboutus-title">About Us</h2>
                     <p class="aboutus-text">Founded in 2022, Workout Planner started off as a manual journaling process. It has since then grown to be a simple and efficient digital process to help gym members increase their productivity.</p>
                     <p class="aboutus-text"> Today, Workout Planner is a leader in establishing healthy routines and lifestyles for our members.</p>
-                    <a class="aboutus-more" href="#">read more</a>
                 </div>
             </div>
             <div class="col-lg-6">
