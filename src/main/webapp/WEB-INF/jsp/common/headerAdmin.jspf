@@ -60,7 +60,18 @@
                         <c:url var="registerUrl" value="registerAdmin"/>
                         <li><a href="${registerUrl}">Register</a></li>
                     </c:if>--%>
-                    <c:if test="${not empty user}">
+                    <c:if test="${not empty userAdmin}">
+                        <li><a href="${homeUrl}"><c:out value="${userAdmin.capitalizedUsername}"/><br><c:out value="[${userAdmin.role}]"/></a></li>
+                        <c:url var="logoffUrl" value="/logoff"/>
+                        <c:url var="registerUrl" value="registerAdmin"/>
+                        <li><a href="${registerUrl}">Register User</a></li>
+                        <li>
+                            <form action="${logoffUrl}" method="POST" class="navbar-form">
+                                <button type="submit" class="btn btn-logOff">Log Off</button>
+                            </form>
+                        </li>
+                    </c:if>
+                    <c:if test="${not empty user && empty userAdmin}">
                         <li><a href="${homeUrl}"><c:out value="${user.capitalizedUsername}"/><br><c:out value="[${user.role}]"/></a></li>
                         <c:url var="logoffUrl" value="/logoff"/>
                         <c:url var="registerUrl" value="registerAdmin"/>
