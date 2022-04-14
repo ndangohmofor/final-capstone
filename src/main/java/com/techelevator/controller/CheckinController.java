@@ -59,7 +59,7 @@ public class CheckinController {
             return "checkin";
         }
         else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to checkin or checkout");
             return"redirect:/login";
         }
     }
@@ -91,7 +91,7 @@ public class CheckinController {
             minuteModel.put("minutes",time[1]);
             return "checkout";
         } else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to checkin or checkout");
             return"redirect:/login";
         }
     }
@@ -101,7 +101,7 @@ public class CheckinController {
         if(auth.userHasRole(new String[] {"admin","user"})) {
             return "checkout";
         } else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to checkin or checkout");
             return"redirect:/login";
         }
     }
@@ -120,7 +120,7 @@ public class CheckinController {
 
             return "redirect:/checkin";
         } else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to checkin or checkout");
             return"redirect:/login";
         }
     }
@@ -136,7 +136,7 @@ public class CheckinController {
             checkinMapper.put("checkins", jdbcGymCheckinDao.getCheckedInUsers());
             return "checkinOutAdmin";
         } else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to checkin or checkout");
             return"redirect:/login";
         }
     }
@@ -161,7 +161,7 @@ public class CheckinController {
 
             return "redirect:/checkinOutAdmin";
         } else {
-            flash.addFlashAttribute("message", "Please login to access this page");
+            flash.addFlashAttribute("message", "Please login to checkin or checkout");
             return"redirect:/login";
         }
     }
