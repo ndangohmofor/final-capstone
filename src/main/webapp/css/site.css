@@ -736,7 +736,7 @@ label.goalLabel {
     margin-top: 5vh;
 }
 
-#avg-workout {
+.avg-workout {
     background-color: #b2aec1;
     border-radius: 5px;
     margin-top: 4vh;
