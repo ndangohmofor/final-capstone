@@ -408,6 +408,8 @@ footer {
 }
 .profile-header{
     text-align: center;
+    color: #251552;
+    font-weight: bold;
 }
 .form-container{
     padding: 20px;

@@ -1,7 +1,7 @@
 <%@ include file = "common/headerAdmin.jspf" %>
 
 <div class="container">
-    <h2>Upcoming Workout Classes</h2>
+    <h2 class="profile-header">Upcoming Workout Classes</h2>
     <div class="col-lg-12">
         <aside class="workoutSchedules">
             <section>

@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file = "common/headerAdmin.jspf" %>
 
-<h1>Machine Metrics</h1>
+<h2 class="profile-header">Machine Metrics</h2>
 <div class="container">
     <div class="row">
     <c:url var="viewMachineUrl" value="/viewMachines"/>
