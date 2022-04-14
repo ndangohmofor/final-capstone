@@ -71,7 +71,7 @@
                         <li><a id="Register" href="${registerUrl}">Register</a></li>
                     </c:if>
                     <c:if test="${not empty user}">
-                        <li><a href="${profileUrl}"><c:out value="${user.capitalizedUsername}"/><br><c:out value="${user.role}"/></a></li>
+                        <li><a href="${profileUrl}"><c:out value="${user.capitalizedUsername}"/><br><c:out value="[${user.role}]"/></a></li>
                         <c:url var="logoffUrl" value="/logoff"/>
                         <li>
                             <form action="${logoffUrl}" method="POST" class="navbar-form">
