@@ -28,7 +28,7 @@
                             <div class="col-md-3">
                                 <h5>First Name</h5>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 text-secondary">
                                 <c:out value="${profile.firstName}"/>
                             </div>
                         </div>
