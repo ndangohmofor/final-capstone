@@ -3,7 +3,7 @@
 <%@ include file="common/headerAdmin.jspf" %>
 
 <body>
-<div>
+<div class="container">
 
     <h2 class="profile-header">Workout Log</h2>
 <c:url var="workoutLogAdminUrl" value="/workoutAdminSearch"/>

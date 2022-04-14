@@ -1,5 +1,6 @@
 <%@ include file = "common/headerAdmin.jspf" %>
 
+<div class="container">
 <h2 class="profile-header">Member Checkin/Checkout</h2>
 <br/>
 
@@ -47,7 +48,7 @@
     </c:forEach>
     </tbody>
 </table>
-
+</div>
 
 
 <%@ include file = "common/footer.jspf" %>

@@ -1,6 +1,6 @@
 <%@ include file="common/headerAdmin.jspf" %>
 
-
+<div class="container">
 <h2 class="profile-header">Workout Metrics</h2>
 
 <c:url var="workOutMetricsOfEmpUrl" value="/workOutMetricsOfEmp"/>
@@ -60,5 +60,5 @@
         <br>
     </c:forEach>
 </div>
-
+</div>
     <%@ include file="common/footer.jspf" %>
