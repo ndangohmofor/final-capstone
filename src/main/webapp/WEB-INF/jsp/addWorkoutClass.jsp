@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file = "common/headerAdmin.jspf" %>
 
+<div class="container">
 <c:url var="addWorkoutClassUrl" value="/addWorkoutClass"/>
 <form:form action="${addWorkoutClassUrl}" method="POST" modelAttribute="workout">
     <div class="form-group">
@@ -30,5 +31,6 @@
     </div>
     <button type="submit" class="btn btn-default">Save</button>
 </form:form>
+</div>
 
 <%@ include file = "common/footer.jspf" %>
