@@ -8,7 +8,7 @@
 <form action="${checkin}" method="post" class="checkin-button">
     <input type="submit" id="checkin" name="checkin" value="Check In" class="btn btn-success">
 </form>
-        <h4 class="checkin-filler">Previous Visits:</h4>
+        <h4 class="checkin-filler">Recent Visits:</h4>
         <div class="visit-div">
             <table class="visits-table table table-striped">
                 <tbody>

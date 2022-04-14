@@ -10,7 +10,7 @@
     <input type="hidden" id="checkinID" name="checkinID" value="${checkin.id}">
     <input type="hidden" id="checkin" name="checkin" value="${checkin}">
 </form>
-    <h4 class="checkin-filler">Previous Visits:</h4>
+    <h4 class="checkin-filler">Recent Visits:</h4>
     <div class="visit-div">
     <table class="visits-table table table-striped">
         <tbody>
