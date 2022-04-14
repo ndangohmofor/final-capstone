@@ -738,7 +738,7 @@ label.goalLabel {
     margin-top: 5vh;
 }
 
-#avg-workout {
+.avg-workout {
     background-color: #b2aec1;
     border-radius: 5px;
     margin-top: 4vh;
@@ -865,4 +865,18 @@ a:hover, a:active {
     line-height: 70px;
     text-align: center;
     width: 70px;
+}
+
+/* Admin Home Page */
+
+.adminButtonMenu {
+    width: 115px;
+}
+
+.adminLogo{
+    width: 313px;
+}
+.adminCard{
+    height: 150px;
+    padding-bottom: 20px;
 }
