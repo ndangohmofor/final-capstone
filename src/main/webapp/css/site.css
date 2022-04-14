@@ -398,9 +398,17 @@ footer {
     color: white;
     padding: 20px;
 }
-.text-secondary{
+.text-secondary {
     font-size: 18px;
 }
+pre.text-secondary{
+    background-color: #251552;
+    color: white;
+    font-size: 18px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .profile-link{
     list-style-type: none;
     color: white;
