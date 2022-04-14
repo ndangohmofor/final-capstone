@@ -31,10 +31,10 @@ public class WorkoutMetricsController {
     @RequestMapping(value = "/workOutMetrics", method = RequestMethod.GET)
     public String getWorkOutMetricsPage(ModelMap modelHolder, HttpSession session, RedirectAttributes flash) {
         if (auth.isLoggedIn()) {
-        System.out.println("getWorkOutMetricsPage -- GET method ");
-        User user = (User) session.getAttribute("user");
-        List<WorkOutMetricsLog> logs = workoutMetricsDao.getWorkoutMetricsByUser(user.getId());
-        modelHolder.put("log", logs);
+            System.out.println("getWorkOutMetricsPage -- GET method ");
+            User user = (User) session.getAttribute("user");
+            List<WorkOutMetricsLog> logs = workoutMetricsDao.getWorkoutMetricsByUser(user.getId());
+            modelHolder.put("log", logs);
 
             return "workOutMetrics";
         }
@@ -50,13 +50,21 @@ public class WorkoutMetricsController {
     }
 
     @RequestMapping(value = "/workOutMetricsOfEmp", method = RequestMethod.POST)
-    public String getWorkOutMetricsOfEmployee(@RequestParam String username, ModelMap modelHolder, HttpSession session) {
+    public String getWorkOutMetricsOfEmployee(@RequestParam String username, ModelMap modelHolder, HttpSession session, RedirectAttributes flash) {
         System.out.println("workOutMetricsOfEmp -- POSt " + username);
         List<WorkOutMetricsLog> logs = workoutMetricsDao.getWorkoutMetricsByUser(username);
+        if (logs == null) {
+            flash.addFlashAttribute("message", "Username not found");
+            return "redirect:workOutMetricsOfEmployee";
+        }
         modelHolder.put("log", logs);
         System.out.println("this is workOutMetricsOfEmp -- POST method data : " + logs.size() + " and " + logs);
         return "workOutMetricsOfEmployee";
     }
 
+    @RequestMapping(path = "workOutMetricsOfEmployee")
+    public String searchEmpByName(){
+        return "workOutMetricsOfEmployee";
+    }
 
 }
