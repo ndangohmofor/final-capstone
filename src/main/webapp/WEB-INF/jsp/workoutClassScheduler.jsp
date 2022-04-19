@@ -18,7 +18,7 @@
                     <tbody>
                     <c:forEach var="workout" items="${workouts}">
                     <tr>
-                        <th scope="row"><c:out value="${workout.className}"/></th>
+                        <th scope="row"><a class="btn-default btn" href="workoutClassMembers?workoutId=${workout.id}"><c:out value="${workout.className}"/></a></th>
                         <td><c:out value="${workout.date.toLocalDate()} ${workout.date.toLocalTime()}"/></td>
                         <td><c:out value="${workout.instructor}"/></td>
                         <td><c:out value="${workout.durationMinutes} mins"/></td>
