@@ -7,6 +7,7 @@ import com.techelevator.model.User;
 import com.techelevator.model.WorkoutClass;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -132,13 +133,25 @@ public class WorkoutClassController {
     public String cancelWorkoutClass(@RequestParam Long workoutId, ModelMap modelHolder, RedirectAttributes flash) {
         if (auth.userHasRole(admin)) {
             WorkoutClass workoutClass = workoutClassDao.getWorkoutClassById(workoutId);
-            flash.addFlashAttribute("message", "Successfully cancelled workout class " + workoutClass.getClassName());
-            workoutClassDao.cancelWorkoutClass(workoutId);
-            return "redirect:/scheduleClassAdmin";
+            try {
+                workoutClassDao.cancelWorkoutClass(workoutId);
+                flash.addFlashAttribute("message", "Successfully cancelled workout class " + workoutClass.getClassName());
+                return "redirect:/scheduleClassAdmin";
+            } catch (DataIntegrityViolationException e){
+                flash.addFlashAttribute("message", "Cannot delete a class with enrolled users. Please confirm removal of enrolled users");
+                modelHolder.put("workout", workoutClass);
+                return "redirect:/confirmWorkoutCancellation";
+            }
         }
         flash.addFlashAttribute("message", "Please login as an admin to proceed");
         return "redirect:/login";
     }
+
+    @RequestMapping(path = "confirmWorkoutCancellation")
+    public String confirmWorkoutCancellation(RedirectAttributes flash, ModelMap modelHolder){
+        return "confirmWorkoutCancellation";
+    }
+
 
     @RequestMapping(path = "allWorkoutClasses")
     public String viewAllWorkoutClasses(ModelMap modelHolder) {
@@ -180,5 +193,18 @@ public class WorkoutClassController {
         }
         flash.addFlashAttribute("message", "Please sign in to cancel your workout classes");
         return "redirect:/login";
+    }
+
+    @RequestMapping(path = "workoutClassMembers")
+    public String showWorkoutClassMembers(@RequestParam Long workoutId, RedirectAttributes flash, ModelMap modelHolder){
+        List<User> users = workoutSignUpDao.searchWorkoutUsers(workoutId);
+        WorkoutClass workoutClass = workoutClassDao.getWorkoutClassById(workoutId);
+        if (user.length > 0){
+            modelHolder.put("users", users);
+            modelHolder.put("workout", workoutClass);
+        } else {
+            flash.addFlashAttribute("message", "No users are currently enrolled in this class");
+        }
+        return "workoutClassMembers";
     }
 }
