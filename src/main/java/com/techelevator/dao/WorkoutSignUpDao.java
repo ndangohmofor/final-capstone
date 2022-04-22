@@ -9,4 +9,5 @@ public interface WorkoutSignUpDao {
     void signUpForWorkout(long userId, long workoutId);
     void cancelMyWorkoutReservation(Long userId, Long workoutId);
     List<User> searchWorkoutUsers(Long Id);
+    void removeUsersFromClass(Long workoutID);
 }

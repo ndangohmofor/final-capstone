@@ -43,6 +43,12 @@ public class JdbcWorkoutSignUpDao implements WorkoutSignUpDao {
         users = jdbcTemplate.query(sql, new UserRowMapper(), Id);
         return users;
     }
+
+    @Override
+    public void removeUsersFromClass(Long workoutID) {
+        String sql = "DELETE FROM workout_user WHERE workout_id = ?;";
+        jdbcTemplate.update(sql, workoutID);
+    }
 }
 
 class UserRowMapper implements RowMapper<User>{

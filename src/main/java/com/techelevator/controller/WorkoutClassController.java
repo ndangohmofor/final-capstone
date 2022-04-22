@@ -138,13 +138,22 @@ public class WorkoutClassController {
                 flash.addFlashAttribute("message", "Successfully cancelled workout class " + workoutClass.getClassName());
                 return "redirect:/scheduleClassAdmin";
             } catch (DataIntegrityViolationException e){
-                flash.addFlashAttribute("message", "Cannot delete a class with enrolled users. Please confirm removal of enrolled users");
-                modelHolder.put("workout", workoutClass);
+                flash.addFlashAttribute("message", "Cannot delete a class with enrolled users. Proceeding will remove the users and cancel the class");
+                flash.addFlashAttribute("workout", workoutClass);
+                flash.addFlashAttribute("users", workoutSignUpDao.searchWorkoutUsers(workoutId));
                 return "redirect:/confirmWorkoutCancellation";
             }
         }
         flash.addFlashAttribute("message", "Please login as an admin to proceed");
         return "redirect:/login";
+    }
+
+    @RequestMapping(path = "workoutCancelConfirmation")
+    public String workoutCancelConfirmation(@RequestParam Long workoutId, RedirectAttributes flash){
+        workoutSignUpDao.removeUsersFromClass(workoutId);
+        workoutClassDao.cancelWorkoutClass(workoutId);
+        flash.addFlashAttribute("message", "Workout class successfully canceled");
+        return "redirect:/scheduleClassAdmin";
     }
 
     @RequestMapping(path = "confirmWorkoutCancellation")
